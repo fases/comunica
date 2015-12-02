@@ -11,7 +11,9 @@
 include 'conexao.php';
 
 #seleciona os dados da tabela produto
-$query = mysql_query("SELECT nome_material, descricao, id_material FROM material");
+
+$sql = ("SELECT * FROM material");
+$query = mysqli_query($con, $sql);
 
 
 # abaixo montamos um formulário em html
@@ -41,19 +43,15 @@ $query = mysql_query("SELECT nome_material, descricao, id_material FROM material
            <label for="material">Material:</label>
            
            <select id="material">
-          
-           <?php
-           while($mymaterial = mysql_fetch_array($query)): 
-           ?>
-          
-          <option value="<?php echo $mymaterial['id_material']; ?>">
-          
-          <?php echo $mymaterial['nome_material']; ?>
-          
-          </option>
-         
-          <?php endwhile; ?>
-         
+              <option> Selecione... </option>
+           
+         <?php while($resultado = mysqli_fetch_array($query)) { ?>
+        <option value="<?php echo $resultado['idmaterial'] ?>">
+          <?php echo $resultado['nomematerial'] ?>
+
+        </option>
+         <?php } ?>
+ 
           </select>
 
         </div>

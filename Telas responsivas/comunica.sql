@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 30-Nov-2015 às 14:01
+-- Generation Time: 02-Dez-2015 às 19:09
 -- Versão do servidor: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -19,6 +19,21 @@ SET time_zone = "+00:00";
 --
 -- Database: `comunica`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `emprestimo`
+--
+
+CREATE TABLE IF NOT EXISTS `emprestimo` (
+  `data` date NOT NULL,
+  `hora` time NOT NULL,
+  `idmaterial` int(11) NOT NULL,
+  `justificativa` varchar(1000) NOT NULL,
+  `observacoes` varchar(1000) NOT NULL,
+`idemprestimo` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -68,9 +83,21 @@ CREATE TABLE IF NOT EXISTS `item` (
 
 CREATE TABLE IF NOT EXISTS `material` (
   `descricao` varchar(500) COLLATE latin1_general_ci NOT NULL,
-  `nome` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `nomematerial` varchar(500) COLLATE latin1_general_ci NOT NULL,
 `idmaterial` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=7 ;
+
+--
+-- Extraindo dados da tabela `material`
+--
+
+INSERT INTO `material` (`descricao`, `nomematerial`, `idmaterial`) VALUES
+('value', 'lapis', 1),
+('rosa', 'caneta', 2),
+('preto', 'beca', 3),
+('brilhoso', 'chapeu', 4),
+('verde', 'tecido', 5),
+('roxo', 'microfone', 6);
 
 -- --------------------------------------------------------
 
@@ -104,6 +131,12 @@ INSERT INTO `usuario` (`id_usuario`, `nome`, `senha`, `matricula`, `email`, `tel
 --
 
 --
+-- Indexes for table `emprestimo`
+--
+ALTER TABLE `emprestimo`
+ ADD PRIMARY KEY (`idemprestimo`);
+
+--
 -- Indexes for table `eventos`
 --
 ALTER TABLE `eventos`
@@ -132,6 +165,11 @@ ALTER TABLE `usuario`
 --
 
 --
+-- AUTO_INCREMENT for table `emprestimo`
+--
+ALTER TABLE `emprestimo`
+MODIFY `idemprestimo` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `eventos`
 --
 ALTER TABLE `eventos`
@@ -145,7 +183,7 @@ MODIFY `id_item` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `material`
 --
 ALTER TABLE `material`
-MODIFY `idmaterial` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `idmaterial` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `usuario`
 --
