@@ -1,17 +1,17 @@
 <?php
-    // include "comunica_mysql.inc";
+  
     include 'conexao.php';
 
-    $date = $_POST['data'];
-    echo "<p>".$_POST["data"]."</p>";
-    $hora = $_POST["hora"];
+    $data = $_POST['data_evento'];
+    echo "<p>".$_POST["data_evento"]."</p>";
+    $hora = $_POST["hora_evento"];
     $responsavel = $_POST["responsavel"];
     $local = $_POST["local"];
-    $descricao = $_POST["descricao"];
-    $obs = $_POST["obs"];
+    $descricao = $_POST["descricaoevento"];
+    $obs = $_POST["obs_evento"];
 
-    $sql= "INSERT INTO Eventos (data,hora,responsavel,local,descricao,obs) VALUES";
-     $sql .= "('$date', '$hora', '$responsavel', '$local', '$descricao', '$obs');";
+    $sql= "INSERT INTO Eventos (data_evento,hora_evento,responsavel,local,descricaoevento,obs_evento) VALUES";
+     $sql .= "('$data', '$hora', '$responsavel', '$local', '$descricao', '$obs');";
      $resultado = mysqli_query($con,$sql);
      if($resultado){
         echo "<p>evento enviado</p>";

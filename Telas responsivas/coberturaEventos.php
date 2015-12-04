@@ -17,12 +17,12 @@
         <div class="pure-g">
             <div class="pure-u-1 pure-u-md-1-3">
                 <label for="date">Data: </label>
-                <input id="data" name="data" class="pure-u-23-24" type="date">
+                <input id="data" name="data_evento" class="pure-u-23-24" type="date">
             </div>
 
             <div class="pure-u-1 pure-u-md-1-3">
                 <label for="hora">Horário: </label>
-                <input id="hora" name="hora" class="pure-u-23-24" type="time">
+                <input id="hora" name="hora_evento" class="pure-u-23-24" type="time">
             </div>
 
             <div class="pure-u-1 pure-u-md-1-3">
@@ -38,7 +38,7 @@
 
            <div class="pure-u-1 pure-u-md-1-3">
              <label for="descricao">Descrição:</label> 
-             <input id="descricao" name="descricao" class="pure-u-23-24" type="text" required>
+             <input id="descricao" name="descricaoevento" class="pure-u-23-24" type="text" required>
            </div>
 
            
@@ -68,7 +68,7 @@
 
             <div class="pure-u-1 pure-u-md-1-3">
                 <label for="obs">Observações:</label>
-                <input id="obs" name="obs" class="pure-u-23-24" type="text" required>
+                <input id="obs" name="obs_evento" class="pure-u-23-24" type="text" required>
             </div>
 
 
