@@ -18,16 +18,16 @@ class Usuario_model extends CI_Model {
         parent::__construct();
 
         if(!is_null($arr)){
-            $this->id = isset($arr['id']) ? $arr['id'] : null;
-            $this->nome = isset($arr['nome']) ? $arr['nome'] : null;
-            $this->matricula = isset($arr['matricula']) ? $arr['matricula'] : null;
-            $this->email = isset($arr['email']) ? $arr['email'] : null;
-            $this->senha = isset($arr['senha']) ? md5($arr['senha']) : null; 
-            $this->telefone = isset($arr['telefone']) ? $arr['telefone'] : null;
-            $this->status = isset($arr['status']) ? $arr['status'] : 0;
-            $this->endereco = isset($arr['endereco']) ? $arr['endereco'] : null;
-            $this->tipo_acesso = isset($arr['tipo_acesso']) ? $arr['tipo_acesso'] : 2;
-            $this->informacao = isset($arr['informacao']) ? $arr['informacao'] : null;      
+            $this->id            = isset($arr['id']) ? $arr['id'] : null;
+            $this->nome          = isset($arr['nome']) ? $arr['nome'] : null;
+            $this->matricula     = isset($arr['matricula']) ? $arr['matricula'] : null;
+            $this->email         = isset($arr['email']) ? $arr['email'] : null;
+            $this->senha         = isset($arr['senha']) ? md5($arr['senha']) : null; 
+            $this->telefone      = isset($arr['telefone']) ? $arr['telefone'] : null;
+            $this->status        = isset($arr['status']) ? $arr['status'] : 0;
+            $this->endereco      = isset($arr['endereco']) ? $arr['endereco'] : null;
+            $this->tipo_acesso   = isset($arr['tipo_acesso']) ? $arr['tipo_acesso'] : 2;
+            $this->informacao    = isset($arr['informacao']) ? $arr['informacao'] : null;      
         }
     }
 

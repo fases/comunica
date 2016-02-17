@@ -12,38 +12,38 @@
 
     <div class="ls-clearfix"></div>
 
-        <form action=""  class="ls-form ls-form-horizontal">
+       <form method="post" class="ls-form ls-form-horizontal">
 
         <fieldset>
     <div class="ls-label col-md-12">
       <p>Escolha a dimensão de material:</p>
 
       <label class="ls-label-text">
-        <input type="radio" name="material" class="ls-field-radio" value="banner">
+        <input type="radio" name="tipo" class="ls-field-radio" value="Banner (120mmx80mm)" required>
         Banner (120mmx80mm)
       </label>
             <label class="ls-label-text">
-        <input type="radio" name="material" class="ls-field-radio" value="banner">
+        <input type="radio" name="tipo" class="ls-field-radio" value="Banner (A3)">
         Banner (A3)
       </label>
                   <label class="ls-label-text">
-        <input type="radio" name="material" class="ls-field-radio" value="banner">
+        <input type="radio" name="tipo" class="ls-field-radio" value="Banner (A4)">
         Banner (A4)
       </label>
       <label class="ls-label-text">
-        <input type="radio" name="material" class="ls-field-radio" value="folder">
+        <input type="radio" name="tipo" class="ls-field-radio" value="Folder (A4)">
         Folder (A4)
       </label>
       <label class="ls-label-text">
-        <input type="radio" name="material" class="ls-field-radio" value="certificado">
+        <input type="radio" name="tipo" class="ls-field-radio" value="Certificado (A4)">
         Certificado (A4)
       </label>
       <label class="ls-label-text">
-        <input type="radio" name="material" class="ls-field-radio" value="aviso">
+        <input type="radio" name="tipo" class="ls-field-radio" value="Aviso (A4)">
         Aviso (A4)
       </label>
         <label class="ls-label-text">
-        <input type="radio" name="material" class="ls-field-radio" value="outro">
+        <input type="radio" name="tipo" class="ls-field-radio" value="Web (960x960px)">
         Web (960x960px)
       </label>
     </div>
@@ -54,13 +54,13 @@
  <fieldset>
              <label class="ls-label col-md-12">
           <b class="ls-label-text">Justificativa</b>
-          <textarea rows="8" name="descricao-impressao"  class="ls-textarea-autoresize" required></textarea>
+          <textarea rows="8" name="justificativa"  class="ls-textarea-autoresize" required></textarea>
         </label>
 
-        <div class="ls-label col-md-12">
+      <!--  <div class="ls-label col-md-12">
             <label for="exampleInputFile">Envio de arquivos</label>
             <input id="exampleInputFile" type="file">
-        </div>
+        </div> -->
 
       <label class="ls-label col-md-12">
         <b class="ls-label-text">Links úteis</b>
@@ -68,28 +68,28 @@
 
         <div class="ls-prefix-group">
           <span class="ls-label-text-prefix">URL</span>
-          <input type="text" name="link-1"  placeholder="Insira o URL de um link externo" required >
+          <input type="text" name="link_1"  placeholder="Insira o URL de um link externo" required >
         </div>
       </label>
 
       <label class="ls-label col-md-12">
         <div class="ls-prefix-group">
           <span class="ls-label-text-prefix">URL</span>
-          <input type="text" name="link-2" placeholder="Insira o URL de um link externo" required >
+          <input type="text" name="link_2" placeholder="Insira o URL de um link externo" required >
         </div>
       </label>
 
       <label class="ls-label col-md-12">
         <div class="ls-prefix-group">
           <span class="ls-label-text-prefix">URL</span>
-          <input type="text" name="link-3" placeholder="Insira o URL de um link externo" required >
+          <input type="text" name="link_3" placeholder="Insira o URL de um link externo" required >
         </div>
       </label>
       </fieldset>
 
-      <div class="ls-actions-btn">
-        <button class="ls-btn">Enviar</button>
-        <button class="ls-btn-danger">Cancelar</button>
+          <div class="ls-actions-btn">
+        <button type="submit" class="ls-btn-primary" aria-expanded="false">Enviar</button>
+        <button type="reset" class="ls-btn-danger">Cancelar</button>
       </div>
     </form>
 

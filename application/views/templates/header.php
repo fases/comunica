@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+u<!DOCTYPE html>
 <html class="ls-theme-light-green  ">
     <head>
         <title>COMUNICA</title>
@@ -122,7 +122,7 @@
                             <ul>
                                 <li><a href="<?php echo base_url() ?>usuarios/cadastrar">Cadastro</a></li>
                                 <li><a href="<?php echo base_url() ?>usuarios/listar">Listar</a></li>
-                                <li><a href="<?php echo base_url() ?>usuarios/solicitacoes">Solitações</a></li>
+                                <!--<li><a href="<?php echo base_url() ?>usuarios/solicitacoes">Solitações</a></li> -->
                             </ul>
                         </li>
 

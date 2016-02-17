@@ -4,6 +4,7 @@ class Emprestimos extends CI_Controller {
 
     public function agendar()
     {
+
         if($this->input->post()) {
             $form = $this->input->post();
 

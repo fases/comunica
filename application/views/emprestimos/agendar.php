@@ -6,7 +6,6 @@
 
     <!-- Apartir daqui, vocês devem inserir os componentes na página -->
 
-
     <div class="ls-clearfix"></div>
 
     <form action="" class="ls-form ls-form-horizontal" data-ls-module="form">
@@ -41,13 +40,16 @@
             <label class="ls-label col-md-7 col-sm-4">
       <b class="ls-label-text">Material</b>
       <div class="ls-custom-select">
-        <select name="material" id="select_period" class="ls-select">
-            <option>Refletor</option>
+        <select name="material" id="material" class="ls-select">
+
+        <? echo $materiais; ?>
+
+           <!-- <option>Refletor</option>
             <option>Câmera</option>
             <option>Tecidos</option>
             <option>Toalha de mesa</option>
             <option>Arranjo de flores</option>
-            <option>Microfone</option>
+            <option>Microfone</option> -->
         </select>
       </div>
 
