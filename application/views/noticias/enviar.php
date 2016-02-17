@@ -10,22 +10,22 @@
       <fieldset>
           <label class="ls-label col-md-3">
     <b class="ls-label-text">Data para publicação</b>
-    <input type="text" name="data-evento" class="datepicker"  placeholder="dd/mm/aaaa"required>
+    <input type="text" name="data_publicacao" class="datepicker"  placeholder="dd/mm/aaaa"required>
   </label>
 
         <label class="ls-label col-md-12">
-          <b class="ls-label-text">Assunto da notícia</b>
-          <input type="text"  name="assunto" placeholder="Digite sobre o que a notícia se trata" required >
+          <b class="ls-label-text">Título da notícia</b>
+          <input type="text"  name="titulo" placeholder="Digite sobre o que a notícia se trata" required >
         </label>
         <label class="ls-label col-md-12">
           <b class="ls-label-text">Descrição</b>
           <textarea rows="10" name="descricao" class="ls-textarea-autoresize ls-textarea-resize-vertical " required ></textarea>
         </label>
       
-              <div class="ls-label col-md-12">
+        <!--      <div class="ls-label col-md-12">
             <label for="exampleInputFile">Envio de arquivos</label>
             <input id="exampleInputFile" type=file multiple>
-        </div>
+        </div> -->
 
       <label class="ls-label col-md-12">
         <b class="ls-label-text">Links úteis</b>

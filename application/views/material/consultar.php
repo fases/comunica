@@ -40,34 +40,37 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td><a href="" title="">Câmera digital</a></td>
-      <td class="hidden-xs">Campanha</td>
-      <td>Disponível</td>
-      <td>Defeituoso</td>
-      <td class="hidden-xs">21/09/2013 as 20:00 PM</td>
+
+            <?php 
+        foreach ($materiais as $material ) { ?>
+
+
+        <tr>
+      <td><a href="<?php echo $material['id'];?>" title=""><?php echo $material['nome'];?></a></td>
+      <td class="hidden-xs"><?php echo $material['patrimonio'];?></td>
+      <td><?php 
+
+      if($material['status']==0){
+            echo "Disponível";
+        }else{echo "Emprestado";}
+
+        ?>
+
+      </td>
+      <td>
+      <?php
+
+      if($material['situacao']==1){
+        echo "Funcional";
+      }else{
+        echo "Defeituoso";
+      }
+
+      ?></td>
+      <td class="hidden-xs"> <!-- data de cadastro aquii --> </td>
     </tr>
-    <tr>
-      <td><a href="" title="">Microfone</a></td>
-      <td class="hidden-xs">Campanha</td>
-      <td>Emprestado</td>
-      <td>Defeituoso</td>
-      <td class="hidden-xs">21/09/2013 as 20:00 PM</td>
-    </tr>
-    <tr>
-      <td><a href="" title="">Caixa de som</a></td>
-      <td class="hidden-xs">Campanha</td>
-      <td>Emprestado</td>
-      <td>Defeituoso</td>
-      <td class="hidden-xs">21/09/2013 as 20:00 PM</td>
-    </tr>
-    <tr>
-      <td><a href="" title="">Refletor</a></td>
-      <td class="hidden-xs">Campanha</td>
-      <td>Disponível</td>
-      <td>Defeituoso</td>
-      <td class="hidden-xs">21/09/2013 as 20:00 PM</td>
-    </tr>
+
+        <?php } ?>
   </tbody>
 </table>
 </div>

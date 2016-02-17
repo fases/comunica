@@ -68,21 +68,21 @@
 
         <div class="ls-prefix-group">
           <span class="ls-label-text-prefix">URL</span>
-          <input type="text" name="link_1"  placeholder="Insira o URL de um link externo" required >
+          <input type="text" name="link_1"  placeholder="Insira o URL de um link externo">
         </div>
       </label>
 
       <label class="ls-label col-md-12">
         <div class="ls-prefix-group">
           <span class="ls-label-text-prefix">URL</span>
-          <input type="text" name="link_2" placeholder="Insira o URL de um link externo" required >
+          <input type="text" name="link_2" placeholder="Insira o URL de um link externo">
         </div>
       </label>
 
       <label class="ls-label col-md-12">
         <div class="ls-prefix-group">
           <span class="ls-label-text-prefix">URL</span>
-          <input type="text" name="link_3" placeholder="Insira o URL de um link externo" required >
+          <input type="text" name="link_3" placeholder="Insira o URL de um link externo">
         </div>
       </label>
       </fieldset>
@@ -91,6 +91,7 @@
         <button type="submit" class="ls-btn-primary" aria-expanded="false">Enviar</button>
         <button type="reset" class="ls-btn-danger">Cancelar</button>
       </div>
+      
     </form>
 
 

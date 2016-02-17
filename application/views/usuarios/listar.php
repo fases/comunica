@@ -40,17 +40,44 @@
         </thead>
         <tbody>
             
-            
+                    <?php 
+        foreach ($usuarios as $usuario ) { ?>
+
+
+
+
             
             <tr>
                 <td>
-                    <a href="<?php echo base_url() ?>usuarios/visualizar">João da Silva</a>
-                    <span class="ls-tag hidden-xs">Não recorrente</span>
+                    <a href="<?php echo base_url() ?>usuarios/visualizar/ <?php echo $usuario['id'];?>">  <?php echo $usuario['nome'];?></a>
+                    <?php 
+
+                    if ($usuario['tipo_acesso']=='1') { ?>
+                        <span class="ls-tag hidden-xs">
+                       <?php echo "Administrador"; ?>
+                        </span>
+                   <?php 
+ }
+
+                    ?>
+                    
                 </td>
                 <td>
-                    joao.silva@ifrn.edu.br
+                    <?php echo $usuario['email'];?>
                 </td>
-                <td class="ls-txt-center hidden-xs">Ativo</td>
+                <td class="ls-txt-center hidden-xs">
+
+                <?php 
+
+                if ($usuario['status']==0) {
+                   echo "Inativo";
+
+                }else {
+                     echo "Ativo";
+                } ?>
+
+                </td>
+
                 <td class="ls-txt-right ls-regroup">
                     <a href="<?php echo base_url() ?>usuarios/visualizar" class="ls-btn ls-btn-sm" aria-expanded="false">Visualizar</a>
                     <div data-ls-module="dropdown" class="ls-dropdown ls-pos-right">
@@ -63,6 +90,8 @@
 
                 </td>
             </tr>
+
+            <?php }?>
 
         </tbody>
     </table>

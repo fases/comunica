@@ -34,14 +34,14 @@ class Usuarios extends CI_Controller {
     }
 
         public function listar(){
-        if($this->input->post()) {
-            $form = $this->input->post();
 
-            print_r($form); die();
-        }
 
         $this->load->view('templates/header');
-        $this->load->view('usuarios/listar');
+
+        $this->load->model('usuario_model'); //carrega o model
+        $data['usuarios'] = $this->usuario_model->consultar()->result_array(); //cria variável, realiza a consulta e organiza em uma array
+
+        $this->load->view('usuarios/listar',$data);
         $this->load->view('templates/footer');
     }
         public function visualizar(){

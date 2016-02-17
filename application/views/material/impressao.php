@@ -5,29 +5,30 @@
 
     <div class="ls-clearfix"></div>
 
-        <form action=""  class="ls-form ls-form-horizontal">
+        <form method="post" class="ls-form ls-form-horizontal">
 
         <fieldset>
     <div class="ls-label col-md-12">
       <p>Escolha o tipo de material:</p>
+
       <label class="ls-label-text">
-        <input type="radio" name="material" class="ls-field-radio" value="banner">
+        <input type="radio" name="tipo_material" class="ls-field-radio" value="banner" required>
         Banner
       </label>
       <label class="ls-label-text">
-        <input type="radio" name="material" class="ls-field-radio" value="folder">
+        <input type="radio" name="tipo_material" class="ls-field-radio" value="folder">
         Folder
       </label>
       <label class="ls-label-text">
-        <input type="radio" name="material" class="ls-field-radio" value="certificado">
+        <input type="radio" name="tipo_material" class="ls-field-radio" value="certificado">
         Certificado
       </label>
       <label class="ls-label-text">
-        <input type="radio" name="material" class="ls-field-radio" value="aviso">
+        <input type="radio" name="tipo_material" class="ls-field-radio" value="aviso">
         Aviso
       </label>
         <label class="ls-label-text">
-        <input type="radio" name="material" class="ls-field-radio" value="outro">
+        <input type="radio" name="tipo_material" class="ls-field-radio" value="outro">
         Outro*
       </label>
 
@@ -41,23 +42,23 @@
     <div class="ls-label col-md-12">
       <p>Escolha o tipo de papel:</p>
       <label class="ls-label-text">
-        <input type="radio" name="material" class="ls-field-radio" value="a3">
+        <input type="radio" name="tipo_papel" class="ls-field-radio" value="A3" required>
         A3
       </label>
       <label class="ls-label-text">
-        <input type="radio" name="material" class="ls-field-radio" value="a4">
+        <input type="radio" name="tipo_papel" class="ls-field-radio" value="A4">
         A4
       </label>
       <label class="ls-label-text">
-        <input type="radio" name="material" class="ls-field-radio" value="colche">
+        <input type="radio" name="tipo_papel" class="ls-field-radio" value="Colchê">
         Colchê
       </label>
       <label class="ls-label-text">
-        <input type="radio" name="material" class="ls-field-radio" value="fotografico">
+        <input type="radio" name="tipo_papel" class="ls-field-radio" value="Fotográfico">
         Fotográfico
       </label>
         <label class="ls-label-text">
-        <input type="radio" name="material" class="ls-field-radio" value="outro">
+        <input type="radio" name="tipo_papel" class="ls-field-radio" value="Outro">
         Outro*
       </label>
 
@@ -69,13 +70,13 @@
  <fieldset>
              <label class="ls-label col-md-12">
           <b class="ls-label-text">Justificativa</b>
-          <textarea rows="8" name="descricao-impressao"  class="ls-textarea-autoresize" required></textarea>
+          <textarea rows="8" name="justificativa"  class="ls-textarea-autoresize" required></textarea>
         </label>
 
-        <div class="ls-label col-md-12">
+       <!-- <div class="ls-label col-md-12">
             <label for="exampleInputFile">Envio de arquivos</label>
             <input id="exampleInputFile" type="file">
-        </div>
+        </div> -->
 
       <label class="ls-label col-md-12">
         <b class="ls-label-text">Links úteis</b>
@@ -83,21 +84,21 @@
 
         <div class="ls-prefix-group">
           <span class="ls-label-text-prefix">URL</span>
-          <input type="text" name="link-1"  placeholder="Insira o URL de um link externo" required >
+          <input type="text" name="link_1"  placeholder="Insira o URL de um link externo" >
         </div>
       </label>
 
       <label class="ls-label col-md-12">
         <div class="ls-prefix-group">
           <span class="ls-label-text-prefix">URL</span>
-          <input type="text" name="link-2" placeholder="Insira o URL de um link externo" required >
+          <input type="text" name="link_2" placeholder="Insira o URL de um link externo">
         </div>
       </label>
 
       <label class="ls-label col-md-12">
         <div class="ls-prefix-group">
           <span class="ls-label-text-prefix">URL</span>
-          <input type="text" name="link-3" placeholder="Insira o URL de um link externo" required >
+          <input type="text" name="link_3" placeholder="Insira o URL de um link externo">
         </div>
       </label>
       </fieldset>

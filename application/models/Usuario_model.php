@@ -12,6 +12,7 @@ class Usuario_model extends CI_Model {
     public $endereco;
     public $tipo_acesso;
     public $informacao;
+    public $data_cadastro;
 
     public function __construct($arr = null)
     {    
@@ -35,6 +36,10 @@ class Usuario_model extends CI_Model {
         $this->db->set($this);
         $this->db->insert('usuario');
         $this->id = $this->db->insert_id();      
+    }
+
+    public function consultar(){
+        return $this->db->get('usuario'); //SELECT * FROM material
     }
 
     

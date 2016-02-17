@@ -34,7 +34,7 @@
         </div>
         <div class="ls-box-body">
           <strong class="ls-ico-bars"></strong>
-          <small>Aqui você verifica seus solicitações</small>
+          <small>Aqui você verifica suas solicitações</small>
         </div>
         <div class="ls-box-footer">
           <a href="#" aria-label="Comprar mais envios" class="ls-btn ls-btn-sm" title="Ver mais">Ver minhas solicitações</a>

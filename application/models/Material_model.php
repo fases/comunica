@@ -8,6 +8,7 @@ class Material_model extends CI_Model {
     public $status;
     public $especificacao;
     public $situacao;
+    public $data_cadastro;
 
     public function __construct($arr = null)
     {    
@@ -27,6 +28,10 @@ class Material_model extends CI_Model {
         $this->db->set($this);
         $this->db->insert('material');
         $this->id = $this->db->insert_id();      
+    }
+
+    public function consultar(){
+        return $this->db->get('material'); //SELECT * FROM material
     }
 
     
