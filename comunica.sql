@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 17-Fev-2016 às 03:30
+-- Generation Time: 17-Fev-2016 às 07:00
 -- Versão do servidor: 10.1.9-MariaDB
 -- PHP Version: 5.5.30
 
@@ -68,7 +68,6 @@ CREATE TABLE `impressao` (
   `tipo_impressao` varchar(255) NOT NULL,
   `tipo_papel` varchar(255) NOT NULL,
   `justificativa` varchar(255) NOT NULL,
-  `upload` varchar(255) NOT NULL,
   `id` int(11) NOT NULL,
   `id_usuario` int(11) NOT NULL,
   `url_1` varchar(255) NOT NULL,
@@ -76,7 +75,6 @@ CREATE TABLE `impressao` (
   `url_3` varchar(255) NOT NULL,
   `status` int(1) NOT NULL,
   `arquivo_1` varchar(255) NOT NULL,
-  `arquivo_2` varchar(255) NOT NULL,
   `arquivo_3` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -87,13 +85,23 @@ CREATE TABLE `impressao` (
 --
 
 CREATE TABLE `material` (
-  `especificacao` varchar(255) COLLATE latin1_general_ci NOT NULL,
+  `especificacao` varchar(255) COLLATE latin1_general_ci DEFAULT NULL,
   `nome` varchar(255) COLLATE latin1_general_ci NOT NULL,
   `id` int(11) NOT NULL,
   `status` int(1) NOT NULL,
   `situacao` varchar(255) COLLATE latin1_general_ci NOT NULL,
   `patrimonio` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+
+--
+-- Extraindo dados da tabela `material`
+--
+
+INSERT INTO `material` (`especificacao`, `nome`, `id`, `status`, `situacao`, `patrimonio`) VALUES
+('dasdsadsdsa', 'Eduardo', 9, 0, 'Funcional', 123454),
+('dasdsadsdsa', 'Eduardo', 10, 0, 'Funcional', 123454),
+('asdsadasdasdas', 'Jadson', 11, 0, '1', 1231232),
+('dsdasdsa', 'jadson', 12, 0, '0', 2131232321);
 
 -- --------------------------------------------------------
 
@@ -117,21 +125,21 @@ CREATE TABLE `noticias` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `producao grafica`
+-- Estrutura da tabela `producao`
 --
 
-CREATE TABLE `producao grafica` (
+CREATE TABLE `producao` (
   `data` date NOT NULL,
   `id_usuario` int(11) NOT NULL,
   `justificativa` varchar(255) NOT NULL,
   `id` int(11) NOT NULL,
   `status` int(1) NOT NULL,
-  `url_1` varchar(255) NOT NULL,
-  `url_2` varchar(255) NOT NULL,
-  `url_3` varchar(255) NOT NULL,
-  `arquivo_1` varchar(255) NOT NULL,
-  `arquivo_2` varchar(255) NOT NULL,
-  `arquivo_3` varchar(255) NOT NULL,
+  `url_1` varchar(255) DEFAULT NULL,
+  `url_2` varchar(255) DEFAULT NULL,
+  `url_3` varchar(255) DEFAULT NULL,
+  `arquivo_1` varchar(255) DEFAULT NULL,
+  `arquivo_2` varchar(255) DEFAULT NULL,
+  `arquivo_3` varchar(255) DEFAULT NULL,
   `tipo` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -153,6 +161,14 @@ CREATE TABLE `usuario` (
   `endereco` varchar(255) COLLATE latin1_general_ci DEFAULT NULL,
   `informacao` varchar(255) COLLATE latin1_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+
+--
+-- Extraindo dados da tabela `usuario`
+--
+
+INSERT INTO `usuario` (`id`, `nome`, `senha`, `matricula`, `email`, `telefone`, `tipo_acesso`, `status`, `endereco`, `informacao`) VALUES
+(11, 'Jadson Gomes de Medeiros', '8e3300c61e69d094663e40025315da55', '20121044010174', 'jaadson_medeiros@hotmail.com', '(84) 9966-8492', 2, 0, NULL, 'Rua joão paulo II, 1266'),
+(12, 'Darlla Layze', '110d46fcd978c24f306cd7fa23464d73', '2012010101010174', 'darlla_layse@hotmail.com', '(84) 98878-5859', 2, 0, NULL, 'Rua joão paulo II, 1010');
 
 --
 -- Indexes for dumped tables
@@ -189,9 +205,9 @@ ALTER TABLE `noticias`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `producao grafica`
+-- Indexes for table `producao`
 --
-ALTER TABLE `producao grafica`
+ALTER TABLE `producao`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -223,7 +239,7 @@ ALTER TABLE `impressao`
 -- AUTO_INCREMENT for table `material`
 --
 ALTER TABLE `material`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `noticias`
 --
@@ -233,7 +249,7 @@ ALTER TABLE `noticias`
 -- AUTO_INCREMENT for table `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
