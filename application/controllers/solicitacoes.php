@@ -15,12 +15,20 @@ class Solicitacoes extends CI_Controller {
     }
         public function cobertura(){
         $this->load->view('templates/header');
-        $this->load->view('solicitacoes/cobertura');
+
+        $this->load->model('evento_model'); //carrega o model
+        $data['eventos'] = $this->evento_model->consultar()->result_array(); //cria variável, realiza a consulta e organiza em uma array
+
+        $this->load->view('solicitacoes/cobertura',$data);
         $this->load->view('templates/footer');
     }
         public function noticias(){
         $this->load->view('templates/header');
-        $this->load->view('solicitacoes/noticias');
+
+        $this->load->model('noticia_model'); //carrega o model
+        $data['noticias'] = $this->noticia_model->consultar()->result_array(); //cria variável, realiza a consulta e organiza em uma array
+
+        $this->load->view('solicitacoes/noticias',$data);
         $this->load->view('templates/footer');
     }
         public function emprestimos(){

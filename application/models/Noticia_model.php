@@ -44,5 +44,9 @@ class Noticia_model extends CI_Model {
         $this->id = $this->db->insert_id();      
     }
 
+    public function consultar(){
+    return $this->db->get('noticias'); //SELECT * FROM noticias
+    }
+
     
 }
