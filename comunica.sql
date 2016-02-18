@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 17-Fev-2016 às 07:00
+-- Generation Time: 18-Fev-2016 às 07:37
 -- Versão do servidor: 10.1.9-MariaDB
 -- PHP Version: 5.5.30
 
@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `emprestimo` (
-  `data_pedido` date NOT NULL,
+  `data` date NOT NULL,
   `hora` time NOT NULL,
   `id_material` int(11) NOT NULL,
   `justificativa` varchar(255) NOT NULL,
@@ -37,7 +37,9 @@ CREATE TABLE `emprestimo` (
   `id_usuario` int(11) NOT NULL,
   `data_devolucao` int(11) NOT NULL,
   `hora_devolucao` time NOT NULL,
-  `local_de_uso` varchar(255) NOT NULL
+  `local` varchar(255) NOT NULL,
+  `termos` tinyint(1) NOT NULL,
+  `data_cadastro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -52,10 +54,11 @@ CREATE TABLE `eventos` (
   `responsavel` varchar(255) COLLATE latin1_general_ci NOT NULL,
   `local` varchar(255) COLLATE latin1_general_ci NOT NULL,
   `descricao` varchar(255) COLLATE latin1_general_ci NOT NULL,
-  `obs` varchar(255) COLLATE latin1_general_ci NOT NULL,
+  `obs` varchar(255) COLLATE latin1_general_ci DEFAULT NULL,
   `id` int(11) NOT NULL,
   `status` int(1) NOT NULL,
-  `id_usuario` int(11) NOT NULL
+  `id_usuario` int(11) NOT NULL,
+  `data_cadastro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 -- --------------------------------------------------------
@@ -65,17 +68,19 @@ CREATE TABLE `eventos` (
 --
 
 CREATE TABLE `impressao` (
-  `tipo_impressao` varchar(255) NOT NULL,
+  `tipo_material` varchar(255) NOT NULL,
   `tipo_papel` varchar(255) NOT NULL,
   `justificativa` varchar(255) NOT NULL,
   `id` int(11) NOT NULL,
   `id_usuario` int(11) NOT NULL,
-  `url_1` varchar(255) NOT NULL,
-  `url_2` varchar(255) NOT NULL,
-  `url_3` varchar(255) NOT NULL,
+  `url_1` varchar(255) DEFAULT NULL,
+  `url_2` varchar(255) DEFAULT NULL,
+  `url_3` varchar(255) DEFAULT NULL,
   `status` int(1) NOT NULL,
-  `arquivo_1` varchar(255) NOT NULL,
-  `arquivo_3` varchar(255) NOT NULL
+  `arquivo_1` varchar(255) DEFAULT NULL,
+  `arquivo_3` varchar(255) DEFAULT NULL,
+  `data_cadastro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `arquivo_2` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -90,18 +95,9 @@ CREATE TABLE `material` (
   `id` int(11) NOT NULL,
   `status` int(1) NOT NULL,
   `situacao` varchar(255) COLLATE latin1_general_ci NOT NULL,
-  `patrimonio` int(11) NOT NULL
+  `patrimonio` int(11) NOT NULL,
+  `data_cadastro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
-
---
--- Extraindo dados da tabela `material`
---
-
-INSERT INTO `material` (`especificacao`, `nome`, `id`, `status`, `situacao`, `patrimonio`) VALUES
-('dasdsadsdsa', 'Eduardo', 9, 0, 'Funcional', 123454),
-('dasdsadsdsa', 'Eduardo', 10, 0, 'Funcional', 123454),
-('asdsadasdasdas', 'Jadson', 11, 0, '1', 1231232),
-('dsdasdsa', 'jadson', 12, 0, '0', 2131232321);
 
 -- --------------------------------------------------------
 
@@ -113,13 +109,16 @@ CREATE TABLE `noticias` (
   `id` int(11) NOT NULL,
   `titulo` varchar(255) COLLATE latin1_general_ci NOT NULL,
   `descricao` varchar(255) COLLATE latin1_general_ci NOT NULL,
-  `arquivo_1` varchar(255) COLLATE latin1_general_ci NOT NULL,
+  `arquivo_1` varchar(255) COLLATE latin1_general_ci DEFAULT NULL,
   `arquivo_2` varchar(255) COLLATE latin1_general_ci DEFAULT NULL,
   `arquivo_3` varchar(255) COLLATE latin1_general_ci DEFAULT NULL,
   `status` int(1) NOT NULL,
   `url_1` varchar(255) COLLATE latin1_general_ci DEFAULT NULL,
   `url_2` varchar(255) COLLATE latin1_general_ci DEFAULT NULL,
-  `url_3` varchar(255) COLLATE latin1_general_ci DEFAULT NULL
+  `url_3` varchar(255) COLLATE latin1_general_ci DEFAULT NULL,
+  `id_usuario` int(11) NOT NULL,
+  `data_publicacao` date NOT NULL,
+  `data_cadastro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 -- --------------------------------------------------------
@@ -129,7 +128,7 @@ CREATE TABLE `noticias` (
 --
 
 CREATE TABLE `producao` (
-  `data` date NOT NULL,
+  `data_publicacao` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `id_usuario` int(11) NOT NULL,
   `justificativa` varchar(255) NOT NULL,
   `id` int(11) NOT NULL,
@@ -140,7 +139,8 @@ CREATE TABLE `producao` (
   `arquivo_1` varchar(255) DEFAULT NULL,
   `arquivo_2` varchar(255) DEFAULT NULL,
   `arquivo_3` varchar(255) DEFAULT NULL,
-  `tipo` varchar(255) NOT NULL
+  `tipo` varchar(255) NOT NULL,
+  `data_cadastro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -159,16 +159,9 @@ CREATE TABLE `usuario` (
   `tipo_acesso` int(1) NOT NULL,
   `status` int(1) NOT NULL,
   `endereco` varchar(255) COLLATE latin1_general_ci DEFAULT NULL,
-  `informacao` varchar(255) COLLATE latin1_general_ci DEFAULT NULL
+  `informacao` varchar(255) COLLATE latin1_general_ci DEFAULT NULL,
+  `data_cadastro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
-
---
--- Extraindo dados da tabela `usuario`
---
-
-INSERT INTO `usuario` (`id`, `nome`, `senha`, `matricula`, `email`, `telefone`, `tipo_acesso`, `status`, `endereco`, `informacao`) VALUES
-(11, 'Jadson Gomes de Medeiros', '8e3300c61e69d094663e40025315da55', '20121044010174', 'jaadson_medeiros@hotmail.com', '(84) 9966-8492', 2, 0, NULL, 'Rua joão paulo II, 1266'),
-(12, 'Darlla Layze', '110d46fcd978c24f306cd7fa23464d73', '2012010101010174', 'darlla_layse@hotmail.com', '(84) 98878-5859', 2, 0, NULL, 'Rua joão paulo II, 1010');
 
 --
 -- Indexes for dumped tables
@@ -202,7 +195,9 @@ ALTER TABLE `material`
 -- Indexes for table `noticias`
 --
 ALTER TABLE `noticias`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `status` (`status`),
+  ADD KEY `status_2` (`status`);
 
 --
 -- Indexes for table `producao`
@@ -229,7 +224,7 @@ ALTER TABLE `emprestimo`
 -- AUTO_INCREMENT for table `eventos`
 --
 ALTER TABLE `eventos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `impressao`
 --
@@ -239,17 +234,22 @@ ALTER TABLE `impressao`
 -- AUTO_INCREMENT for table `material`
 --
 ALTER TABLE `material`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `noticias`
 --
 ALTER TABLE `noticias`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `producao`
+--
+ALTER TABLE `producao`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
