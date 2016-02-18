@@ -19,6 +19,9 @@ class Usuario_model extends CI_Model {
         parent::__construct();
 
         if(!is_null($arr)){
+            $datestring = '%Y/%m/%d';
+            $my_time = time($arr['data']); 
+            $my_date = mdate($datestring , $my_time);
             $this->id            = isset($arr['id']) ? $arr['id'] : null;
             $this->nome          = isset($arr['nome']) ? $arr['nome'] : null;
             $this->matricula     = isset($arr['matricula']) ? $arr['matricula'] : null;

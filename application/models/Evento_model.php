@@ -1,4 +1,8 @@
 <?php
+//$ci = get_instance();
+//$ci->load->helper('date');
+
+
 
 class Evento_model extends CI_Model {
 
@@ -18,8 +22,10 @@ class Evento_model extends CI_Model {
         parent::__construct();
 
         if(!is_null($arr)){
-
-            $this->data                   = isset($arr['data']) ? $arr['data'] : null;
+            $datestring = '%Y/%m/%d';
+            $my_time = time($arr['data']); 
+            $my_date = mdate($datestring , $my_time);
+            $this->data                   = isset($arr['data']) ? $my_date : null;
             $this->hora                   = isset($arr['hora']) ? $arr['hora'] : null;
             $this->responsavel            = isset($arr['responsavel']) ? $arr['responsavel'] : null;
             $this->local                  = isset($arr['local']) ? $arr['local'] : null;

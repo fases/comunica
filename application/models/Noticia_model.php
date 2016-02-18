@@ -20,9 +20,12 @@ class Noticia_model extends CI_Model {
     {    
         parent::__construct();
 
-        if(!is_null($arr)){
+        if(!is_null($arr)){            
+            $datestring = '%Y/%m/%d';
+            $my_time = time($arr['data_publicacao']); 
+            $my_date = mdate($datestring , $my_time);
 
-            $this->data_publicacao          = isset($arr['data_publicacao']) ? $arr['data_publicacao'] : null;
+            $this->data_publicacao          = isset($arr['data_publicacao']) ? $my_date : null;
             $this->id_usuario    = isset($arr['id_usuario']) ? $arr['id_usuario'] : 1;
             $this->titulo        = isset($arr['titulo']) ? $arr['titulo'] : null;
             $this->descricao     = isset($arr['descricao']) ? $arr['descricao'] : null;
