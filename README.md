@@ -1,9 +1,6 @@
-# CodeIgniter 2
-Open Source PHP Framework (originally from EllisLab)
+COMUNICA
+Sistema Online de Requerimentos da Comunicação Social
 
-For more info, please refer to the user-guide at http://www.codeigniter.com/userguide2/  
-(also available within the download package for offline use)
+É um sistema online, baseado no framework PHP CodeIgniter e Loca Web Style.
 
-**WARNING:** *CodeIgniter 2.x is no longer under development and only receives security patches until October 31st, 2015.
-Please update your installation to the latest CodeIgniter 3.x version available
-(upgrade instructions [here](http://www.codeigniter.com/userguide3/installation/upgrade_300.html)).*
+O projeto faz parte da Fábrica de Software Escola (FaSES),começou a ser implementado em 2015, sua equipe é composta por alunos do Curso Técnico Integrado em Informática, inicialmente sob orientação de Alba Lopes e Edmilson Campos. Atualmente o projeto continua em fase de implementação e aprimoramento, mas sob orientação dos professors Cesimar Xavier e Otávio Barbosa.

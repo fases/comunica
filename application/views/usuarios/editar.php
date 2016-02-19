@@ -106,7 +106,7 @@
     <label class="ls-label col-md-4">
       <b class="ls-label-text">Senha</b>
       <div class="ls-prefix-group">
-        <input type="password" maxlength="20" id="password_field" name="senha" required="">
+        <input type="password" maxlength="20" id="password_field" name="senha" >
           <a class="ls-label-text-prefix ls-toggle-pass ls-ico-eye" data-toggle-class="ls-ico-eye, ls-ico-eye-blocked" data-target="#password_field" href="#">
           </a>
       </div>
@@ -115,7 +115,7 @@
     <fieldset>
                 <label class="ls-label col-md-4">
                 <span class="ls-label-text">Confirmação de senha</span>
-                <input type="password" name="confirma_senha" required>
+                <input type="password" name="confirma_senha">
             </label>
 
   </fieldset>

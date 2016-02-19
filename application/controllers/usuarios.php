@@ -2,6 +2,16 @@
 
 class Usuarios extends CI_Controller {
 
+        public function __construct(){
+        parent::__construct();
+
+        // colocar verificacao de usuario logado aqui!!
+
+        if (!$this->session->userdata('usuario')){
+            redirect(base_url("login/"), 'refresh');
+            }
+    }
+
     public function cadastrar(){
 
         // Envio de formulario será tratado aqui
@@ -35,7 +45,7 @@ class Usuarios extends CI_Controller {
 
         public function listar(){
 
-
+       
         $this->load->view('templates/header');
 
         $this->load->model('usuario_model'); //carrega o model
@@ -64,22 +74,36 @@ class Usuarios extends CI_Controller {
 
         }
 
-        public function excluir($id){
+        public function deletar($id){
 
-        $usuario = $this->usuario_model->excluir($id);
+    $this->load->model('usuario_model');
+    if ($this->usuario_model->deletar($id)) {
+        redirect(base_url("usuarios/listar"));
+        $usuario_invalido=TRUE;
+    } else {
+        log_message('error', 'Erro ao deletar...');
+    }
 
         }
 
-        public function visualizar(){
+        public function visualizar($id){
+
+        $this->load->model('usuario_model');
+        $this->load->view('templates/header');
+        
+        $usuario = $this->usuario_model->consultar($id);
+
+
         if($this->input->post()) {
             $form = $this->input->post();
+            unset($form['confirma_senha']); // tem que fazer algo pra validar a senha antes de remover isso!
+            $this->db->update('usuario', $form, array('id' => $id));
+            $usuario = $this->usuario_model->consultar($id);
+        }
+        $this->load->view('usuarios/visualizar',$usuario);
+        $this->load->view('templates/footer');
 
-            print_r($form); die();
         }
 
-        $this->load->view('templates/header');
-        $this->load->view('usuarios/visualizar');
-        $this->load->view('templates/footer');
-    }
 
 }

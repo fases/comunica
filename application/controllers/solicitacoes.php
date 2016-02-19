@@ -33,7 +33,14 @@ class Solicitacoes extends CI_Controller {
 
         public function editar($id){
 
-        $this->load->model('evento_model');
+        $this->load->model('usuario');
+        $evento = $this->evento_model->localizar($id);
+        print_r($evento);
+        }
+
+        public function visualizar($id){
+
+        $this->load->model('usuario');
         $evento = $this->evento_model->localizar($id);
         print_r($evento);
         }

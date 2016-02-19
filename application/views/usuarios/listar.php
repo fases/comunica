@@ -1,7 +1,6 @@
 <div class="container-fluid">
     <h1 class="ls-title-intro ls-ico-users">Listagem de usuários</h1>
     <hr />
-
     <a href="<?php echo base_url() ?>usuarios/cadastrar" class="ls-btn-primary" aria-expanded="false">Cadastrar novo</a>
 
     <div class="ls-box-filter">
@@ -79,12 +78,12 @@
                 </td>
 
                 <td class="ls-txt-right ls-regroup">
-                    <a href="<?php echo base_url() ?>usuarios/visualizar" class="ls-btn ls-btn-sm" aria-expanded="false">Visualizar</a>
+                    <a href="<?php echo base_url() ?>usuarios/visualizar/<?php echo $usuario['id'];?>" class="ls-btn ls-btn-sm" aria-expanded="false">Visualizar</a>
                     <div data-ls-module="dropdown" class="ls-dropdown ls-pos-right">
                         <a href="#" class="ls-btn ls-btn-sm" aria-expanded="false" role="combobox"></a>
                         <ul class="ls-dropdown-nav" aria-hidden="true">
                             <li><a href="<?php echo base_url() ?>usuarios/editar/<?php echo $usuario['id'];?> " role="option">Editar</a></li>
-                            <li><a href="<?php echo base_url() ?>usuarios/excluir/<?php echo $usuario['id'];?> " class="ls-color-danger" role="option">Excluir</a></li>
+                            <li><a href="<?php echo base_url() ?>usuarios/deletar/<?php echo $usuario['id'];?> " class="ls-color-danger" role="option">Excluir</a></li>
                         </ul>
                     </div>
 

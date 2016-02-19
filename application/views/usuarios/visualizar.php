@@ -1,10 +1,10 @@
 
 <div class="container-fluid">
-    <h1 class="ls-title-intro ls-ico-users">Dados sobre: João Silva</h1>
+    <h1 class="ls-title-intro ls-ico-users">Dados sobre: <?php echo $nome ?></h1>
 
     <div class="ls-box">
         <div class="ls-float-right ls-regroup">
-            <a href="<?php echo base_url() ?>usuarios/listar.php" class="ls-btn-primary" aria-expanded="false">Voltar a listagem</a>
+            <a href="<?php echo base_url() ?>usuarios/listar" class="ls-btn-primary" aria-expanded="false">Voltar a listagem</a>
             <div data-ls-module="dropdown" class="ls-dropdown ls-pos-right">
                 <a href="#" class="ls-btn" aria-expanded="false" role="combobox"></a>
                 <ul class="ls-dropdown-nav" aria-hidden="true">
@@ -21,23 +21,23 @@
             <fieldset id="domain-form" class="ls-form-disable ls-form-text">
                 <label class="ls-label col-md-6 col-lg-8">
                     <b class="ls-label-text">Nome</b>
-                    <input type="text" value="Fulano de tal" required="" disabled="disabled" class="ls-form-text">
+                    <input type="text" value="<?php echo $nome ?>" required="" disabled="disabled" class="ls-form-text">
                 </label>
                 <label class="ls-label col-md-6 col-lg-8">
                     <b class="ls-label-text">login/E-mail:</b>
-                    <input type="text" value="emaildocliente@cliente.com.br" required="" disabled="disabled" class="ls-form-text">
+                    <input type="text" value="<?php echo $email ?>" required="" disabled="disabled" class="ls-form-text">
                 </label>
                 <label class="ls-label col-md-6 col-lg-8">
                     <b class="ls-label-text">Status:</b>
-                    <input type="text" value="Ativo" required="" disabled="disabled" class="ls-form-text">
+                    <input type="text" value="<?php echo $status ?>"required="" disabled="disabled" class="ls-form-text">
                 </label>
                 <label class="ls-label col-md-6 col-lg-8">
                     <b class="ls-label-text">Data de cadastro:</b>
-                    <input type="text" value="18/05/1987" required="" disabled="disabled" class="ls-form-text">
+                    <input type="text" value="<?php echo $data_cadastro ?>" required="" disabled="disabled" class="ls-form-text">
                 </label>
                 <label class="ls-label col-md-6 col-lg-8">
-                    <b class="ls-label-text">Informações:</b>
-                    <textarea name="" id="" cols="30" rows="5" disabled="disabled" class="ls-form-text">com Fulano de Tal no telefone: 11 5555-5555. Horários entre 12:00 e 16:00 dias úteis.</textarea>
+                    <b class="ls-label-text">Endereço:</b>
+                    <textarea name="" id="" cols="30" rows="5" disabled="disabled" class="ls-form-text"><?php echo $endereco ?></textarea>
                 </label>
             </fieldset>
             <div class="domain-actions ls-display-none">

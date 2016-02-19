@@ -39,13 +39,13 @@ class Usuario_model extends CI_Model {
     }
 
     public function listar(){
-        return $this->db->get('usuario'); //SELECT * FROM material
+        //listagem de todos os usuários
+        return $this->db->get('usuario');
     }
 
-    public function excluir($id){
-        $this->db->where('id',$id);
-        $this->db->delete('usuario');
-
+    public function deletar($id) {
+    $this->db->where('id', $id);
+    return $this->db->delete('usuario');
     }
     public function atualizar($id){
         $this->db->where('id', $id);
