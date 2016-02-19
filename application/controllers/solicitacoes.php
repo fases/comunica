@@ -12,20 +12,28 @@ class Solicitacoes extends CI_Controller {
 
     public function cadastro(){
         $this->load->view('templates/header');
-        $this->load->view('solicitacoes/cadastro');
+
+        $this->load->model('usuario_model'); //carrega o model
+        $data['usuarios'] = $this->usuario_model->listar()->result_array(); //cria variável, realiza a consulta e organiza em uma array
+
+        $this->load->view('solicitacoes/cadastro',$data);
         $this->load->view('templates/footer');
     }
 
         public function material(){  
         $this->load->view('templates/header');
-        $this->load->view('solicitacoes/material');
+
+        $this->load->model('material_impressao_model'); //carrega o model
+        $data['materiais'] = $this->material_impressao_model->listar()->result_array(); //cria variável, realiza a consulta e organiza em uma array
+
+        $this->load->view('solicitacoes/material',$data);
         $this->load->view('templates/footer');
     }
         public function cobertura(){
         $this->load->view('templates/header');
 
         $this->load->model('evento_model'); //carrega o model
-        $data['eventos'] = $this->evento_model->consultar()->result_array(); //cria variável, realiza a consulta e organiza em uma array
+        $data['eventos'] = $this->evento_model->listar()->result_array(); //cria variável, realiza a consulta e organiza em uma array
 
         $this->load->view('solicitacoes/cobertura',$data);
         $this->load->view('templates/footer');
@@ -49,14 +57,18 @@ class Solicitacoes extends CI_Controller {
         $this->load->view('templates/header');
 
         $this->load->model('noticia_model'); //carrega o model
-        $data['noticias'] = $this->noticia_model->consultar()->result_array(); //cria variável, realiza a consulta e organiza em uma array
+        $data['noticias'] = $this->noticia_model->listar()->result_array(); //cria variável, realiza a consulta e organiza em uma array
 
         $this->load->view('solicitacoes/noticias',$data);
         $this->load->view('templates/footer');
     }
         public function emprestimos(){
         $this->load->view('templates/header');
-        $this->load->view('solicitacoes/emprestimos');
+
+        $this->load->model('emprestimo_model'); //carrega o model
+        $data['emprestimos'] = $this->emprestimo_model->listar()->result_array(); //cria variável, realiza a consulta e organiza em uma array
+
+        $this->load->view('solicitacoes/emprestimos',$data);
         $this->load->view('templates/footer');
     }
 

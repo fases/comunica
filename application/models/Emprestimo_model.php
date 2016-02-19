@@ -53,5 +53,10 @@ class Emprestimo_model extends CI_Model {
         $this->id = $this->db->insert_id();      
     }
 
+    public function listar(){
+        //listagem de todos os usuários
+        
+        return $this->db->get('emprestimo');
+    }
     
 }

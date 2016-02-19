@@ -44,5 +44,11 @@ class Material_impressao_model extends CI_Model {
         $this->id = $this->db->insert_id();      
     }
 
+    public function listar(){
+        //listagem de todos os usuários
+        
+        return $this->db->get('impressao');
+    }
+
     
 }

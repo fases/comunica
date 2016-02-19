@@ -112,12 +112,14 @@
                 ?>
                 </td>
                 <td class="ls-txt-right ls-regroup">
+
                     <a href="<?php echo base_url() ?>noticias/visualizar/<?php echo $noticia['id'];?>" class="ls-btn ls-btn-sm" aria-expanded="false">Visualizar</a>
                     <div data-ls-module="dropdown" class="ls-dropdown ls-pos-right">
-                        <a href="<?php echo base_url() ?>noticias/" class="ls-btn ls-btn-sm" aria-expanded="false" role="combobox"></a>
+
+                        <a href="<?php echo base_url() ?>noticias/" class="ls-btn ls-btn-sm" aria-expanded="false" role="combobox">Status</a>
                         <ul class="ls-dropdown-nav" aria-hidden="true">
-                            <li><a href="<?php echo base_url() ?>noticias/editar/<?php echo $noticia['id'];?>" role="option">Editar</a></li>
-                            <li><a href="<?php echo base_url() ?>noticias/excluir/<?php echo $noticia['id'];?>" class="ls-color-danger" role="option">Excluir</a></li>
+                            <li><a href="<?php echo base_url() ?>noticias/editar/<?php echo $noticia['id'];?>" class="ls-color-danger" role="option">Em andamento</a></li>
+                            <li><a href="<?php echo base_url() ?>noticias/excluir/<?php echo $noticia['id'];?>"  role="option">Concluido</a></li>
                         </ul>
                     </div>
 

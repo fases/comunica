@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <h1 class="ls-title-intro ls-ico-folder ">Material gráfico</h1>
+    <h1 class="ls-title-intro ls-ico-folder ">Solicitações de Material gráfico</h1>
 
         <!-- Apartir daqui, vocês devem inserir os componentes na página -->
 
@@ -71,39 +71,48 @@
                 <th></th>
             </tr>
         </thead>
+        <?php 
+        foreach ($materiais as $material ) { ?>
         <tbody>
-            
             
             
             <tr>
                 <td>
-                    #00001
+                    #<?php echo $material['id'];?>
                 </td>
                 <td>
-                    25/05/2016
+                     <?php echo $material['data_cadastro'];?>
                 </td>
 
                 <td>
-                    <a href="http://localhost/comunica/usuarios/visualizar.php">João da Silva</a>
+                    <a href="http://localhost/comunica/usuarios/visualizar.php"> <?php echo $material['id_usuario'];?></a>
                     
                 </td>
                 <td>
-                    Produção
+                     <?php echo $material['tipo_material'];?>
                 </td>
-                <td class="ls-txt-center hidden-xs">Ativo</td>
+                <td class="ls-txt-center hidden-xs"><?php 
+
+      if($material['status']==1){
+            echo "Enviado";
+        }else{echo "Em andamento";}
+
+        ?></td>
                 <td class="ls-txt-right ls-regroup">
-                    <a href="http://localhost/comunica/usuarios/visualizar.php" class="ls-btn ls-btn-sm" aria-expanded="false">Visualizar</a>
+
+                    <a href="<?php echo base_url() ?>noticias/visualizar/" class="ls-btn ls-btn-sm" aria-expanded="false">Visualizar</a>
                     <div data-ls-module="dropdown" class="ls-dropdown ls-pos-right">
-                        <a href="#" class="ls-btn ls-btn-sm" aria-expanded="false" role="combobox"></a>
+
+                        <a href="<?php echo base_url() ?>noticias/" class="ls-btn ls-btn-sm" aria-expanded="false" role="combobox">Status</a>
                         <ul class="ls-dropdown-nav" aria-hidden="true">
-                            <li><a href="#" role="option">Editar</a></li>
-                            <li><a href="#" class="ls-color-danger" role="option">Excluir</a></li>
+                            <li><a href="<?php echo base_url() ?>noticias/editar/" class="ls-color-danger" role="option">Em andamento</a></li>
+                            <li><a href="<?php echo base_url() ?>noticias/excluir/"  role="option">Concluido</a></li>
                         </ul>
                     </div>
 
                 </td>
             </tr>
-
+<?php } ?>
         </tbody>
     </table>
 

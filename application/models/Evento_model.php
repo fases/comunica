@@ -43,7 +43,7 @@ class Evento_model extends CI_Model {
         $this->db->insert('eventos');
         $this->id = $this->db->insert_id();      
     }
-    public function consultar(){
+    public function listar(){
          return $this->db->get('eventos');
 
     } 

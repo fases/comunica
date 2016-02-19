@@ -34,39 +34,79 @@ Página de login
 
 <main class="ls-main">
     <div class="container-fluid">
+    
+                            <?php 
+                        if($usuario_invalido):
+                            ?>
+                        <label class="ls-label col-md-7">
+                        <div class="ls-alert-danger"><strong>Vish!</strong> Suas senhas não conferem, tente novamente! </div>
+                        </label>
+
+                        <?php 
+                    endif; 
+                            ?>
+
+                        <?php 
+                        if($usuario_valido):
+                            ?>
+                        <label class="ls-label col-md-7">
+                        <div class="ls-alert-success"><strong>Bazinga!</strong>  Você conseguiu, seu cadastro foi realizado, mas vai ficar pendente até que o Administrador o aprove, em caso de dúvidas, consulte seu e-mail. </div>
+                        </label>
+
+                        <?php
+                        redirect(base_url('login'), 'refresh', 10);
+                        ?>
+
+                        <?php 
+                    endif; 
+                            ?>
 
 
-        <form action="/locawebstyle/documentacao/exemplos/painel1/client" class="ls-form">
+        <form method="post" class="ls-form ls-form-horizontal">
         <legend class="ls-title-2">Cadastre-se!</legend>
+
+        <div class="row">
+            <label class="ls-label col-md-6">
+                <span class="ls-label-text">Matrícula Institucional</span>
+                <input type="text" maxlength=14 name="matricula" required>
+            </label>
+        </div>
+
         <div class="row">
             <label class="ls-label col-md-6">
                 <span class="ls-label-text">Nome</span>
-                <input type="text" name="name">
+                <input type="text" name="nome" required>
             </label>
         </div>
         <div class="row">
             <label class="ls-label col-md-6">
                 <span class="ls-label-text">Email</span>
-                <input type="text" name="email">
+                <input type="text" name="email" required>
             </label>
         </div>
         <div class="row">
-            <label class="ls-label col-md-3">
-                <span class="ls-label-text">Senha</span>
-                <input type="password" name="password">
-            </label>
+        <fieldset>
+    <label class="ls-label col-md-3">
+      <b class="ls-label-text">Senha</b>
+      <div class="ls-prefix-group">
+        <input type="password" maxlength="20" id="password_field" name="senha" required>
+          <a class="ls-label-text-prefix ls-toggle-pass ls-ico-eye" data-toggle-class="ls-ico-eye, ls-ico-eye-blocked" data-target="#password_field" href="#">
+          </a>
+      </div>
+    </label>
+  </fieldset>
             <label class="ls-label col-md-3">
                 <span class="ls-label-text">Confirmação de senha</span>
-                <input type="password" name="password-confirmation">
+                <input type="password" name="confirma_senha" required>
             </label>
         </div>
-        <div class="row">
+       <!-- <div class="row">
             <label class="ls-label col-md-6">
                 <span class="ls-label-text">Informação</span>
                 <textarea rows="4"></textarea>
                 <p class="ls-helper-text">Preencha informações adicionais do usuário. Ex.: Dados de contato, endereço, etc.</p>
             </label>
-        </div>
+        </div> -->
 
         <hr>
         <button type="submit" class="ls-btn-primary" aria-expanded="false">Salvar</button>

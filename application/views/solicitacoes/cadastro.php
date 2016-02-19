@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <h1 class="ls-title-intro ls-ico-folder ">Cadastros</h1>
+    <h1 class="ls-title-intro ls-ico-folder ">Solicitações de Cadastros</h1>
 
         <!-- Apartir daqui, vocês devem inserir os componentes na página -->
 
@@ -68,31 +68,57 @@
                 <th></th>
             </tr>
         </thead>
-        <tbody>
+                <tbody>
             
-            
+                    <?php 
+        foreach ($usuarios as $usuario ) { ?>
             
             <tr>
                 <td>
-                    <a href="http://localhost/comunica/usuarios/visualizar.php">João da Silva</a>
+                    <a href="<?php echo base_url() ?>usuarios/visualizar/<?php echo $usuario['id'];?>">  <?php echo $usuario['nome'];?></a>
+                    <?php 
+
+                    if ($usuario['tipo_acesso']=='1') { ?>
+                        <span class="ls-tag hidden-xs">
+                       <?php echo "Administrador"; ?>
+                        </span>
+                   <?php 
+ }
+
+                    ?>
                     
                 </td>
                 <td>
-                    joao.silva@ifrn.edu.br
+                    <?php echo $usuario['email'];?>
                 </td>
-                <td class="ls-txt-center hidden-xs">Ativo</td>
-                <td class="ls-txt-right ls-regroup">
-                    <a href="http://localhost/comunica/usuarios/visualizar.php" class="ls-btn ls-btn-sm" aria-expanded="false">Visualizar</a>
-                    <div data-ls-module="dropdown" class="ls-dropdown ls-pos-right">
-                        <a href="#" class="ls-btn ls-btn-sm" aria-expanded="false" role="combobox"></a>
-                        <ul class="ls-dropdown-nav" aria-hidden="true">
-                            <li><a href="#" role="option">Editar</a></li>
-                            <li><a href="#" class="ls-color-danger" role="option">Excluir</a></li>
-                        </ul>
-                    </div>
+                <td class="ls-txt-center hidden-xs">
+
+                <?php 
+
+                if ($usuario['status']==0) {
+                   echo "Inativo";
+
+                }else {
+                     echo "Ativo";
+                } ?>
 
                 </td>
+
+                <td class="ls-txt-right ls-regroup">
+                <a href="#" class="ls-btn-primary ls-btn-sm ls-ico-user">Aprovar usuário</a>
+
+                    <a href="<?php echo base_url() ?>usuarios/visualizar/<?php echo $usuario['id'];?>" class="ls-btn ls-btn-sm" aria-expanded="false">Visualizar</a>
+                    <div data-ls-module="dropdown" class="ls-dropdown ls-pos-right">
+                        <a href="#" class="ls-btn ls-btn-sm ls-btn-danger" aria-expanded="false" role="combobox"></a>
+                        <ul class="ls-dropdown-nav" aria-hidden="true">
+                           <!-- <li><a href="<?php echo base_url() ?>usuarios/editar/<?php echo $usuario['id'];?> " role="option">Editar</a></li>-->
+                            <li><a href="<?php echo base_url() ?>usuarios/deletar/<?php echo $usuario['id'];?> " class="ls-color-danger" role="option">Excluir</a></li>
+                        </ul>
+                    </div>
+                </td>
             </tr>
+
+            <?php }?>
 
         </tbody>
     </table>

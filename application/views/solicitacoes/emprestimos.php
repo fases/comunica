@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <h1 class="ls-title-intro ls-ico-folder ">Empréstimo de material</h1>
+    <h1 class="ls-title-intro ls-ico-folder ">Solicitações de Empréstimo de material</h1>
 
         <!-- Apartir daqui, vocês devem inserir os componentes na página -->
 
@@ -73,41 +73,49 @@
             </tr>
         </thead>
         <tbody>
+               <?php foreach ($emprestimos as $emprestimo ) { ?>
+        <tbody>
             
             
             
             <tr>
                 <td>
-                    #00001
+                    #<?php echo $emprestimo['id'];?>
                 </td>
                 <td>
-                    25/05/2016
+                    <?php echo $emprestimo['data_cadastro'];?>
                 </td>
 
                 <td>
-                    <a href="<?php echo base_url() ?>/usuarios/visualizar">João da Silva</a>
+                    <a href="<?php echo base_url() ?>/usuarios/visualizar"><?php echo $emprestimo['id_usuario'];?></a>
                     
                 </td>
                 <td>
-                    15/15/2015
+                    <?php echo $emprestimo['data'];?>
                 </td>
                 <td>
-                    19/15/2015
+                    <?php echo $emprestimo['data_devolucao'];?>
                 </td>
-                <td class="ls-txt-center hidden-xs">Ativo</td>
+                <td class="ls-txt-center hidden-xs"><?php 
+
+      if($emprestimo['status']==1){
+            echo "Pendente";
+        }else{echo "Efetuado";}
+
+        ?></td>
                 <td class="ls-txt-right ls-regroup">
                     <a href="http://localhost/comunica/usuarios/visualizar.php" class="ls-btn ls-btn-sm" aria-expanded="false">Visualizar</a>
                     <div data-ls-module="dropdown" class="ls-dropdown ls-pos-right">
-                        <a href="#" class="ls-btn ls-btn-sm" aria-expanded="false" role="combobox"></a>
+                       <a href="<?php echo base_url() ?>noticias/" class="ls-btn ls-btn-sm" aria-expanded="false" role="combobox"></a>
                         <ul class="ls-dropdown-nav" aria-hidden="true">
-                            <li><a href="#" role="option">Editar</a></li>
-                            <li><a href="#" class="ls-color-danger" role="option">Excluir</a></li>
+                            <li><a href="<?php echo base_url() ?>noticias/editar/<?php echo $emprestimo['id'];?>" class="ls-color-danger" role="option">Em andamento</a></li>
+                            <li><a href="<?php echo base_url() ?>noticias/excluir/<?php echo $emprestimo['id'];?>"  role="option">Concluido</a></li>
                         </ul>
                     </div>
 
                 </td>
             </tr>
-
+            <?php } ?>
         </tbody>
     </table>
 

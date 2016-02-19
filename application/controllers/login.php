@@ -26,7 +26,9 @@ class Login extends CI_Controller {
             $form = $this->input->post();
 
             $email = $this->input->post('email');
-            $senha   = $this->input->post('senha');
+            $senha   = md5($this->input->post('senha'));
+            //print_r($senha);die();
+
 
             $this->db->where('email',$email);
             $this->db->where('senha',$senha);

@@ -58,6 +58,7 @@ Página de login
                     endif; 
                             ?>
 
+
                         <form method="post" class="ls-form ls-login-form">
                             <fieldset>
 
@@ -78,7 +79,7 @@ Página de login
 
                                 <input type="submit" value="Entrar" class="ls-btn-primary ls-btn-block ls-btn-lg">
                                 <p class="ls-txt-center ls-login-signup">
-                                    Não possui uma conta no Comuinca? 
+                                    Não possui uma conta no Comunica? 
                                 </p>
 
 
@@ -86,8 +87,12 @@ Página de login
                             </fieldset>
                         </form>
 
-                        <button data-ls-module="modal" data-action="http://locaweb.com.br/" data-content="<h2>Preencha os campos abaixo para se cadastrar!
-</h2><p>Conteúdo feito dentro do data-content</p>" data-class="ls-btn-danger" data-save="Cadastrar" data-close="Fechar" class="ls-btn-danger ls-ico-user ls-btn-block ls-btn-lg"> Cadastre-se agora </button>
+                        <a href="<?= base_url() ?>cadastro" class="ls-btn ls-ico-user ls-btn-block">Cadastre-se agora!</a>
+
+                        <!-- <button data-ls-module="modal" data-action="http://locaweb.com.br/" data-content="<h2>Preencha os campos abaixo para se cadastrar!
+</h2><p>Conteúdo feito dentro do data-content</p>" data-class="ls-btn-danger" data-save="Cadastrar" data-close="Fechar" class="ls-btn-danger ls-ico-user ls-btn-block ls-btn-lg"> Cadastre-se agora </button>-->
+
+
 
                 </div>
             </div>

@@ -66,7 +66,7 @@
             <!-- Nome do produto/marca com sidebar -->
             <h1 class="ls-brand-name">
                 <a href="<?php echo base_url() ?>" class="ls-ico-earth">
-                    <small>Controle da Comunicação</small>
+                    <small>Sistema Online da Comunicação Social</small>
                     Comunica
                 </a>
             </h1>

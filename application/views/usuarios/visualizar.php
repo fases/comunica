@@ -12,7 +12,7 @@
                         <a href="" data-ls-fields-enable="#domain-form" data-toggle-class="ls-display-none" data-target=".domain-actions" class="domain-actions" role="option">Editar</a>
                     </li>
                     <li><a href="#" data-ls-module="modal" data-target="#editPassword" role="option">Alterar senha</a></li>
-                    <li><a href="#" role="option">Desativar</a></li>
+                    <li><a href="#" class="ls-color-danger" role="option">Desativar</a></li>
                 </ul>
             </div>
         </div>

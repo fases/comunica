@@ -67,7 +67,7 @@
       }
 
       ?></td>
-      <td class="hidden-xs"> <!-- data de cadastro aquii --> </td>
+      <td class="hidden-xs"> <?php echo $material['data_cadastro'];?> </td>
     </tr>
 
         <?php } ?>

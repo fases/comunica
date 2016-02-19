@@ -78,6 +78,10 @@
                 </td>
 
                 <td class="ls-txt-right ls-regroup">
+
+                
+
+
                     <a href="<?php echo base_url() ?>usuarios/visualizar/<?php echo $usuario['id'];?>" class="ls-btn ls-btn-sm" aria-expanded="false">Visualizar</a>
                     <div data-ls-module="dropdown" class="ls-dropdown ls-pos-right">
                         <a href="#" class="ls-btn ls-btn-sm" aria-expanded="false" role="combobox"></a>
@@ -86,7 +90,6 @@
                             <li><a href="<?php echo base_url() ?>usuarios/deletar/<?php echo $usuario['id'];?> " class="ls-color-danger" role="option">Excluir</a></li>
                         </ul>
                     </div>
-
                 </td>
             </tr>
 
