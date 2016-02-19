@@ -46,6 +46,15 @@ class Evento_model extends CI_Model {
     public function consultar(){
          return $this->db->get('eventos');
 
+    } 
+    public function localizar($id){
+
+        //Busca com condição
+        $query = $this->db->get_where('eventos', array('id' => $id));
+ 
+        //row_object() retorna direto o objeto produto e não um array
+        return $query->row_object();
+
     }
     
 

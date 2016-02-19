@@ -17,7 +17,7 @@
 
     <label class="ls-label col-md-3">
     <b class="ls-label-text">Horário</b>
-    <input type="text" name="hora" class="ls-mask-time" placeholder="00:00:00" >
+    <input type="text" name="hora" class="ls-mask-time" placeholder="00:00" >
     </label>
 
     <label class="ls-label col-md-3">
@@ -27,7 +27,7 @@
 
       <label class="ls-label col-md-3">
     <b class="ls-label-text">Horário</b>
-    <input type="text" name="hora_devolucao" class="ls-mask-time" placeholder="00:00:00" >
+    <input type="text" name="hora_devolucao" class="ls-mask-time" placeholder="00:00" >
     </label>
 
 

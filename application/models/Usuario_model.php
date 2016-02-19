@@ -19,9 +19,6 @@ class Usuario_model extends CI_Model {
         parent::__construct();
 
         if(!is_null($arr)){
-            $datestring = '%Y/%m/%d';
-            $my_time = time($arr['data']); 
-            $my_date = mdate($datestring , $my_time);
             $this->id            = isset($arr['id']) ? $arr['id'] : null;
             $this->nome          = isset($arr['nome']) ? $arr['nome'] : null;
             $this->matricula     = isset($arr['matricula']) ? $arr['matricula'] : null;
@@ -41,8 +38,29 @@ class Usuario_model extends CI_Model {
         $this->id = $this->db->insert_id();      
     }
 
-    public function consultar(){
+    public function listar(){
         return $this->db->get('usuario'); //SELECT * FROM material
+    }
+
+    public function excluir($id){
+        $this->db->where('id',$id);
+        $this->db->delete('usuario');
+
+    }
+    public function atualizar($id){
+        $this->db->where('id', $id);
+        return $this->db->update('usuario',$this);
+
+    }
+    public function consultar($id){
+
+        //Busca com condição
+        $query = $this->db->get_where('usuario', array('id' => $id));
+ 
+        //row_object() retorna direto o objeto produto e não um array
+        return $query->row_object();
+
+
     }
 
     

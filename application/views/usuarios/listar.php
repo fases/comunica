@@ -29,7 +29,7 @@
         </form>
     </div>
 
-    <table class="ls-table">
+    <table class="ls-table ls-table-striped">
         <thead>
             <tr>
                 <th>Nome</th>
@@ -83,8 +83,8 @@
                     <div data-ls-module="dropdown" class="ls-dropdown ls-pos-right">
                         <a href="#" class="ls-btn ls-btn-sm" aria-expanded="false" role="combobox"></a>
                         <ul class="ls-dropdown-nav" aria-hidden="true">
-                            <li><a href="#" role="option">Editar</a></li>
-                            <li><a href="#" class="ls-color-danger" role="option">Excluir</a></li>
+                            <li><a href="<?php echo base_url() ?>usuarios/editar/<?php echo $usuario['id'];?> " role="option">Editar</a></li>
+                            <li><a href="<?php echo base_url() ?>usuarios/excluir/<?php echo $usuario['id'];?> " class="ls-color-danger" role="option">Excluir</a></li>
                         </ul>
                     </div>
 

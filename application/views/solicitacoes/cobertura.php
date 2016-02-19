@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <h1 class="ls-title-intro ls-ico-folder ">Cobertura de eventos</h1>
+    <h1 class="ls-title-intro ls-ico-folder ">Solicitações de Cobertura de eventos</h1>
 
         <!-- Apartir daqui, vocês devem inserir os componentes na página -->
 
@@ -123,8 +123,8 @@
                     <div data-ls-module="dropdown" class="ls-dropdown ls-pos-right">
                         <a href="#" class="ls-btn ls-btn-sm" aria-expanded="false" role="combobox"></a>
                         <ul class="ls-dropdown-nav" aria-hidden="true">
-                            <li><a href="<?php echo base_url() ?>eventos/editar/<?php echo $evento['id'];?> " role="option">Editar</a></li>
-                            <li><a href="<?php echo base_url() ?>eventos/excluir/<?php echo $evento['id'];?> " class="ls-color-danger" role="option">Excluir</a></li>
+                            <li><a href="<?php echo base_url() ?>solicitacoes/editar/<?php echo $evento['id'];?> " role="option">Editar</a></li>
+                            <li><a href="<?php echo base_url() ?>solicitacoes/excluir/<?php echo $evento['id'];?> " class="ls-color-danger" role="option">Excluir</a></li>
                         </ul>
                     </div>
 

@@ -22,6 +22,14 @@ class Solicitacoes extends CI_Controller {
         $this->load->view('solicitacoes/cobertura',$data);
         $this->load->view('templates/footer');
     }
+
+        public function editar($id){
+
+        $this->load->model('evento_model');
+        $evento = $this->evento_model->localizar($id);
+        print_r($evento);
+        }
+
         public function noticias(){
         $this->load->view('templates/header');
 

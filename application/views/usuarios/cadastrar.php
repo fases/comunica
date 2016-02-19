@@ -28,7 +28,7 @@
 
     <label class="ls-label col-md-8">
       <b class="ls-label-text">Endereço</b>
-      <input type="text" name="informacao" placeholder="O nome da sua rua, número" required >
+      <input type="text" name="endereco" placeholder="O nome da sua rua, número" required >
     </label>
 
     <label class="ls-label col-md-4">
