@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 19-Fev-2016 às 04:17
+-- Generation Time: 19-Fev-2016 às 11:49
 -- Versão do servidor: 10.1.9-MariaDB
--- PHP Version: 5.6.15
+-- PHP Version: 5.5.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -35,12 +35,19 @@ CREATE TABLE `emprestimo` (
   `id` int(11) NOT NULL,
   `status` int(1) NOT NULL,
   `id_usuario` int(11) NOT NULL,
-  `data_devolucao` int(11) NOT NULL,
+  `data_devolucao` date NOT NULL,
   `hora_devolucao` time NOT NULL,
   `local` varchar(255) NOT NULL,
   `data_cadastro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `termos` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `emprestimo`
+--
+
+INSERT INTO `emprestimo` (`data`, `hora`, `id_material`, `justificativa`, `obs`, `id`, `status`, `id_usuario`, `data_devolucao`, `hora_devolucao`, `local`, `data_cadastro`, `termos`) VALUES
+('2016-02-19', '12:00:00', 19, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ', 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 1, 1, 1, '2016-02-19', '16:00:00', 'B1', '2016-02-19 08:45:27', 1);
 
 -- --------------------------------------------------------
 
@@ -96,7 +103,7 @@ CREATE TABLE `impressao` (
 
 INSERT INTO `impressao` (`tipo_material`, `tipo_papel`, `justificativa`, `id`, `id_usuario`, `url_1`, `url_2`, `url_3`, `status`, `arquivo_1`, `arquivo_3`, `data_cadastro`, `arquivo_2`) VALUES
 ('folder', 'Fotográfico', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor ', 1, 1, NULL, NULL, NULL, 1, NULL, NULL, '0000-00-00 00:00:00', NULL),
-('banner', 'A4', 'asdhasjdhsadjkdhsdjdk', 2, 1, NULL, NULL, NULL, 1, NULL, NULL, '2016-02-17 18:39:39', NULL);
+('banner', 'A4', 'asdhasjdhsadjkdhsdjdk', 2, 1, NULL, NULL, NULL, 2, NULL, NULL, '2016-02-17 18:39:39', NULL);
 
 -- --------------------------------------------------------
 
@@ -149,6 +156,13 @@ CREATE TABLE `noticias` (
   `data_cadastro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
+--
+-- Extraindo dados da tabela `noticias`
+--
+
+INSERT INTO `noticias` (`id`, `titulo`, `descricao`, `arquivo_1`, `arquivo_2`, `arquivo_3`, `status`, `url_1`, `url_2`, `url_3`, `id_usuario`, `data_publicacao`, `data_cadastro`) VALUES
+(1, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dol', NULL, NULL, NULL, 1, NULL, NULL, NULL, 1, '2016-02-19', '2016-02-19 07:40:15');
+
 -- --------------------------------------------------------
 
 --
@@ -156,7 +170,7 @@ CREATE TABLE `noticias` (
 --
 
 CREATE TABLE `producao` (
-  `data_cadastro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `data_publicacao` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `id_usuario` int(11) NOT NULL,
   `justificativa` varchar(255) NOT NULL,
   `id` int(11) NOT NULL,
@@ -169,14 +183,6 @@ CREATE TABLE `producao` (
   `arquivo_3` varchar(255) DEFAULT NULL,
   `tipo` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `producao`
---
-
-INSERT INTO `producao` (`data_cadastro`, `id_usuario`, `justificativa`, `id`, `status`, `url_1`, `url_2`, `url_3`, `arquivo_1`, `arquivo_2`, `arquivo_3`, `tipo`) VALUES
-('0000-00-00 00:00:00', 1, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor ', 8, 1, NULL, NULL, NULL, NULL, NULL, NULL, 'Banner (120mmx80mm)'),
-('0000-00-00 00:00:00', 1, 'Testando as 14:32', 9, 1, NULL, NULL, NULL, NULL, NULL, NULL, 'Folder (A4)');
 
 -- --------------------------------------------------------
 
@@ -203,7 +209,7 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id`, `nome`, `senha`, `matricula`, `email`, `telefone`, `tipo_acesso`, `status`, `endereco`, `informacao`, `data_cadastro`) VALUES
-(19, 'Ana Carolina', 'e10adc3949ba59abbe56e057f20f883e', '20121044', 'anacarolina@gmail.com', '(84) 99999-9999', 2, 0, NULL, 'Lorem ipsum dolor sit amet, 04', '2016-02-18 17:32:45');
+(20, 'Admin', '21232f297a57a5a743894a0e4a801fc3', '123456789', 'admin@comunica.com', '(99) 99999-9999', 2, 1, 'Lorem ipsum dolor sit amet, VV', NULL, '2016-02-19 06:01:11');
 
 --
 -- Indexes for dumped tables
@@ -261,7 +267,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT for table `emprestimo`
 --
 ALTER TABLE `emprestimo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `eventos`
 --
@@ -281,7 +287,7 @@ ALTER TABLE `material`
 -- AUTO_INCREMENT for table `noticias`
 --
 ALTER TABLE `noticias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `producao`
 --
@@ -291,7 +297,7 @@ ALTER TABLE `producao`
 -- AUTO_INCREMENT for table `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
