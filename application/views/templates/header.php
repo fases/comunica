@@ -1,4 +1,4 @@
-u<!DOCTYPE html>
+<!DOCTYPE html>
 <html class="ls-theme-light-green  ">
     <head>
         <title>COMUNICA</title>
