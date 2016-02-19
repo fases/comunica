@@ -2,6 +2,14 @@
 
 class Solicitacoes extends CI_Controller {
 
+    public function __construct(){
+        parent::__construct();
+
+        if (!$this->session->userdata('usuario')){ 
+            redirect(base_url("login/"), 'refresh');
+            }
+    }
+
     public function cadastro(){
         $this->load->view('templates/header');
         $this->load->view('solicitacoes/cadastro');

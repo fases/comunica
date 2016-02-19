@@ -2,19 +2,27 @@
 
 class Emprestimos extends CI_Controller {
 
+      public function __construct(){
+        parent::__construct();
+
+        if (!$this->session->userdata('usuario')){ 
+            redirect(base_url("login/"), 'refresh');
+            }
+    }
+
     public function agendar()
     {
 
         if($this->input->post()) {
             $form = $this->input->post();
 
-            $this->form_validation->set_rules('data', 'Data do empréstimo', 'required');
-            $this->form_validation->set_rules('hora', 'Horário', 'required');
-            $this->form_validation->set_rules('data_devolucao', 'Data da devolução', 'required');
-           $this->form_validation->set_rules('hora_devolucao', 'Horário devolução', 'required');
-           $this->form_validation->set_rules('local', 'Local de uso do material', 'required');
-           $this->form_validation->set_rules('id_material', 'Material', 'required');
-           $this->form_validation->set_rules('quantidade', 'Quantidade', 'required');
+          $this->form_validation->set_rules('data', 'Data do empréstimo', 'required');
+          $this->form_validation->set_rules('hora', 'Horário', 'required');
+          $this->form_validation->set_rules('data_devolucao', 'Data da devolução', 'required');
+          $this->form_validation->set_rules('hora_devolucao', 'Horário devolução', 'required');
+          $this->form_validation->set_rules('local', 'Local de uso do material', 'required');
+          $this->form_validation->set_rules('id_material', 'Material', 'required');
+          $this->form_validation->set_rules('quantidade', 'Quantidade', 'required');
           $this->form_validation->set_rules('justificativa', 'Justificativa', 'required');
           $this->form_validation->set_rules('termos', 'Termos', 'required');
 

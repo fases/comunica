@@ -2,6 +2,14 @@
 
 class Material extends CI_Controller {
 
+    public function __construct(){
+        parent::__construct();
+
+        if (!$this->session->userdata('usuario')){ 
+            redirect(base_url("login/"), 'refresh');
+            }
+    }
+
     public function producao(){
         if($this->input->post()) {
             $form = $this->input->post();

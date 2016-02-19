@@ -2,6 +2,14 @@
 
 class Eventos extends CI_Controller {
 
+        public function __construct(){
+        parent::__construct();
+
+        if (!$this->session->userdata('usuario')){ 
+            redirect(base_url("login/"), 'refresh');
+            }
+    }
+
     public function cobertura(){
         if($this->input->post()) {
             $form = $this->input->post();
