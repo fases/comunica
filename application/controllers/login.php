@@ -19,9 +19,47 @@ class Login extends CI_Controller {
      */
     public function index()
     {
+        $usuario_invalido=FALSE;
 
-        $this->load->view('login');
+
+        if($this->input->post()) {
+            $form = $this->input->post();
+
+            $email = $this->input->post('email');
+            $senha   = $this->input->post('senha');
+
+            $this->db->where('email',$email);
+            $this->db->where('senha',$senha);
+            $this->db->where('status',1);
+            
+
+
+            $usuario = $this->db->get('usuario')->result();
+
+          
+            if ($usuario){
+               $newdata = array(
+                  'usuario'  => $usuario
+                  );
+
+               $this->session->set_userdata($newdata);
+               redirect(base_url(), 'refresh');
+           }else{
+            $usuario_invalido=TRUE;
+        }
+
+
+
+
     }
+
+
+    $data = array(
+       'usuario_invalido' => $usuario_invalido,
+       );  
+
+    $this->load->view('login',$data);
+}
 
 }
 

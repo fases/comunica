@@ -48,20 +48,28 @@ Página de login
                             COMUNICA
                         </h1>
 
-                        
+                        <?php 
+                        if($usuario_invalido):
+                            ?>
 
-                        <form role="form" class="ls-form ls-login-form" action="home.php">
+                        <div class="ls-alert-danger"><strong>Vish!</strong> Algo muito ruim aconteceu, seu login não deu certo. </div>
+
+                        <?php 
+                    endif; 
+                            ?>
+
+                        <form method="post" class="ls-form ls-login-form">
                             <fieldset>
 
                                 <label class="ls-label">
                                     <b class="ls-label-text ls-hidden-accessible">Usuário</b>
-                                    <input class="ls-login-bg-user ls-field-lg" type="text" placeholder="Usuário" required autofocus>
+                                    <input class="ls-login-bg-user ls-field-lg" type="text" placeholder="E-mail" name="email" required autofocus>
                                 </label>
 
                                 <label class="ls-label">
                                     <b class="ls-label-text ls-hidden-accessible">Senha</b>
                                     <div class="ls-prefix-group">
-                                        <input id="password_field" class="ls-login-bg-password ls-field-lg" type="password" placeholder="Senha" required>
+                                        <input id="password_field" class="ls-login-bg-password ls-field-lg" type="password" placeholder="Senha" name="senha" required>
                                         <a class="ls-label-text-prefix ls-toggle-pass ls-ico-eye" data-toggle-class="ls-ico-eye, ls-ico-eye-blocked" data-target="#password_field" href="#"></a>
                                     </div>
                                 </label>
@@ -70,7 +78,7 @@ Página de login
 
                                 <input type="submit" value="Entrar" class="ls-btn-primary ls-btn-block ls-btn-lg">
                                 <p class="ls-txt-center ls-login-signup">
-                                    Não possui um usuário no Comuinca? 
+                                    Não possui uma conta no Comuinca? 
                                 </p>
 
 

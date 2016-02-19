@@ -5,9 +5,19 @@ class Home extends CI_Controller {
 		parent::__construct();
 
         // colocar verificacao de usuario logado aqui!!
+
+        if (!$this->session->userdata('usuario')){
+   			redirect(base_url("login/"), 'refresh');
+			}
 	}
 	
-	public function index(){		
+	public function index(){
+
+       //print_r($usuario);die(); 
+
+		//var_dump($this->session); die();
+		//$this->session['usuario'] = $usuario; //cria sessão com os dados do usuário;
+
         $this->load->view('templates/header');
         $this->load->view('templates/inicio');
         $this->load->view('templates/footer');

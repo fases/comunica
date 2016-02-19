@@ -53,7 +53,7 @@ u<!DOCTYPE html>
                     <nav class="ls-dropdown-nav ls-user-menu">
                         <ul>
                             <li><a href="#">Meus dados</a></li>
-                            <li><a href="#">Sair</a></li>
+                            <li><a href="<?php echo base_url() ?>logout">Sair</a></li>
                         </ul>
                     </nav>
                 </div>

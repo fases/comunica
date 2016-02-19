@@ -13,6 +13,7 @@ class Usuarios extends CI_Controller {
             $this->form_validation->set_rules('matricula', 'Matrícula', 'required|numeric');
             $this->form_validation->set_rules('senha', 'Senha', 'required|matches[confirma_senha]');
             $this->form_validation->set_rules('confirma_senha', 'Confirma Senha', 'required');
+            
 
             if($this->form_validation->run() == TRUE){
                 $this->load->model('usuario_model');
@@ -50,7 +51,14 @@ class Usuarios extends CI_Controller {
         $this->load->view('templates/header');
         
         $usuario = $this->usuario_model->consultar($id);
-        //print_r($usuario); die();
+
+
+        if($this->input->post()) {
+            $form = $this->input->post();
+            unset($form['confirma_senha']); // tem que fazer algo pra validar a senha antes de remover isso!
+            $this->db->update('usuario', $form, array('id' => $id));
+            $usuario = $this->usuario_model->consultar($id);
+        }
         $this->load->view('usuarios/editar',$usuario);
         $this->load->view('templates/footer');
 
