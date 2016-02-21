@@ -81,11 +81,11 @@
 
                     <label class="ls-label">
                         <b class="ls-label-text">Senha *</b>
-                        <input type="password" required="">
+                        <input type="password" name="senha" required>
                     </label>
                     <label class="ls-label">
                         <b class="ls-label-text">Confirmação de senha *</b>
-                        <input type="password" required="">
+                        <input type="password" name="confirma_senha" required>
                     </label>
                 </div>
                 <div class="ls-modal-footer">

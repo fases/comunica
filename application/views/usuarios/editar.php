@@ -102,7 +102,7 @@
     </label>
 </fieldset>
 
-        <fieldset>
+    <!--    <fieldset>
     <label class="ls-label col-md-4">
       <b class="ls-label-text">Senha</b>
       <div class="ls-prefix-group">
@@ -118,7 +118,7 @@
                 <input type="password" name="confirma_senha">
             </label>
 
-  </fieldset>
+  </fieldset> -->
     
            
           <!-- <label class="ls-label col-md-3">
