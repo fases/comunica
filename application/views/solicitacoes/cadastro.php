@@ -96,16 +96,16 @@
                 <?php 
 
                 if ($usuario['status']==0) {
-                   echo "Inativo";
+                   echo "Indeferido";
 
                 }else {
-                     echo "Ativo";
+                     echo "Indeferido";
                 } ?>
 
                 </td>
 
                 <td class="ls-txt-right ls-regroup">
-                <a href="#" class="ls-btn-primary ls-btn-sm ls-ico-user">Aprovar usuário</a>
+                <a href="<?php echo base_url() ?>usuarios/aprovar/<?php echo $usuario['id'];?>" class="ls-btn-primary ls-btn-sm ls-ico-user">Aprovar usuário</a>
 
                     <a href="<?php echo base_url() ?>usuarios/visualizar/<?php echo $usuario['id'];?>" class="ls-btn ls-btn-sm" aria-expanded="false">Visualizar</a>
                     <div data-ls-module="dropdown" class="ls-dropdown ls-pos-right">

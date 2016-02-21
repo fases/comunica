@@ -54,6 +54,16 @@ class Usuarios extends CI_Controller {
         $this->load->view('usuarios/listar',$data);
         $this->load->view('templates/footer');
     }
+
+        public function aprovar($id){
+
+            $this->db->where('id',$id);
+            $this->db->update('usuario', array('status' => 1));
+
+            redirect(base_url("solicitacoes/cadastro"));
+
+
+        }
         
         public function editar($id){
 
@@ -95,6 +105,7 @@ class Usuarios extends CI_Controller {
 
 
         if($this->input->post()) {
+
             $form = $this->input->post();
             unset($form['confirma_senha']); // tem que fazer algo pra validar a senha antes de remover isso!
             $this->db->update('usuario', $form, array('id' => $id));

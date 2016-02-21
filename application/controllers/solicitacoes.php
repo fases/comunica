@@ -14,6 +14,7 @@ class Solicitacoes extends CI_Controller {
         $this->load->view('templates/header');
 
         $this->load->model('usuario_model'); //carrega o model
+        $this->db->where('status', 0); //carrega apenas usuarios indefiridos
         $data['usuarios'] = $this->usuario_model->listar()->result_array(); //cria variável, realiza a consulta e organiza em uma array
 
         $this->load->view('solicitacoes/cadastro',$data);
