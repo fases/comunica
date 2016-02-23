@@ -12,6 +12,7 @@ class Material extends CI_Controller {
 
     public function producao(){
         if($this->input->post()) {
+
             $form = $this->input->post();
 
             $this->form_validation->set_rules('tipo', 'Tipo', 'required');
@@ -19,15 +20,34 @@ class Material extends CI_Controller {
 
             if($this->form_validation->run() == TRUE){
 
-                $this->load->model('material_producao_model');
+                $config = array(
+                    'upload_path' => './arquivos/producao/',
+                    'allowed_types' => 'jpg|jpeg|png|gif|pdf'
+                );
 
-                //print_r($form); die();
-                // Imprime na tela os dados enviados do form e mata a aplicacão 
-                
-                $material_producao = new Material_producao_model($form);
-                $material_producao->cadastrar();
+                // var_dump($this->input->post()); die();
 
+                $this->load->library('upload', $config);
+
+                if($this->upload->do_upload('arquivo_1')) {
+                    $dados_arquivo = $this->upload->data();
+
+
+                    $this->load->model('material_producao_model');
+
+                    //print_r($form); die();
+                    // Imprime na tela os dados enviados do form e mata a aplicacão 
+                    
+                    $material_producao = new Material_producao_model($form);
+
+                    $material_producao->arquivo_1 = $dados_arquivo['full_path'];
+                    $material_producao->cadastrar();
+
+                }
+            } else {
+                die('Erro no upload: ' . $this->upload->display_errors());
             }
+
         }
 
         $this->load->view('templates/header');

@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <h1 class="ls-title-intro ls-ico-home ">Sejam bem vindo(a)!</h1>
+    <h1 class="ls-title-intro ls-ico-home ">Sejam bem vindo(a) <?php echo $usuario->nome; ?>!</h1>
 
 <div class="ls-box ls-lg-space ls-ico-lamp ls-ico-bg">
   <h1 class="ls-title-1 ls-color-theme">O COMUNICA é o sistema online da Comunicação Social</h1>

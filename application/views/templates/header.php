@@ -47,7 +47,7 @@
                 <div data-ls-module="dropdown" class="ls-dropdown ls-user-account">
                     <a href="#" class="ls-ico-user">
                         <img src="<?php echo base_url() ?>www/images/avatar-example.jpg" alt="" />
-                        <span class="ls-name">@Usuario</span>
+                        <span class="ls-name"><?php $nomes = explode(' ', $usuario->nome); echo $nomes[0]; ?></span>
                     </a>
 
                     <nav class="ls-dropdown-nav ls-user-menu">

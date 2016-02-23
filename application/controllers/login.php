@@ -27,8 +27,6 @@ class Login extends CI_Controller {
 
             $email = $this->input->post('email');
             $senha   = md5($this->input->post('senha'));
-            //print_r($senha);die();
-
 
             $this->db->where('email',$email);
             $this->db->where('senha',$senha);
@@ -41,8 +39,10 @@ class Login extends CI_Controller {
           
             if ($usuario){
                $newdata = array(
-                  'usuario'  => $usuario
+                  'usuario'  => $usuario[0]
                   );
+
+               $newdata['usuario']->senha = NULL;
 
                $this->session->set_userdata($newdata);
                redirect(base_url(), 'refresh');
