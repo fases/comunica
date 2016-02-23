@@ -50,7 +50,11 @@ class Material extends CI_Controller {
 
         }
 
-        $this->load->view('templates/header');
+        $data = array(// cria array;
+    'usuario' => $this->session->userdata('usuario') //preenche com os dados da sessão;
+        );
+
+        $this->load->view('templates/header',$data);
         $this->load->view('material/producao');
         $this->load->view('templates/footer');
     }
@@ -105,20 +109,26 @@ class Material extends CI_Controller {
             }
         }
 
-        $this->load->view('templates/header');
+        $data = array(// cria array;
+    'usuario' => $this->session->userdata('usuario') //preenche com os dados da sessão;
+        );
+
+        $this->load->view('templates/header', $data);
         $this->load->view('material/cadastrar');
         $this->load->view('templates/footer');
     }
         public function consultar(){
 
-
+            $data = array(// cria array;
+    'usuario' => $this->session->userdata('usuario') //preenche com os dados da sessão;
+            );
 
 
         //$data['materiais'] = $this->db->get('material')->result();
         //$data['data'] = $data;
 
 
-        $this->load->view('templates/header');
+        $this->load->view('templates/header',$data);
 
          $this->load->model('material_model');
         $data['materiais'] = $this->material_model->consultar()->result_array();

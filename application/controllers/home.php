@@ -18,8 +18,8 @@ class Home extends CI_Controller {
 		// var_dump($this->session->userdata('usuario')); die();
 		//$this->session['usuario'] = $usuario; //cria sessão com os dados do usuário;
 
-        $data = array(
-            'usuario' => $this->session->userdata('usuario')
+        $data = array( // cria array;
+            'usuario' => $this->session->userdata('usuario') //preenche com os dados da sessão;
         );
 
         $this->load->view('templates/header', $data);

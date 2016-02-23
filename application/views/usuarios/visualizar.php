@@ -17,7 +17,7 @@
             </div>
         </div>
 
-        <form action="" class="ls-form row" data-ls-module="form">
+        <form class="ls-form row" data-ls-module="form">
             <fieldset id="domain-form" class="ls-form-disable ls-form-text">
                 <label class="ls-label col-md-6 col-lg-8">
                     <b class="ls-label-text">Nome</b>
@@ -27,14 +27,29 @@
                     <b class="ls-label-text">login/E-mail:</b>
                     <input type="text" value="<?php echo $email ?>" required="" disabled="disabled" class="ls-form-text">
                 </label>
-                <label class="ls-label col-md-6 col-lg-8">
-                    <b class="ls-label-text">Status:</b>
-                    <input type="text" value="<?php echo $status ?>"required="" disabled="disabled" class="ls-form-text">
-                </label>
-                <label class="ls-label col-md-6 col-lg-8">
+                      <label class="ls-label col-md-6 col-lg-8">
+      <b class="ls-label-text">Status</b>
+      <div class="ls-custom-select">
+        <select class="ls-custom" name="status">
+
+
+<?php if ($status==0) {
+  echo '<option selected="selected" value="0">Inativo</option>';
+  echo '<option value="1">Ativo</option>';
+
+}elseif ($status==1) {
+  echo '-<option selected="selected" value="1">Ativo</option>';
+  echo '<option value="0">Inativo</option>';
+} ?>
+
+
+        </select>
+      </div>
+    </label>
+                <!--<label class="ls-label col-md-6 col-lg-8 ls-label-disable">
                     <b class="ls-label-text">Data de cadastro:</b>
-                    <input type="text" value="<?php echo $data_cadastro ?>" required="" disabled="disabled" class="ls-form-text">
-                </label>
+                    <input type="text" value="<?php echo $data_cadastro ?>" required="" disabled="disabled" class="ls-form-text ls-label-disable">
+                </label>-->
                 <label class="ls-label col-md-6 col-lg-8">
                     <b class="ls-label-text">Endereço:</b>
                     <textarea name="" id="" cols="30" rows="5" disabled="disabled" class="ls-form-text"><?php echo $endereco ?></textarea>

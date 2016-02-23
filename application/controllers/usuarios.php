@@ -14,6 +14,10 @@ class Usuarios extends CI_Controller {
 
     public function cadastrar(){
 
+                $data = array(// cria array;
+    'usuario' => $this->session->userdata('usuario') //preenche com os dados da sessão;
+        );
+
         // Envio de formulario será tratado aqui
         if($this->input->post()) {
             $form = $this->input->post();
@@ -38,15 +42,18 @@ class Usuarios extends CI_Controller {
             }
         }
 
-        $this->load->view('templates/header');
+        $this->load->view('templates/header',$data);
         $this->load->view('usuarios/cadastrar');
         $this->load->view('templates/footer');
     }
 
         public function listar(){
 
+        $data = array(// cria array;
+    'usuario' => $this->session->userdata('usuario') //preenche com os dados da sessão;
+        );
        
-        $this->load->view('templates/header');
+        $this->load->view('templates/header',$data);
 
         $this->load->model('usuario_model'); //carrega o model
         $data['usuarios'] = $this->usuario_model->listar()->result_array(); //cria variável, realiza a consulta e organiza em uma array
@@ -67,8 +74,13 @@ class Usuarios extends CI_Controller {
         
         public function editar($id){
 
+            $data = array(// cria array;
+    'usuario' => $this->session->userdata('usuario') //preenche com os dados da sessão;
+        );
+
+
         $this->load->model('usuario_model');
-        $this->load->view('templates/header');
+        $this->load->view('templates/header', $data);
         
         $usuario = $this->usuario_model->consultar($id);
 
@@ -96,10 +108,26 @@ class Usuarios extends CI_Controller {
 
         }
 
+    public function desativar($id){
+
+    //$this->load->model('usuario_model');
+
+    $this->db->where('id',$id);
+    $this->db->update('usuario', array('status' => 3));
+
+    $this->session->sess_destroy();
+    redirect(base_url(), 'refresh');
+
+        }
+
         public function visualizar($id){
 
+                    $data = array(// cria array;
+    'usuario' => $this->session->userdata('usuario') //preenche com os dados da sessão;
+        );
+
         $this->load->model('usuario_model');
-        $this->load->view('templates/header');
+        $this->load->view('templates/header',$data);
         
         $usuario = $this->usuario_model->consultar($id);
 

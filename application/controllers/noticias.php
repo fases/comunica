@@ -25,7 +25,11 @@ class Noticias extends CI_Controller {
             }
         }
 
-        $this->load->view('templates/header');
+        $data = array(// cria array;
+    'usuario' => $this->session->userdata('usuario') //preenche com os dados da sessão;
+        );
+
+        $this->load->view('templates/header',$data);
         $this->load->view('noticias/enviar');
         $this->load->view('templates/footer');
     }

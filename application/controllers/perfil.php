@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Pedidos extends CI_Controller {
+class Perfil extends CI_Controller {
 
     public function __construct(){
         parent::__construct();
@@ -8,7 +8,6 @@ class Pedidos extends CI_Controller {
         if (!$this->session->userdata('usuario')){ 
             redirect(base_url("login/"), 'refresh');
             }
-
 
     }
     public function index()
@@ -19,7 +18,7 @@ class Pedidos extends CI_Controller {
         );
 
         $this->load->view('templates/header',$data);
-        $this->load->view('pedidos',$data);
+        $this->load->view('perfil',$data);
         $this->load->view('templates/footer');
     }
 

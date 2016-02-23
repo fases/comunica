@@ -52,7 +52,7 @@
 
                     <nav class="ls-dropdown-nav ls-user-menu">
                         <ul>
-                            <li><a href="#">Meus dados</a></li>
+                            <li><a href="<?php echo base_url().'perfil' ?>">Meus dados</a></li>
                             <li><a href="<?php echo base_url() ?>logout">Sair</a></li>
                         </ul>
                     </nav>
@@ -61,7 +61,7 @@
 
             <span class="ls-show-sidebar ls-ico-menu"></span>
 
-            <a href="/locawebstyle/documentacao/exemplos/painel2/pre-painel"  class="ls-go-next"><span class="ls-text">Voltar à lista de serviços</span></a>
+            <a onClick="JavaScript: window.history.back();"  class="ls-go-next"><span class="ls-text">Voltar</span></a>
 
             <!-- Nome do produto/marca com sidebar -->
             <h1 class="ls-brand-name">

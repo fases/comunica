@@ -48,7 +48,7 @@
             
             <tr>
                 <td>
-                    <a href="<?php echo base_url() ?>usuarios/visualizar/ <?php echo $usuario['id'];?>">  <?php echo $usuario['nome'];?></a>
+                    <a href="<?php echo base_url() ?>usuarios/visualizar/<?php echo $usuario['id'];?>">  <?php echo $usuario['nome'];?></a>
                     <?php 
 
                     if ($usuario['tipo_acesso']=='1') { ?>

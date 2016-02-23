@@ -11,7 +11,12 @@ class Solicitacoes extends CI_Controller {
     }
 
     public function cadastro(){
-        $this->load->view('templates/header');
+
+        $data = array(// cria array;
+    'usuario' => $this->session->userdata('usuario') //preenche com os dados da sessão;
+        );
+
+        $this->load->view('templates/header',$data);
 
         $this->load->model('usuario_model'); //carrega o model
         $this->db->where('status', 0); //carrega apenas usuarios indefiridos
@@ -22,7 +27,11 @@ class Solicitacoes extends CI_Controller {
     }
 
         public function material(){  
-        $this->load->view('templates/header');
+
+        $data = array(// cria array;
+    'usuario' => $this->session->userdata('usuario') //preenche com os dados da sessão;
+        );
+        $this->load->view('templates/header',$data);
 
         $this->load->model('material_impressao_model'); //carrega o model
         $data['materiais'] = $this->material_impressao_model->listar()->result_array(); //cria variável, realiza a consulta e organiza em uma array
@@ -31,7 +40,11 @@ class Solicitacoes extends CI_Controller {
         $this->load->view('templates/footer');
     }
         public function cobertura(){
-        $this->load->view('templates/header');
+                    $data = array(// cria array;
+    'usuario' => $this->session->userdata('usuario') //preenche com os dados da sessão;
+        );
+
+        $this->load->view('templates/header',$data);
 
         $this->load->model('evento_model'); //carrega o model
         $data['eventos'] = $this->evento_model->listar()->result_array(); //cria variável, realiza a consulta e organiza em uma array
@@ -55,7 +68,12 @@ class Solicitacoes extends CI_Controller {
         }
 
         public function noticias(){
-        $this->load->view('templates/header');
+
+                    $data = array(// cria array;
+    'usuario' => $this->session->userdata('usuario') //preenche com os dados da sessão;
+        );
+
+        $this->load->view('templates/header',$data);
 
         $this->load->model('noticia_model'); //carrega o model
         $data['noticias'] = $this->noticia_model->listar()->result_array(); //cria variável, realiza a consulta e organiza em uma array
@@ -64,7 +82,12 @@ class Solicitacoes extends CI_Controller {
         $this->load->view('templates/footer');
     }
         public function emprestimos(){
-        $this->load->view('templates/header');
+
+                    $data = array(// cria array;
+    'usuario' => $this->session->userdata('usuario') //preenche com os dados da sessão;
+        );
+
+        $this->load->view('templates/header',$data);
 
         $this->load->model('emprestimo_model'); //carrega o model
         $data['emprestimos'] = $this->emprestimo_model->listar()->result_array(); //cria variável, realiza a consulta e organiza em uma array

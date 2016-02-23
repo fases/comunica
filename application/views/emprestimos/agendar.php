@@ -2,7 +2,7 @@
 <!-- Componentes na página -->
 
 <div class="container-fluid">
-    <h1 class="ls-title-intro ls-ico-camera">Agendar emprestimo de material</h1>
+    <h1 class="ls-title-intro ls-ico-camera">Agendar empréstimo de material</h1>
 
     <!-- Apartir daqui, vocês devem inserir os componentes na página -->
 
