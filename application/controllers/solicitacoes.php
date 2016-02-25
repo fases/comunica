@@ -10,6 +10,7 @@ class Solicitacoes extends CI_Controller {
             }
     }
 
+
     public function cadastro(){
 
         $data = array(// cria array;
@@ -60,12 +61,12 @@ class Solicitacoes extends CI_Controller {
         print_r($evento);
         }
 
-        public function visualizar($id){
+        /* public function visualizar($id){
 
         $this->load->model('usuario');
         $evento = $this->evento_model->localizar($id);
         print_r($evento);
-        }
+        }*/
 
         public function noticias(){
 
@@ -94,6 +95,19 @@ class Solicitacoes extends CI_Controller {
 
         $this->load->view('solicitacoes/emprestimos',$data);
         $this->load->view('templates/footer');
+    }
+
+    public function visualizar(){
+
+    	     $data = array(// cria array;
+    'usuario' => $this->session->userdata('usuario') //preenche com os dados da sessão;
+        );
+
+        $this->load->view('templates/header',$data);
+        $this->load->view('solicitacoes/visualizar',$data);
+        $this->load->view('templates/footer');
+
+
     }
 
 }
