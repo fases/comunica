@@ -104,12 +104,12 @@
 
         ?></td>
                 <td class="ls-txt-right ls-regroup">
-                    <a href="http://localhost/comunica/usuarios/visualizar.php" class="ls-btn ls-btn-sm" aria-expanded="false">Visualizar</a>
+                    <a href="http://localhost/comunica/emprestimos/visualizar" class="ls-btn ls-btn-sm" aria-expanded="false">Visualizar</a>
                     <div data-ls-module="dropdown" class="ls-dropdown ls-pos-right">
-                       <a href="<?php echo base_url() ?>noticias/" class="ls-btn ls-btn-sm" aria-expanded="false" role="combobox"></a>
+                       <a href="<?php echo base_url() ?>emprestimos/" class="ls-btn ls-btn-sm" aria-expanded="false" role="combobox"></a>
                         <ul class="ls-dropdown-nav" aria-hidden="true">
-                            <li><a href="<?php echo base_url() ?>noticias/editar/<?php echo $emprestimo['id'];?>" class="ls-color-danger" role="option">Em andamento</a></li>
-                            <li><a href="<?php echo base_url() ?>noticias/excluir/<?php echo $emprestimo['id'];?>"  role="option">Concluido</a></li>
+                            <li><a href="<?php echo base_url() ?>emprestimos/editar/<?php echo $emprestimo['id'];?>" class="ls-color-danger" role="option">Em andamento</a></li>
+                            <li><a href="<?php echo base_url() ?>emprestimos/excluir/<?php echo $emprestimo['id'];?>"  role="option">Concluido</a></li>
                         </ul>
                     </div>
 

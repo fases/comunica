@@ -81,7 +81,11 @@ class Material extends CI_Controller {
             }
         }
 
-        $this->load->view('templates/header');
+        $data = array(// cria array;
+    'usuario' => $this->session->userdata('usuario') //preenche com os dados da sessão;
+        );
+
+        $this->load->view('templates/header',$data);
         $this->load->view('material/impressao');
         $this->load->view('templates/footer');
     }
@@ -135,6 +139,19 @@ class Material extends CI_Controller {
         $this->load->view('material/consultar', $data);
 
         $this->load->view('templates/footer');
+    }
+
+        public function visualizar(){
+
+           $data = array(// cria array;
+    'usuario' => $this->session->userdata('usuario') //preenche com os dados da sessão;
+        );
+
+        $this->load->view('templates/header',$data);
+        $this->load->view('material/visualizar',$data);
+        $this->load->view('templates/footer');
+
+
     }
 
 }

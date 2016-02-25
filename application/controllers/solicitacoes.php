@@ -39,6 +39,19 @@ class Solicitacoes extends CI_Controller {
 
         $this->load->view('solicitacoes/material',$data);
         $this->load->view('templates/footer');
+
+    function visualizar(){
+
+             $data = array(// cria array;
+    'usuario' => $this->session->userdata('usuario') //preenche com os dados da sessão;
+        );
+
+        $this->load->view('templates/header',$data);
+        $this->load->view('material/visualizar',$data);
+        $this->load->view('templates/footer');
+    }
+
+
     }
         public function cobertura(){
                     $data = array(// cria array;
@@ -106,8 +119,6 @@ class Solicitacoes extends CI_Controller {
         $this->load->view('templates/header',$data);
         $this->load->view('solicitacoes/visualizar',$data);
         $this->load->view('templates/footer');
-
-
     }
 
 }
