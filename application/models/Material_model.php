@@ -38,7 +38,7 @@ class Material_model extends CI_Model {
 
         //Busca com condição
         $query = $this->db->get_where('material', array('id' => $id));
- 
+        
         //row_object() retorna direto o objeto produto e não um array
         return $query->row_object();
 

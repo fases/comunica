@@ -113,7 +113,7 @@
                         <li>
                             <a href="#" class="ls-ico-book" title="Configurações">Material gráfico</a>
                             <ul>
-                                <li><a href="<?php echo base_url() ?>material/producao">Produção de Material Gráfico</a></li>
+                                <li><a href="<?php echo base_url() ?>material/producao">Prod. de Material Gráfico</a></li>
                                 <li><a href="<?php echo base_url() ?>material/impressao">Impressão de Material Gráfico</a></li>
                             </ul>
                         </li>

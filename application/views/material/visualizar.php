@@ -1,7 +1,24 @@
 <!-- Componentes na página -->
 
 <div class="container-fluid">
-    <h1 class="ls-title-intro ls-ico-arrow-right ">Solicitação #00215 <span class="ls-tag hidden-xs"> Pendente </span> 
+    <h1 class="ls-title-intro ls-ico-arrow-right ">Solicitação #00<?php echo $id ?>                        
+
+    <?php
+
+                        switch ($status) {
+   case 1:
+         echo "<span class='ls-tag hidden-xs'> Pendente </span> ";
+         break;
+   case 2:
+         echo "<span class='ls-tag-warning'>Em andamento</span> ";
+         break;
+   case 3:
+         echo "<span class='ls-tag-success'>Concluída</span>";;
+         break;
+} 
+
+
+                        ?> 
 
     </h1> 
 

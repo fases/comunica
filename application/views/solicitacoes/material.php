@@ -72,38 +72,85 @@
             </tr>
         </thead>
         <?php 
-        foreach ($materiais as $material ) { ?>
+        foreach ($materiais_impressao as $impressao ) { ?>
         <tbody>
             
             
             <tr>
                 <td>
-                    #<?php echo $material['id'];?>
+                    #<?php echo $impressao['id'];?>
                 </td>
                 <td>
-                     <?php echo $material['data_cadastro'];?>
+                     <?php echo $impressao['data_cadastro'];?>
                 </td>
 
                 <td>
-                    <a href="http://localhost/comunica/usuarios/visualizar.php"> <?php echo $material['id_usuario'];?></a>
+                    <a href="http://localhost/comunica/usuarios/visualizar.php"> <?php echo $impressao['id_usuario'];?></a>
                     
                 </td>
                 <td>
-                     <?php echo $material['tipo_material'];?>
+                     Impressão | <?php echo $impressao['tipo_material'];?>
                 </td>
                 <td class="ls-txt-center hidden-xs"><?php 
 
-      if($material['status']==1){
+      if($impressao['status']==1){
             echo "Enviado";
         }else{echo "Em andamento";}
 
-        ?></td>
+        ?>
+
+        </td>
                 <td class="ls-txt-right ls-regroup">
 
-                    <a href="<?php echo base_url() ?>material/visualizar/" class="ls-btn ls-btn-sm" aria-expanded="false">Visualizar</a>
+                    <a href="<?php echo base_url() ?>material/visualizar/<?php echo $impressao['id'];?>" class="ls-btn ls-btn-sm" aria-expanded="false">Visualizar</a>
                     <div data-ls-module="dropdown" class="ls-dropdown ls-pos-right">
 
-                        <a href="<?php echo base_url() ?>material/" class="ls-btn ls-btn-sm" aria-expanded="false" role="combobox">Status</a>
+                        <a href="<?php echo base_url() ?>material/" class="ls-btn ls-btn-sm" aria-expanded="false" role="combobox"></a>
+                        <ul class="ls-dropdown-nav" aria-hidden="true">
+                            <li><a href="<?php echo base_url() ?>material/editar/" class="ls-color-danger" role="option">Em andamento</a></li>
+                            <li><a href="<?php echo base_url() ?>material/excluir/"  role="option">Concluido</a></li>
+                        </ul>
+                    </div>
+
+                </td>
+            </tr>
+<?php } ?>
+
+<?php 
+        foreach ($materiais_producao as $producao ) { ?>
+        <tbody>
+            
+            
+            <tr>
+                <td>
+                    #<?php echo $producao['id'];?>
+                </td>
+                <td>
+                     <?php echo $producao['data_cadastro'];?>
+                </td>
+
+                <td>
+                    <a href="http://localhost/comunica/usuarios/visualizar.php"> <?php echo $producao['id_usuario'];?></a>
+                    
+                </td>
+                <td>
+                     Produção | <?php echo $producao['tipo'];?>
+                </td>
+                <td class="ls-txt-center hidden-xs"><?php 
+
+      if($producao['status']==1){
+            echo "Enviado";
+        }else{echo "Em andamento";}
+
+        ?>
+
+        </td>
+                <td class="ls-txt-right ls-regroup">
+
+                    <a href="<?php echo base_url() ?>material/visualizar/<?php echo $producao['id'];?>" class="ls-btn ls-btn-sm" aria-expanded="false">Visualizar</a>
+                    <div data-ls-module="dropdown" class="ls-dropdown ls-pos-right">
+
+                        <a href="<?php echo base_url() ?>material/" class="ls-btn ls-btn-sm" aria-expanded="false" role="combobox"></a>
                         <ul class="ls-dropdown-nav" aria-hidden="true">
                             <li><a href="<?php echo base_url() ?>material/editar/" class="ls-color-danger" role="option">Em andamento</a></li>
                             <li><a href="<?php echo base_url() ?>material/excluir/"  role="option">Concluido</a></li>

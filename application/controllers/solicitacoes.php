@@ -7,7 +7,7 @@ class Solicitacoes extends CI_Controller {
 
         if (!$this->session->userdata('usuario')){ 
             redirect(base_url("login/"), 'refresh');
-            }
+        }
     }
 
 
@@ -15,7 +15,7 @@ class Solicitacoes extends CI_Controller {
 
         $data = array(// cria array;
     'usuario' => $this->session->userdata('usuario') //preenche com os dados da sessão;
-        );
+    );
 
         $this->load->view('templates/header',$data);
 
@@ -27,38 +27,47 @@ class Solicitacoes extends CI_Controller {
         $this->load->view('templates/footer');
     }
 
-        public function material(){  
+    public function material(){  
 
         $data = array(// cria array;
     'usuario' => $this->session->userdata('usuario') //preenche com os dados da sessão;
-        );
+    );
         $this->load->view('templates/header',$data);
 
         $this->load->model('material_impressao_model'); //carrega o model
-        $data['materiais'] = $this->material_impressao_model->listar()->result_array(); //cria variável, realiza a consulta e organiza em uma array
+        $this->load->model('material_producao_model'); //carrega o model
 
-        $this->load->view('solicitacoes/material',$data);
+
+        $this->db->join('usuario','id_usuario=id','inner'); //inner join entre as tabelas
+
+        $data['materiais_impressao'] = $this->material_impressao_model->listar()->result_array(); //cria variável, realiza a consulta e organiza em uma array
+        $data['materiais_producao'] = $this->material_producao_model->listar()->result_array(); //cria variável, realiza a consulta e organiza em uma array
+
+        //var_dump($data);die();
+        //var_dump($data2);die();
+
+        $this->load->view('solicitacoes/material', $data);
         $this->load->view('templates/footer');
 
-    function visualizar(){
+        function visualizar(){
 
              $data = array(// cria array;
     'usuario' => $this->session->userdata('usuario') //preenche com os dados da sessão;
-        );
+    );
 
-        $this->load->view('templates/header',$data);
-        $this->load->view('material/visualizar',$data);
-        $this->load->view('templates/footer');
-    }
+             $this->load->view('templates/header',$data);
+             $this->load->view('material/visualizar',$data);
+             $this->load->view('templates/footer');
+         }
 
 
-    }
-        public function cobertura(){
+     }
+     public function cobertura(){
                     $data = array(// cria array;
     'usuario' => $this->session->userdata('usuario') //preenche com os dados da sessão;
-        );
+    );
 
-        $this->load->view('templates/header',$data);
+                    $this->load->view('templates/header',$data);
 
         $this->load->model('evento_model'); //carrega o model
         $data['eventos'] = $this->evento_model->listar()->result_array(); //cria variável, realiza a consulta e organiza em uma array
@@ -67,27 +76,27 @@ class Solicitacoes extends CI_Controller {
         $this->load->view('templates/footer');
     }
 
-        public function editar($id){
+    public function editar($id){
 
         $this->load->model('usuario');
         $evento = $this->evento_model->localizar($id);
         print_r($evento);
-        }
+    }
 
         /* public function visualizar($id){
 
         $this->load->model('usuario');
         $evento = $this->evento_model->localizar($id);
         print_r($evento);
-        }*/
+    }*/
 
-        public function noticias(){
+    public function noticias(){
 
                     $data = array(// cria array;
     'usuario' => $this->session->userdata('usuario') //preenche com os dados da sessão;
-        );
+    );
 
-        $this->load->view('templates/header',$data);
+                    $this->load->view('templates/header',$data);
 
         $this->load->model('noticia_model'); //carrega o model
         $data['noticias'] = $this->noticia_model->listar()->result_array(); //cria variável, realiza a consulta e organiza em uma array
@@ -95,13 +104,13 @@ class Solicitacoes extends CI_Controller {
         $this->load->view('solicitacoes/noticias',$data);
         $this->load->view('templates/footer');
     }
-        public function emprestimos(){
+    public function emprestimos(){
 
                     $data = array(// cria array;
     'usuario' => $this->session->userdata('usuario') //preenche com os dados da sessão;
-        );
+    );
 
-        $this->load->view('templates/header',$data);
+                    $this->load->view('templates/header',$data);
 
         $this->load->model('emprestimo_model'); //carrega o model
         $data['emprestimos'] = $this->emprestimo_model->listar()->result_array(); //cria variável, realiza a consulta e organiza em uma array
@@ -114,11 +123,11 @@ class Solicitacoes extends CI_Controller {
 
     	     $data = array(// cria array;
     'usuario' => $this->session->userdata('usuario') //preenche com os dados da sessão;
-        );
+    );
 
-        $this->load->view('templates/header',$data);
-        $this->load->view('solicitacoes/visualizar',$data);
-        $this->load->view('templates/footer');
+            $this->load->view('templates/header',$data);
+            $this->load->view('solicitacoes/visualizar',$data);
+            $this->load->view('templates/footer');
+        }
+
     }
-
-}

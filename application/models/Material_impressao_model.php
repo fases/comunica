@@ -50,5 +50,17 @@ class Material_impressao_model extends CI_Model {
         return $this->db->get('impressao');
     }
 
+    public function consultar($id){
+
+        $this->db->join('usuario','id_usuario=id','inner');
+
+        //Busca com condição
+        $query = $this->db->get_where('impressao', array('id' => $id));
+ 
+        //row_object() retorna direto o objeto produto e não um array
+        return $query->row_object();
+
+    }
+
     
 }

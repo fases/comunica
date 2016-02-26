@@ -34,7 +34,7 @@ class Material_producao_model extends CI_Model {
             $this->arquivo_2     = isset($arr['arquivo_2']) ? $arr['arquivo_2'] : null;
             $this->arquivo_3     = isset($arr['arquivo_3']) ? $arr['arquivo_3'] : null;
             $this->tipo          = isset($arr['tipo']) ? $arr['tipo'] : null;
-      
+            
         }
     }
 
@@ -43,6 +43,24 @@ class Material_producao_model extends CI_Model {
         $this->db->insert('producao');
         $this->id = $this->db->insert_id();      
     }
+
+    public function listar(){
+        //listagem de todos os usuários
+        
+        return $this->db->get('producao');
+    }
+
+
+    public function consultar($id){
+
+        //Busca com condição
+        $query = $this->db->get_where('producao', array('id' => $id));
+        
+        //row_object() retorna direto o objeto produto e não um array
+        return $query->row_object();
+
+    }
+
 
     
 }

@@ -7,7 +7,7 @@ class Material extends CI_Controller {
 
         if (!$this->session->userdata('usuario')){ 
             redirect(base_url("login/"), 'refresh');
-            }
+        }
     }
 
     public function producao(){
@@ -23,7 +23,7 @@ class Material extends CI_Controller {
                 $config = array(
                     'upload_path' => './arquivos/producao/',
                     'allowed_types' => 'jpg|jpeg|png|gif|pdf'
-                );
+                    );
 
                 // var_dump($this->input->post()); die();
 
@@ -52,14 +52,14 @@ class Material extends CI_Controller {
 
         $data = array(// cria array;
     'usuario' => $this->session->userdata('usuario') //preenche com os dados da sessão;
-        );
+    );
 
         $this->load->view('templates/header',$data);
         $this->load->view('material/producao',$data);
         $this->load->view('templates/footer');
     }
 
-        public function impressao(){
+    public function impressao(){
         if($this->input->post()) {
             $form = $this->input->post();
 
@@ -68,7 +68,7 @@ class Material extends CI_Controller {
             $this->form_validation->set_rules('justificativa', 'Justificativa', 'required');
 
 
-                if($this->form_validation->run() == TRUE){
+            if($this->form_validation->run() == TRUE){
 
                 $this->load->model('material_impressao_model');
 
@@ -83,13 +83,13 @@ class Material extends CI_Controller {
 
         $data = array(// cria array;
     'usuario' => $this->session->userdata('usuario') //preenche com os dados da sessão;
-        );
+    );
 
         $this->load->view('templates/header',$data);
         $this->load->view('material/impressao');
         $this->load->view('templates/footer');
     }
-        public function cadastrar(){
+    public function cadastrar(){
         if($this->input->post()) {
             $form = $this->input->post();
 
@@ -115,40 +115,45 @@ class Material extends CI_Controller {
 
         $data = array(// cria array;
     'usuario' => $this->session->userdata('usuario') //preenche com os dados da sessão;
-        );
+    );
 
         $this->load->view('templates/header', $data);
         $this->load->view('material/cadastrar');
         $this->load->view('templates/footer');
     }
-        public function consultar(){
+    public function consultar(){
 
             $data = array(// cria array;
     'usuario' => $this->session->userdata('usuario') //preenche com os dados da sessão;
-            );
+    );
 
 
         //$data['materiais'] = $this->db->get('material')->result();
         //$data['data'] = $data;
 
 
-        $this->load->view('templates/header',$data);
+            $this->load->view('templates/header',$data);
 
-         $this->load->model('material_model');
-        $data['materiais'] = $this->material_model->consultar()->result_array();
-        $this->load->view('material/consultar', $data);
+            $this->load->model('material_model');
+            $data['materiais'] = $this->material_model->listar()->result_array();
+            $this->load->view('material/consultar', $data);
 
-        $this->load->view('templates/footer');
-    }
+            $this->load->view('templates/footer');
+        }
 
-        public function visualizar(){
+        public function visualizar($id){
 
            $data = array(// cria array;
     'usuario' => $this->session->userdata('usuario') //preenche com os dados da sessão;
-        );
+    );
+        $this->load->model('material_producao_model'); //carrega o model
 
         $this->load->view('templates/header',$data);
-        $this->load->view('material/visualizar',$data);
+
+        $producao = $this->material_producao_model->consultar($id); //carrega apenas o emprestimo pelo id
+        //var_dump($producao);die();
+        $this->load->view('material/visualizar',$data, $producao);
+
         $this->load->view('templates/footer');
 
 
