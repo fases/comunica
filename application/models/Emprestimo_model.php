@@ -58,5 +58,16 @@ class Emprestimo_model extends CI_Model {
         
         return $this->db->get('emprestimo');
     }
+
+    public function consultar($id){
+
+        //Busca com condição
+        $query = $this->db->get_where('emprestimo', array('id' => $id));
+ 
+        //row_object() retorna direto o objeto produto e não um array
+        return $query->row_object();
+
+
+    }
     
 }

@@ -32,12 +32,12 @@
 
                 <!-- Links de apoio -->
                 <div class="ls-alerts-list">
-                    <a href="#" class="ls-ico-bell-o" data-counter="8" data-ls-module="topbarCurtain" data-target="#ls-notification-curtain">
+                    <!--<a href="#" class="ls-ico-bell-o" data-counter="8" data-ls-module="topbarCurtain" data-target="#ls-notification-curtain">
                         <span>Notificações</span>
                     </a>
                     <a href="#" class="ls-ico-bullhorn" data-ls-module="topbarCurtain" data-target="#ls-help-curtain">
                         <span>Ajuda</span>
-                    </a>
+                    </a> -->
                     <a href="#" class="ls-ico-question" data-ls-module="topbarCurtain" data-target="#ls-feedback-curtain">
                         <span>Sugestões</span>
                     </a>

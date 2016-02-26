@@ -55,7 +55,7 @@ class Material extends CI_Controller {
         );
 
         $this->load->view('templates/header',$data);
-        $this->load->view('material/producao');
+        $this->load->view('material/producao',$data);
         $this->load->view('templates/footer');
     }
 

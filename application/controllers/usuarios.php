@@ -87,7 +87,7 @@ class Usuarios extends CI_Controller {
 
         if($this->input->post()) {
             $form = $this->input->post();
-            unset($form['confirma_senha']); // tem que fazer algo pra validar a senha antes de remover isso!
+            //unset($form['confirma_senha']); // tem que fazer algo pra validar a senha antes de remover isso!
             $this->db->update('usuario', $form, array('id' => $id));
             $usuario = $this->usuario_model->consultar($id);
         }
