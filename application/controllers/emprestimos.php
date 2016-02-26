@@ -68,7 +68,8 @@ public function agendar()
 
         $emprestimo = $this->emprestimo_model->consultar($id); //carrega apenas o emprestimo pelo id
 
-        var_dump($emprestimo);die();
+        echo "<pre>";
+        var_dump($emprestimo);die('</pre>');
 
 
         //var_dump($material->nome);die();

@@ -18,6 +18,8 @@ class Pedidos extends CI_Controller {
         'usuario' => $this->session->userdata('usuario') //preenche com os dados da sessão;
         );
 
+        //$nomes = explode(' ', $usuario->nome); echo $nomes[0];
+
         $this->load->view('templates/header',$data);
         $this->load->view('pedidos',$data);
         $this->load->view('templates/footer');

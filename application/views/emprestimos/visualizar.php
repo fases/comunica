@@ -1,7 +1,9 @@
 <!-- Componentes na página -->
 
+
+
 <div class="container-fluid">
-  <h1 class="ls-title-intro ls-ico-arrow-right ">Solicitação #00<?php echo $id ?>
+  <h1 class="ls-title-intro ls-ico-arrow-right ">Solicitação #00<?php echo $emprestimo ?>
 
 
     <?php
