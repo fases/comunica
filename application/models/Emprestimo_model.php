@@ -9,7 +9,7 @@ class Emprestimo_model extends CI_Model {
     public $hora_devolucao;
     public $id_material;
     public $justificativa;
-    public $local;
+    public $id_local;
     public $termos;
     public $status;
     public $id_usuario;
@@ -38,7 +38,7 @@ class Emprestimo_model extends CI_Model {
             $this->hora_devolucao = isset($arr['hora_devolucao']) ? $arr['hora_devolucao'] : null;
             $this->id            = isset($arr['id']) ? $arr['id'] : null;
             $this->justificativa        = isset($arr['justificativa']) ? $arr['justificativa'] : null;
-            $this->local         = isset($arr['local']) ? $arr['local'] : null;
+            $this->id_local         = isset($arr['local']) ? $arr['local'] : null;
             $this->termos         = isset($arr['termos']) ? $arr['termos'] : null;
             $this->status     = isset($arr['status']) ? $arr['status'] : 1;
             $this->id_usuario     = isset($arr['id_usuario']) ? $arr['id_usuario'] : 1;
@@ -61,8 +61,11 @@ class Emprestimo_model extends CI_Model {
 
     public function consultar($id){
 
+        $this->db->join('usuario', 'emprestimo.id_usuario=usuario.id', 'inner');
+        $this->db->join('local', 'emprestimo.id_local=local.id', 'inner');  
+
         //Busca com condição
-        $query = $this->db->get_where('emprestimo', array('id' => $id));
+        $query = $this->db->get_where('emprestimo', array('emprestimo.id' => $id));
  
         //row_object() retorna direto o objeto produto e não um array
         return $query->row_object();

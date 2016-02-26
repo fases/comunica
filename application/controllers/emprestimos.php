@@ -67,15 +67,13 @@ public function agendar()
         $this->load->view('templates/header',$data);
 
         $emprestimo = $this->emprestimo_model->consultar($id); //carrega apenas o emprestimo pelo id
-        $usuario = $this->usuario_model->consultar($emprestimo->id_usuario);
 
-        //var_dump($usuario);die();
+        var_dump($emprestimo);die();
 
-        $material= $this->material_model->consultar($emprestimo->id_material);
 
         //var_dump($material->nome);die();
 
-        $this->load->view('emprestimos/visualizar', $emprestimo, $material, $usuario, $data);
+        $this->load->view('emprestimos/visualizar', $data, $emprestimo);
 
         $this->load->view('templates/footer');
 
