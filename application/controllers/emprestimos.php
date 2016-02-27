@@ -10,6 +10,11 @@ class Emprestimos extends CI_Controller {
     }
 }
 
+
+public function index(){
+    $this->load->view('dashboard');
+}
+
 public function agendar()
 {
 
@@ -30,6 +35,7 @@ public function agendar()
         if($this->form_validation->run() == TRUE){
 
             $this->load->model('emprestimo_model');
+            $this->load->model('mensagem_model');
 
             //print_r($form); die();
                 // Imprime na tela os dados enviados do form e mata a aplicacão 
@@ -37,8 +43,13 @@ public function agendar()
             $emprestimo = new Emprestimo_model($form);
             $emprestimo->cadastrar();
 
+            $this->session->set_flashdata('mensagem', 
+            array('tipo' => 'success', 'texto' => 'Curso cadastrado com sucesso!'));
+
+
         } else{
-            echo "Ocorreu algum erro!";
+            $this->session->set_flashdata('mensagem', 
+            array('tipo' => 'danger', 'texto' => 'Dados inválidos! Tente novamente.'));
         }
     }
 
@@ -53,7 +64,7 @@ public function agendar()
 
         $this->db->order_by("nome", "asc");
         $dados['locais'] = $this->db->get('local')->result();
-        $this->load->view('emprestimos/agendar',$dados);
+        $this->load->view('emprestimos/agendar',$dados,  NULL, TRUE);
         $this->load->view('templates/footer');
     }
 
