@@ -38,7 +38,7 @@ class Emprestimo_model extends CI_Model {
             $this->hora_devolucao = isset($arr['hora_devolucao']) ? $arr['hora_devolucao'] : null;
             $this->id            = isset($arr['id']) ? $arr['id'] : null;
             $this->justificativa        = isset($arr['justificativa']) ? $arr['justificativa'] : null;
-            $this->id_local         = isset($arr['local']) ? $arr['local'] : null;
+            $this->id_local         = isset($arr['id_local']) ? $arr['id_local'] : null;
             $this->termos         = isset($arr['termos']) ? $arr['termos'] : null;
             $this->status     = isset($arr['status']) ? $arr['status'] : 1;
             $this->id_usuario     = isset($arr['id_usuario']) ? $arr['id_usuario'] : 1;

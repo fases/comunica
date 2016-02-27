@@ -143,6 +143,7 @@
                             <ul>
                                 <li><a href="<?php echo base_url() ?>material/cadastrar">Cadastrar material</a></li>
                                 <li><a href="<?php echo base_url() ?>material/consultar">Consultar</a></li>
+                                <li><a href="<?php echo base_url() ?>local/cadastrar">Locais</a></li>
                             </ul>
                         </li>
 
