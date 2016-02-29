@@ -1,14 +1,13 @@
 <!-- Componentes na página -->
 
 
-
 <div class="container-fluid">
-  <h1 class="ls-title-intro ls-ico-arrow-right ">Solicitação #00<?php echo $emprestimo ?>
+  <h1 class="ls-title-intro ls-ico-arrow-right ">Solicitação #00<?php echo $emprestimo->id; ?>
 
 
     <?php
 
-    switch ($status) {
+    switch ($emprestimo->status) {
      case 1:
      echo "<span class='ls-tag hidden-xs'> Pendente </span> ";
      break;
@@ -32,9 +31,9 @@
 
   <?php
 
-  switch ($status) {
+  switch ($emprestimo->status) {
    case 1:
-   echo '<a href='.base_url().'emprestimos/aprovar/'.$id. ' class="ls-btn-primary ls-btn-sm ls-ico-plus">Aceitar</a>';
+   echo '<a href='.base_url().'emprestimos/aprovar/'.$emprestimo->id. ' class="ls-btn-primary ls-btn-sm ls-ico-plus">Aceitar</a>';
 
    echo '<a href="<?php echo base_url() ?>emprestimos/Suspender/<?php echo$usuario->id;?>" class="ls-btn-dark  ls-float-right">Suspender</a>';
    break;
@@ -62,17 +61,17 @@
 <div class="ls-box ">
   <div class="col-md-8">
     <p><strong>Solicitante</strong></p>
-    <p class="ls-break-text"><?php echo $usuario->nome?></p>
+    <p class="ls-break-text"><?php echo $usuario_emprestimo->nome?></p>
     <hr>
     <p><strong>Contato</strong></p>
-    <p class="ls-break-text">E-mail do solicitante</p>
+    <p class="ls-break-text"><?php echo $usuario_emprestimo->email?></p>
 
   </div>
 
   <div class="col-md-3">
     <div class="ls-box ls-box-gray">
       <p><strong>Aberta em:</strong></p>
-      <p class="ls-break-text"><?php echo $data_cadastro ?></p>
+      <p class="ls-break-text"><?php echo $emprestimo->data_cadastro ?></p>
       
         <!--   <hr>
         <p><strong>Aceita por:</strong></p>
@@ -89,12 +88,12 @@
       <hr>
 
       <p><strong>Local de uso do material</strong></p>
-      <p class="ls-break-text"><?php echo $local ?></p>
+      <p class="ls-break-text"><?php echo $local->nome ?></p>
       <hr>
 
       <p><strong>Material</strong></p>
       <p class="ls-break-text"> 
-        <?php echo $material?>
+        <?php echo $material->nome?>
 
         <!-- <?php echo $material->id ?> -->
 
@@ -104,10 +103,10 @@
 
     <div class="col-md-3">
       <p><strong> Data do empréstimo e Horário</strong></p>
-      <p class="ls-break-text"><?php echo $data ?> as <?php echo $hora ?></p>
+      <p class="ls-break-text"><?php echo $emprestimo->data ?> as <?php echo $emprestimo->hora ?></p>
       <hr>
       <p><strong>Data da devolução e Horário</strong></p>
-      <p class="ls-break-text"><?php echo $data_devolucao ?> as <?php echo $hora_devolucao ?></p>
+      <p class="ls-break-text"><?php echo $emprestimo->data_devolucao?> as <?php echo $emprestimo->hora_devolucao ?></p>
       <hr>
         <!-- <p><strong>Quantidade</strong></p>
         <p class="ls-break-text"><?php echo $quantidade ?></p> -->
@@ -117,10 +116,10 @@
        <hr>
        <div class="ls-box ls-box-gray">
         <p><strong>Justificativa</strong></p>
-        <p class="ls-break-text"><?php echo $justificativa ?></p>
+        <p class="ls-break-text"><?php echo $emprestimo->justificativa ?></p>
         <hr>
         <p><strong>Observações</strong></p>
-        <p class="ls-break-text"><?php echo $obs ?></p>
+        <p class="ls-break-text"><?php echo $emprestimo->obs ?></p>
       </div>
 
 
@@ -132,9 +131,10 @@
 
   <div class="ls-actions-btn">                                                <?php
 
-    switch ($status) {
+    switch ($emprestimo->status) {
      case 1:
-     echo '<a href="<?php echo base_url() ?>emprestimos/aprovar/<?php echo $id ?>" class="ls-btn-primary ls-btn-sm ls-ico-plus ls-float-left">Aceitar</a>';
+     echo '<a href='.base_url().'emprestimos/aprovar/'.$emprestimo->id. ' class="ls-btn-primary ls-btn-sm ls-ico-plus">Aceitar</a>';
+;
 
      echo '<a href="<?php echo base_url() ?>emprestimos/Suspender/<?php echo$usuario->id;?>" class="ls-btn-dark  ls-float-right">Suspender</a>';
      break;

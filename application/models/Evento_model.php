@@ -14,7 +14,7 @@ class Evento_model extends CI_Model {
     public $id_usuario;
     public $status;
     public $obs;
-    public $local;
+    public $id_local;
     public $responsavel;
 
     public function __construct($arr = null)
@@ -28,12 +28,12 @@ class Evento_model extends CI_Model {
             $this->data                   = isset($arr['data']) ? $my_date : null;
             $this->hora                   = isset($arr['hora']) ? $arr['hora'] : null;
             $this->responsavel            = isset($arr['responsavel']) ? $arr['responsavel'] : null;
-            $this->local                  = isset($arr['local']) ? $arr['local'] : null;
+            $this->id_local                  = isset($arr['id_local']) ? $arr['id_local'] : null;
             $this->descricao              = isset($arr['descricao']) ? $arr['descricao'] : null;
             $this->obs                    = isset($arr['obs']) ? $arr['obs'] : null;
             $this->id                     = isset($arr['id']) ? $arr['id'] : null;
             $this->status                 = isset($arr['status']) ? $arr['status'] : 1;
-            $this->id_usuario             = isset($arr['id_usuario']) ? $arr['id_usuario'] : 1;
+            $this->id_usuario             = isset($arr['id_usuario']) ? $arr['id_usuario'] : $this->session->userdata('usuario')->id;
             
         }
     }

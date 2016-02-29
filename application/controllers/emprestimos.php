@@ -41,10 +41,13 @@ public function agendar()
                 // Imprime na tela os dados enviados do form e mata a aplicacão 
             
             $emprestimo = new Emprestimo_model($form);
+            //var_dump($emprestimo); die();
             $emprestimo->cadastrar();
 
             $this->session->set_flashdata('mensagem', 
-            array('tipo' => 'success', 'texto' => 'Curso cadastrado com sucesso!'));
+            array('tipo' => 'success', 'texto' => 'Solicitação de empréstimo realizada com sucesso!'));
+
+            redirect('emprestimos/agendar');
 
 
         } else{
@@ -70,17 +73,20 @@ public function agendar()
 
     public function visualizar($id){
 
-           $data = array(// cria array;
-    'usuario' => $this->session->userdata('usuario') //preenche com os dados da sessão;
-    );
-
         $this->load->model('emprestimo_model'); //carrega o model
         $this->load->model('usuario_model');
         $this->load->model('material_model');
+        $this->load->model('local_model');
+
+        $data = array(); // cria array;
+    $data['usuario'] = $this->session->userdata('usuario'); //preenche com os dados da sessão;
+    $data['emprestimo'] = $this->emprestimo_model->consultar($id);//carrega apenas o emprestimo pelo id
+    $data['usuario_emprestimo'] = $this->usuario_model->consultar($data['emprestimo']->id_usuario);
+    $data['local'] = $this->local_model->consultar($data['emprestimo']->id_local);
+    $data['material'] = $this->material_model->consultar($data['emprestimo']->id_material);
 
         $this->load->view('templates/header',$data);
 
-        $emprestimo = $this->emprestimo_model->consultar($id); //carrega apenas o emprestimo pelo id
 
         //echo "<pre>";
         //var_dump($emprestimo);die('</pre>');
@@ -88,7 +94,7 @@ public function agendar()
 
         //var_dump($material->nome);die();
 
-        $this->load->view('emprestimos/visualizar', $data, $emprestimo);
+        $this->load->view('emprestimos/visualizar', $data);
 
         $this->load->view('templates/footer');
 
@@ -98,23 +104,8 @@ public function agendar()
 
     public function aprovar($id){
 
-        $this->db->where('id',$id);
-        $this->db->update('emprestimo', array('status' => 2));
-
-    }
-
-    public function concluir($id){
-
-        $this->db->where('id',$id);
-        $this->db->update('emprestimo', array('status' => 3));
-
-    }
-
-    public function suspender($id){
-
-        $this->db->where('id',$id);
-        $this->db->update('emprestimo', array('status' => 0));
-
-    }
-
-}
+         $this->load->model('emprestimo_model'); //carrega o model
+         $this->emprestimo_model->aprovar($id);
+         redirect('/emprestimos/visualizar/'.$id);
+ 
+    }}

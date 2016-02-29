@@ -41,7 +41,7 @@ class Emprestimo_model extends CI_Model {
             $this->id_local         = isset($arr['id_local']) ? $arr['id_local'] : null;
             $this->termos         = isset($arr['termos']) ? $arr['termos'] : null;
             $this->status     = isset($arr['status']) ? $arr['status'] : 1;
-            $this->id_usuario     = isset($arr['id_usuario']) ? $arr['id_usuario'] : 1;
+            $this->id_usuario     = isset($arr['id_usuario']) ? $arr['id_usuario'] : $this->session->userdata('usuario')->id;
             $this->obs     = isset($arr['obs']) ? $arr['obs'] : null;
       
         }
@@ -61,8 +61,8 @@ class Emprestimo_model extends CI_Model {
 
     public function consultar($id){
 
-        $this->db->join('usuario', 'emprestimo.id_usuario=usuario.id', 'inner');
-        $this->db->join('local', 'emprestimo.id_local=local.id', 'inner');  
+        //$this->db->join('usuario', 'emprestimo.id_usuario=usuario.id', 'inner');
+        //$this->db->join('local', 'emprestimo.id_local=local.id', 'inner');  
 
         //Busca com condição
         $query = $this->db->get_where('emprestimo', array('emprestimo.id' => $id));
@@ -70,6 +70,26 @@ class Emprestimo_model extends CI_Model {
         //row_object() retorna direto o objeto produto e não um array
         return $query->row_object();
 
+    }
+
+    public function aprovar($id){
+
+        $this->db->where('id',$id);
+        $this->db->update('emprestimo', array('status' => 2));
+
+    }
+
+    public function concluir($id){
+
+        $this->db->where('id',$id);
+        $this->db->update('emprestimo', array('status' => 3));
+
+    }
+
+    public function suspender($id){
+
+        $this->db->where('id',$id);
+        $this->db->update('emprestimo', array('status' => 0));
 
     }
     

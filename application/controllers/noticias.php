@@ -22,6 +22,11 @@ class Noticias extends CI_Controller {
                 $noticia = new Noticia_model($form);
                 $noticia->cadastrar();
 
+            $this->session->set_flashdata('mensagem', 
+            array('tipo' => 'success', 'texto' => 'Solicitação de notícia enviada com sucesso!'));
+
+            redirect('noticias/enviar');
+
             }
         }
 

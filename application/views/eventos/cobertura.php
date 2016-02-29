@@ -6,7 +6,9 @@
 
     <div class="ls-clearfix"></div>
 
-    <form method="post" class="ls-form ls-form-horizontal">
+    <?php $this->mensagem_model->exibir(); ?>
+
+    <form method="post" class="ls-form ls-form-horizontal" data-ls-module="form">
     <fieldset>
   <label class="ls-label col-md-3">
     <b class="ls-label-text">Data</b>
@@ -24,9 +26,27 @@
     </label>
 
         <label class="ls-label col-md-12">
-          <b class="ls-label-text">Local</b>
-          <input type="text"  name="local" placeholder="Local do evento" required >
-        </label>
+          <b class="ls-label-text">Local de uso</b>
+          <div class="ls-custom-select">
+            <select name="id_local" id="id_local" class="ls-select">
+
+              <option value="0"></option>
+              <?php 
+              foreach ($locais as $local) {
+                ?>
+
+                <option value="<?= $local->id?>"><?= $local->nome; ?></option>
+           <!-- <option>Refletor</option>
+            <option>Câmera</option>
+            <option>Tecidos</option>
+            <option>Toalha de mesa</option>
+            <option>Arranjo de flores</option>
+            <option>Microfone</option> -->,
+
+            <?php }?>
+          </select>
+        </div>
+      </label>
 
         <label class="ls-label col-md-12">
           <b class="ls-label-text">Descrição</b>

@@ -22,17 +22,17 @@ class Mensagem_model extends CI_Model
 				case 'danger':
 				case 'erro':
 				case 'error':
-					$icon = 'ban';
+					$icon = 'close';
 					$tipo = 'danger';
 					break;
 				case 'success':
 				case 'sucesso':
-					$icon = 'check';
+					$icon = 'checkmark';
 					$tipo = 'success';
 					break;
 				case 'warning':
 				case 'atencao':
-					$icon = 'warning';
+					$icon = 'bullhorn';
 					$tipo = 'warning';
 					break;
 				case 'info':
@@ -42,9 +42,9 @@ class Mensagem_model extends CI_Model
 			}
 
 			echo '
-              <div class="alert alert-' . $tipo . ' alert-dismissable">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                <i class="icon fa fa-' . $icon . '"></i> ' . $mensagem['texto'] . '
+              <div class="ls-alert-' . $tipo . ' ls-dismissable">
+                <span data-ls-module="dismiss" class="ls-dismiss">&times;</span>
+                <span class="ls-ico-' . $icon . '"></span> ' . $mensagem['texto'] . '
               </div>
 			';
 		}

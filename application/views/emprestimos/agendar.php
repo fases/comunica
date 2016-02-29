@@ -8,7 +8,7 @@
 
   <div class="ls-clearfix"></div>
 
-   <?php //$this->mensagem_model->exibir(); ?>
+   <?php $this->mensagem_model->exibir(); ?>
 
   <form method="post" class="ls-form ls-form-horizontal" data-ls-module="form">
     <fieldset>

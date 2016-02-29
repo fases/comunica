@@ -19,6 +19,7 @@ class Pedidos extends CI_Controller {
         );
 
 
+       //var_dump( $this->session->userdata('usuario')->id); die();
 
         $this->load->view('templates/header',$data);
         $this->load->view('pedidos',$data);

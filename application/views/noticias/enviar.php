@@ -3,7 +3,9 @@
 <div class="container-fluid">
     <h1 class="ls-title-intro ls-ico-pencil">Envio de notícias</h1>
 
-    <div class="ls-clearfix"> </div>
+    <div class="ls-clearfix"></div>
+
+    <?php $this->mensagem_model->exibir(); ?>
 
 
     <form method="post" class="ls-form row">
