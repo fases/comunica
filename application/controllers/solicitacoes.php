@@ -108,7 +108,9 @@ class Solicitacoes extends CI_Controller {
                     $this->load->view('templates/header',$data);
 
         $this->load->model('emprestimo_model'); //carrega o model
-        $data['emprestimos'] = $this->emprestimo_model->listar()->result_array(); //cria variável, realiza a consulta e organiza em uma array
+        $data['emprestimos'] = $this->emprestimo_model->listar(); //cria variável, realiza a consulta e organiza em uma array
+
+        //var_dump($data);die();
 
         $this->load->view('solicitacoes/emprestimos',$data);
         $this->load->view('templates/footer');

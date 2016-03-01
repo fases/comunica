@@ -173,20 +173,45 @@ class Material extends CI_Controller {
 
         public function visualizar($id){
 
-           $data = array(// cria array;
-    'usuario' => $this->session->userdata('usuario') //preenche com os dados da sessão;
-    );
-        $this->load->model('material_producao_model'); //carrega o model
 
-        $this->load->view('templates/header',$data);
+            $this->load->model('usuario_model'); //carrega o model
+            $this->load->model('material_impressao_model'); //carrega o model
+            $this->load->model('material_producao_model'); //carrega o model
 
-        $producao = $this->material_producao_model->consultar($id); //carrega apenas o emprestimo pelo id
-        //var_dump($producao);die();
-        $this->load->view('material/visualizar',$data, $producao);
+           $data = array();// cria array;
+            $data['usuario'] = $this->session->userdata('usuario'); //preenche com os dados da sessão;
+            $data['impressao'] = $this->material_impressao_model->consultar($id); //carrega o evento apenas pelo id;
+            $data['usuario_impressao'] = $this->usuario_model->consultar($data['impressao']->id_usuario);
+        
+            $this->load->view('templates/header',$data);
+            $this->load->view('material/visualizar',$data);
+            $this->load->view('templates/footer');
 
-        $this->load->view('templates/footer');
 
+    }
 
+    public function aprovar($id){
+
+         $this->load->model('material_impressao_model'); //carrega o model
+         $this->material_impressao_model->aprovar($id);
+         redirect(base_url().'material/visualizar/'.$id);
+ 
+    }
+
+    public function concluir($id){
+
+         $this->load->model('material_impressao_model'); //carrega o model
+         $this->material_impressao_model->concluir($id);
+         redirect(base_url().'material/visualizar/'.$id);
+ 
+    }
+
+        public function suspender($id){
+
+         $this->load->model('material_model'); //carrega o model
+         $this->material_impressao_model->suspender($id);
+         redirect(base_url().'material/visualizar/'.$id);
+ 
     }
 
 }

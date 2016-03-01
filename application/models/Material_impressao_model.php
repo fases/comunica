@@ -52,7 +52,7 @@ class Material_impressao_model extends CI_Model {
 
     public function consultar($id){
 
-        $this->db->join('usuario','id_usuario=id','inner');
+        //$this->db->join('usuario','id_usuario=id','inner');
 
         //Busca com condição
         $query = $this->db->get_where('impressao', array('id' => $id));
@@ -61,6 +61,29 @@ class Material_impressao_model extends CI_Model {
         return $query->row_object();
 
     }
+
+    public function aprovar($id){
+
+        $this->db->where('id',$id);
+        $this->db->update('impressao', array('status' => 2));
+
+    }
+
+    public function concluir($id){
+
+        $this->db->where('id',$id);
+        $this->db->update('impressao', array('status' => 3));
+
+    }
+
+    public function suspender($id){
+
+        $this->db->where('id',$id);
+        $this->db->update('impressao', array('status' => 4));
+
+    }
+
+    
 
     
 }

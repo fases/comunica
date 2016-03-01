@@ -1,34 +1,53 @@
 <!-- Componentes na página -->
 
 <div class="container-fluid">
-    <h1 class="ls-title-intro ls-ico-arrow-right ">Solicitação #00<?php echo $id ?>                        
+    <h1 class="ls-title-intro ls-ico-arrow-right ">Solicitação #00<?php echo $impressao->id; ?>                         
 
-    <?php
+   <?php
 
-                        switch ($status) {
-   case 1:
-         echo "<span class='ls-tag hidden-xs'> Pendente </span> ";
-         break;
-   case 2:
-         echo "<span class='ls-tag-warning'>Em andamento</span> ";
-         break;
-   case 3:
-         echo "<span class='ls-tag-success'>Concluída</span>";;
-         break;
-} 
+    switch ($impressao->status) {
+     case 1:
+     echo "<span class='ls-tag hidden-xs'> Pendente </span> ";
+     break;
+     case 2:
+     echo "<span class='ls-tag-warning'>Em andamento</span> ";
+     break;
+     case 3:
+     echo "<span class='ls-tag-success'>Concluída</span>";;
+     break;
+   } 
 
 
-                        ?> 
+   ?>
 
     </h1> 
 
 <h1 class="ls-title">
 
-        <button type="submit" class="ls-btn-primary">Assumir</button>
-        <a href="<?php echo base_url() ?>usuarios/desativar/<?php echo$usuario->id;?>" class="ls-btn-dark ls-float-right">Suspender</a>
-        <a aria-expanded="false" onClick="JavaScript: window.history.back();" class="ls-btn ls-float-right">Voltar</a>
+  <?php
 
-      </h1>
+  switch ($impressao->status) {
+   case 1:
+   echo '<a href='.base_url().'material/aprovar/'.$impressao->id. ' class="ls-btn-primary ls-btn-sm ls-ico-plus">Aceitar</a>';
+
+   echo '<a href='.base_url().'material/suspender/'.$impressao->id. ' class="ls-btn-dark  ls-float-right">Suspender</a>';
+   break;
+   case 2:
+   echo '<a href='.base_url().'material/concluir/'.$impressao->id. ' class="ls-btn-primary ls-btn-sm ls-ico-checkmark">Concluido</a>';
+   break;
+   case 3:
+   echo '<a class="ls-tooltip-right ls-btn" aria-label="Esta solicitação já foi atendida!" aria-expanded="false">Concluída!</a>';
+   break;
+ } 
+
+
+ ?>
+
+ 
+ 
+ <a aria-expanded="false" onClick="JavaScript: window.history.back();" class="ls-btn ls-float-right">Voltar</a>
+
+</h1>
 
         <!-- Apartir daqui, vocês devem inserir os componentes na página -->
 
@@ -37,20 +56,19 @@
 <div class="ls-box ">
 <div class="col-md-8">
       <p><strong>Solicitante</strong></p>
-      <p class="ls-break-text">5106f51636e1d9c770000001</p>
+      <p class="ls-break-text"><?php echo $usuario_impressao->nome; ?></p>
       <hr>
       <p><strong>Contato</strong></p>
-      <p class="ls-break-text">YFJPXDxzHthxgRY1uYs8FWJfqnpDjMEq1MFNyxEQVTAr</p>
+      <p class="ls-break-text"><?php echo $usuario_impressao->email; ?></p>
 
   </div>
 
   <div class="col-md-3">
     <div class="ls-box ls-box-gray">
           <p><strong>Aberta em:</strong></p>
-      <p class="ls-break-text">12/08/2015</p>
-            <hr>
-        <p><strong>Aceita por:</strong></p>
-      <p class="ls-break-text">Administrador</p>
+      <p class="ls-break-text"><?php echo $impressao->data_cadastro ?></p>
+            
+        
 
     </div>
     </div>
@@ -59,11 +77,11 @@
     <div class="ls-box ">
 <div class="col-md-12">
       <p><strong>Tipo</strong></p>
-      <p class="ls-break-text">Produção de material gráfico</p>
+      <p class="ls-break-text"><?php echo $impressao->tipo_material ?></p>
       <hr>
 
     <p><strong>Dimensão de material</strong></p>
-      <p class="ls-break-text">Aviso (A4) </p>
+      <p class="ls-break-text"><?php echo $impressao->tipo_papel ?></p>
 
   </div>
 
@@ -82,7 +100,7 @@
        <hr>
 <div class="ls-box ls-box-gray">
           <p><strong>Justificativa</strong></p>
-      <p class="ls-break-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <p class="ls-break-text"><?php echo $impressao->justificativa ?></p>
     </div>
 
 

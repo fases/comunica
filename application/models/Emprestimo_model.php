@@ -55,8 +55,18 @@ class Emprestimo_model extends CI_Model {
 
     public function listar(){
         //listagem de todos os usuários
-        
-        return $this->db->get('emprestimo');
+        $this->load->model('Usuario_model');
+
+        $result = $this->db->get('emprestimo')->result_array();
+
+        foreach($result as $k=>$r) {
+            $usuario = $this->usuario_model->consultar($r['id_usuario']);
+
+            $result[$k]['usuario'] = $usuario;
+        }
+
+
+        return $result;
     }
 
     public function consultar($id){

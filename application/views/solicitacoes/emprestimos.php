@@ -87,7 +87,7 @@
                 </td>
 
                 <td>
-                    <a href="<?php echo base_url() ?>/usuarios/visualizar"><?php echo $emprestimo['id_usuario'];?></a>
+                    <a href="<?php echo base_url() ?>usuarios/visualizar/<?php echo $emprestimo['usuario']->id;?>"><?php echo $emprestimo['usuario']->nome;?></a>
                     
                 </td>
                 <td>
