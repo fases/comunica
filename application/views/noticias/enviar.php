@@ -24,10 +24,10 @@
           <textarea rows="10" name="descricao" class="ls-textarea-autoresize ls-textarea-resize-vertical " required ></textarea>
         </label>
       
-        <!--      <div class="ls-label col-md-12">
+       <div class="ls-label col-md-12">
             <label for="exampleInputFile">Envio de arquivos</label>
-            <input id="exampleInputFile" type=file multiple>
-        </div> -->
+            <input id="exampleInputFile" name="arquivo_1" type="file">
+        </div>
 
       <label class="ls-label col-md-12">
         <b class="ls-label-text">Links úteis</b>
