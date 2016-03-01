@@ -47,13 +47,34 @@ class Evento_model extends CI_Model {
          return $this->db->get('eventos');
 
     } 
-    public function localizar($id){
+    public function consultar($id){
 
         //Busca com condição
         $query = $this->db->get_where('eventos', array('id' => $id));
  
         //row_object() retorna direto o objeto produto e não um array
         return $query->row_object();
+
+    }
+
+    public function aprovar($id){
+
+        $this->db->where('id',$id);
+        $this->db->update('eventos', array('status' => 2));
+
+    }
+
+    public function concluir($id){
+
+        $this->db->where('id',$id);
+        $this->db->update('eventos', array('status' => 3));
+
+    }
+
+    public function suspender($id){
+
+        $this->db->where('id',$id);
+        $this->db->update('eventos', array('status' => 4));
 
     }
     

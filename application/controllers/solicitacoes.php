@@ -29,23 +29,18 @@ class Solicitacoes extends CI_Controller {
 
     public function material(){  
 
-        $data = array(// cria array;
-    'usuario' => $this->session->userdata('usuario') //preenche com os dados da sessão;
-    );
-        $this->load->view('templates/header',$data);
-
         $this->load->model('material_impressao_model'); //carrega o model
         $this->load->model('material_producao_model'); //carrega o model
+        $this->load->model('usuario_model');
 
-
-        $this->db->join('usuario','id_usuario=id','inner'); //inner join entre as tabelas
-
+        $data = array();// cria array;
+        $data['usuario'] = $this->session->userdata('usuario'); //preenche com os dados da sessão;
         $data['materiais_impressao'] = $this->material_impressao_model->listar()->result_array(); //cria variável, realiza a consulta e organiza em uma array
         $data['materiais_producao'] = $this->material_producao_model->listar()->result_array(); //cria variável, realiza a consulta e organiza em uma array
+        $data['usuario_material'] = $this->material_producao_model->listar()->result_array(); //cria variável, realiza a consulta e organiza em uma array
 
-        //var_dump($data);die();
-        //var_dump($data2);die();
 
+        $this->load->view('templates/header',$data);
         $this->load->view('solicitacoes/material', $data);
         $this->load->view('templates/footer');
 

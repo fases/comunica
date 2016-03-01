@@ -85,7 +85,8 @@
                 </td>
 
                 <td>
-                    <a href="http://localhost/comunica/usuarios/visualizar.php"> <?php echo $impressao['id_usuario'];?></a>
+                    
+                    <a href="<?php echo base_url() ?>usuarios/visualizar/<?php echo $impressao['id_usuario'];?>"> <?php echo $impressao['id_usuario'];?></a>
                     
                 </td>
                 <td>

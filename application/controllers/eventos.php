@@ -59,17 +59,48 @@ class Eventos extends CI_Controller {
     }
 
 
-    public function visualizar(){
+    public function visualizar($id){
 
-           $data = array(// cria array;
-    'usuario' => $this->session->userdata('usuario') //preenche com os dados da sessão;
-        );
+            $this->load->model('usuario_model');
+            $this->load->model('evento_model');
+            $this->load->model('local_model');
+
+            $data = array();// cria array;
+            $data['usuario'] = $this->session->userdata('usuario'); //preenche com os dados da sessão;
+            $data['evento'] = $this->evento_model->consultar($id); //carrega o evento apenas pelo id;
+            $data['usuario_evento'] = $this->usuario_model->consultar($data['evento']->id_usuario);
+            $data['local_evento'] = $this->local_model->consultar($data['evento']->id_local);
+
 
         $this->load->view('templates/header',$data);
         $this->load->view('eventos/visualizar',$data);
         $this->load->view('templates/footer');
 
 
+    }
+
+    public function aprovar($id){
+
+         $this->load->model('evento_model'); //carrega o model
+         $this->evento_model->aprovar($id);
+         redirect(base_url().'eventos/visualizar/'.$id);
+ 
+    }
+
+    public function concluir($id){
+
+         $this->load->model('evento_model'); //carrega o model
+         $this->evento_model->concluir($id);
+         redirect(base_url().'eventos/visualizar/'.$id);
+ 
+    }
+
+    public function suspender($id){
+
+         $this->load->model('evento_model'); //carrega o model
+         $this->evento_model->suspender($id);
+         redirect(base_url().'eventos/visualizar/'.$id);
+ 
     }
 
 }
