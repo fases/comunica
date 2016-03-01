@@ -35,10 +35,10 @@
    case 1:
    echo '<a href='.base_url().'emprestimos/aprovar/'.$emprestimo->id. ' class="ls-btn-primary ls-btn-sm ls-ico-plus">Aceitar</a>';
 
-   echo '<a href="<?php echo base_url() ?>emprestimos/Suspender/<?php echo$usuario->id;?>" class="ls-btn-dark  ls-float-right">Suspender</a>';
+   echo '<a href='.base_url().'emprestimos/suspender/'.$emprestimo->id. ' class="ls-btn-dark  ls-float-right">Suspender</a>';
    break;
    case 2:
-   echo '<a href="<?php echo base_url() ?>emprestimos/concluir/<?php echo $id ?>" class="ls-btn-primary ls-btn-sm ls-ico-checkmark">Concluido</a>';
+   echo '<a href='.base_url().'emprestimos/concluir/'.$emprestimo->id. ' class="ls-btn-primary ls-btn-sm ls-ico-checkmark">Concluido</a>';
    break;
    case 3:
    echo '<a class="ls-tooltip-right ls-btn" aria-label="Esta solicitação já foi atendida!" aria-expanded="false">Concluída!</a>';
@@ -129,25 +129,24 @@
 
 
 
-  <div class="ls-actions-btn">                                                <?php
+  <div class="ls-actions-btn">                                                  <?php
 
-    switch ($emprestimo->status) {
-     case 1:
-     echo '<a href='.base_url().'emprestimos/aprovar/'.$emprestimo->id. ' class="ls-btn-primary ls-btn-sm ls-ico-plus">Aceitar</a>';
-;
+  switch ($emprestimo->status) {
+   case 1:
+   echo '<a href='.base_url().'emprestimos/aprovar/'.$emprestimo->id. ' class="ls-btn-primary ls-btn-sm ls-ico-plus">Aceitar</a>';
 
-     echo '<a href="<?php echo base_url() ?>emprestimos/Suspender/<?php echo$usuario->id;?>" class="ls-btn-dark  ls-float-right">Suspender</a>';
-     break;
-     case 2:
-     echo '<a href="<?php echo base_url() ?>emprestimos/concluir/<?php echo $id ?>" class="ls-btn-primary ls-btn-sm ls-ico-checkmark ls-float-left">Concluido</a>';
-     break;
-     case 3:
-     echo '<a class="ls-tooltip-right ls-btn" aria-label="Esta solicitação já foi atendida!" aria-expanded="false">Concluída!</a>';
-     break;
-   } 
+   echo '<a href='.base_url().'emprestimos/suspender/'.$emprestimo->id. ' class="ls-btn-dark  ls-float-right">Suspender</a>';
+   break;
+   case 2:
+   echo '<a href='.base_url().'emprestimos/concluir/'.$emprestimo->id. ' class="ls-btn-primary ls-btn-sm ls-ico-checkmark">Concluido</a>';
+   break;
+   case 3:
+   echo '<a class="ls-tooltip-right ls-btn" aria-label="Esta solicitação já foi atendida!" aria-expanded="false">Concluída!</a>';
+   break;
+ } 
 
 
-   ?>
+ ?>
 
    
    

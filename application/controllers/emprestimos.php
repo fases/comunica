@@ -106,6 +106,16 @@ public function agendar()
 
          $this->load->model('emprestimo_model'); //carrega o model
          $this->emprestimo_model->aprovar($id);
-         redirect('/emprestimos/visualizar/'.$id);
+         redirect(base_url().'emprestimos/visualizar/'.$id);
  
-    }}
+    }
+
+    public function concluir($id){
+
+         $this->load->model('emprestimo_model'); //carrega o model
+         $this->emprestimo_model->concluir($id);
+         redirect(base_url().'emprestimos/visualizar/'.$id);
+ 
+    }
+
+}

@@ -5,6 +5,8 @@
 
     <div class="ls-clearfix"></div>
 
+    <?php $this->mensagem_model->exibir(); ?>
+
         <form method="post" class="ls-form ls-form-horizontal">
 
         <fieldset>

@@ -25,7 +25,7 @@ class Noticias extends CI_Controller {
             $this->session->set_flashdata('mensagem', 
             array('tipo' => 'success', 'texto' => 'Solicitação de notícia enviada com sucesso!'));
 
-            redirect('noticias/enviar');
+            redirect(base_url().'noticias/enviar');
 
             }
         }

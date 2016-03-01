@@ -44,6 +44,12 @@ class Material extends CI_Controller {
                     $material_producao->cadastrar();
 
                 }
+
+                $this->session->set_flashdata('mensagem', 
+                    array('tipo' => 'success', 'texto' => 'Solicitação de notícia enviada com sucesso!'));
+
+                redirect(base_url().'material/producao');
+
             } else {
                 die('Erro no upload: ' . $this->upload->display_errors());
             }
@@ -77,6 +83,11 @@ class Material extends CI_Controller {
                 
                 $material_producao = new Material_impressao_model($form);
                 $material_producao->cadastrar();
+
+                $this->session->set_flashdata('mensagem', 
+                array('tipo' => 'success', 'texto' => 'Solicitação de notícia enviada com sucesso!'));
+                
+                redirect(base_url().'material/impressao');
 
             }
         }

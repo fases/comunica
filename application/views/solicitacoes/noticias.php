@@ -1,6 +1,8 @@
 <div class="container-fluid">
     <h1 class="ls-title-intro ls-ico-folder ">Notícias</h1>
 
+       <?php $this->mensagem_model->exibir(); ?>
+
         <!-- Apartir daqui, vocês devem inserir os componentes na página -->
 
 

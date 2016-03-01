@@ -3,7 +3,12 @@
 <div class="container-fluid">
     <h1 class="ls-title-intro ls-ico-text">Produção de material gráfico </h1>
 
+
+
       <div class="ls-label col-md-12">
+      
+<?php $this->mensagem_model->exibir(); ?>
+
   <div class="ls-alert-warning" role="alert">
 
 É válido ressaltar que a Setor de Comunicação Social do Campus não tem o deve de prestar o serviço de produção de matérial gráfico para qualquer projeto de pesquisa ou extensão do campus, se compromentendo apenas com os <strong>eventos institucionais</strong>.
@@ -11,6 +16,8 @@
  </div>
 
     <div class="ls-clearfix"></div>
+
+       
 
        <form method="post" class="ls-form ls-form-horizontal" enctype="multipart/form-data">
 
