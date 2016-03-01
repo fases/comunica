@@ -25,7 +25,7 @@ class Material extends CI_Controller {
                     'allowed_types' => 'jpg|jpeg|png|gif|pdf'
                     );
 
-                // var_dump($this->input->post()); die();
+                //var_dump($this->input->post()); die();
 
                 $this->load->library('upload', $config);
 
@@ -35,7 +35,7 @@ class Material extends CI_Controller {
 
                     $this->load->model('material_producao_model');
 
-                    //print_r($form); die();
+                    //var_dump($form); die();
                     // Imprime na tela os dados enviados do form e mata a aplicacão 
                     
                     $material_producao = new Material_producao_model($form);
