@@ -69,11 +69,17 @@ class Noticias extends CI_Controller {
         $this->load->view('templates/footer');
     }
 
-    public function visualizar(){
+    public function visualizar($id){
 
-           $data = array(// cria array;
-    'usuario' => $this->session->userdata('usuario') //preenche com os dados da sessão;
-    );
+        $this->load->model('usuario_model');
+        $this->load->model('noticia_model');
+
+        $data = array(); // cria array;
+        $data['usuario'] = $this->session->userdata('usuario'); //preenche com os dados da sessão;
+        $data['noticia'] = $this->noticia_model->consultar($id);//carrega apenas a notícia pelo id;
+        $data['usuario_noticia'] = $this->usuario_model->consultar($data['noticia']->id_usuario);
+
+
 
            $this->load->view('templates/header',$data);
            $this->load->view('noticias/visualizar',$data);
@@ -81,6 +87,30 @@ class Noticias extends CI_Controller {
 
 
        }
+
+           public function aprovar($id){
+
+         $this->load->model('noticia_model'); //carrega o model
+         $this->noticia_model->aprovar($id);
+         redirect(base_url().'noticias/visualizar/'.$id);
+ 
+    }
+
+    public function concluir($id){
+
+         $this->load->model('noticia_model'); //carrega o model
+         $this->noticia_model->concluir($id);
+         redirect(base_url().'noticias/visualizar/'.$id);
+ 
+    }
+
+        public function suspender($id){
+
+         $this->load->model('noticia_model'); //carrega o model
+         $this->noticia_model->suspender($id);
+         redirect(base_url().'noticias/visualizar/'.$id);
+ 
+    }
 
 
    }
