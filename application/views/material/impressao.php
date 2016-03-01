@@ -7,7 +7,7 @@
 
     <?php $this->mensagem_model->exibir(); ?>
 
-        <form method="post" class="ls-form ls-form-horizontal">
+        <form method="post" class="ls-form ls-form-horizontal" enctype="multipart/form-data">
 
         <fieldset>
     <div class="ls-label col-md-12">
@@ -75,10 +75,10 @@
           <textarea rows="8" name="justificativa"  class="ls-textarea-autoresize" required></textarea>
         </label>
 
-       <!-- <div class="ls-label col-md-12">
+       <div class="ls-label col-md-12">
             <label for="exampleInputFile">Envio de arquivos</label>
-            <input id="exampleInputFile" type="file">
-        </div> -->
+            <input id="exampleInputFile" name="arquivo_1" type="file">
+        </div>
 
       <label class="ls-label col-md-12">
         <b class="ls-label-text">Links úteis</b>

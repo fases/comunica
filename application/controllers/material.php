@@ -46,7 +46,7 @@ class Material extends CI_Controller {
                 }
 
                 $this->session->set_flashdata('mensagem', 
-                    array('tipo' => 'success', 'texto' => 'Solicitação de notícia enviada com sucesso!'));
+                    array('tipo' => 'success', 'texto' => 'Solicitação de produção de material gráfico enviada com sucesso!'));
 
                 redirect(base_url().'material/producao');
 
@@ -76,19 +76,38 @@ class Material extends CI_Controller {
 
             if($this->form_validation->run() == TRUE){
 
-                $this->load->model('material_impressao_model');
+                $config = array(
+                    'upload_path' => './arquivos/producao/',
+                    'allowed_types' => 'jpg|jpeg|png|gif|pdf'
+                    );
 
-                // print_r($form); die();
-                // Imprime na tela os dados enviados do form e mata a aplicacão 
-                
-                $material_producao = new Material_impressao_model($form);
-                $material_producao->cadastrar();
+                // var_dump($this->input->post()); die();
+
+                $this->load->library('upload', $config);
+
+                if($this->upload->do_upload('arquivo_1')) {
+                    $dados_arquivo = $this->upload->data();
+
+
+                    $this->load->model('material_impressao_model');
+
+                    //print_r($form); die();
+                    // Imprime na tela os dados enviados do form e mata a aplicacão 
+                    
+                    $material_impressao = new Material_impressao_model($form);
+
+                    $material_impressao->arquivo_1 = $dados_arquivo['full_path'];
+                    $material_impressao->cadastrar();
+
+                }
 
                 $this->session->set_flashdata('mensagem', 
-                array('tipo' => 'success', 'texto' => 'Solicitação de notícia enviada com sucesso!'));
-                
+                    array('tipo' => 'success', 'texto' => 'Solicitação de impressão de material gráfico enviada com sucesso!'));
+
                 redirect(base_url().'material/impressao');
 
+            } else {
+                die('Erro no upload: ' . $this->upload->display_errors());
             }
         }
 

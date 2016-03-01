@@ -8,7 +8,7 @@
     <?php $this->mensagem_model->exibir(); ?>
 
 
-    <form method="post" class="ls-form row">
+    <form method="post" class="ls-form row" enctype="multipart/form-data">
       <fieldset>
           <label class="ls-label col-md-3">
     <b class="ls-label-text">Data para publicação</b>

@@ -37,7 +37,7 @@ class Noticia_model extends CI_Model {
             $this->arquivo_1     = isset($arr['arquivo_1']) ? $arr['arquivo_1'] : null;
             $this->arquivo_2     = isset($arr['arquivo_2']) ? $arr['arquivo_2'] : null;
             $this->arquivo_3     = isset($arr['arquivo_3']) ? $arr['arquivo_3'] : null;
-      
+            
         }
     }
 
@@ -49,7 +49,18 @@ class Noticia_model extends CI_Model {
 
     public function listar(){
     return $this->db->get('noticias'); //SELECT * FROM noticias
+}
+
+    public function consultar($id){
+
+            //Busca com condição
+        $query = $this->db->get_where('noticias', array('id' => $id));
+        
+            //row_object() retorna direto o objeto produto e não um array
+        return $query->row_object();
+
     }
 
-    
+
+
 }
