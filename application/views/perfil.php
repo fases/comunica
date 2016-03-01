@@ -78,28 +78,28 @@
     <label class="ls-label col-md-12 " >
       <b class="ls-label-text" >Nome</b>
       <p class="ls-label-info">Digite seu nome completo</p>
-      <input type="text" name="nome" class="ls-field" placeholder="Nome e sobrenome" value="<?php echo $usuario->nome ?>" required >
+      <input type="text" name="nome" class="ls-field" placeholder="Nome e sobrenome" value="<?php echo $usuario_editar->nome?>" required >
     </label>
     <label class="ls-label col-md-9">
       <b class="ls-label-text">E-mail</b>
       <p class="ls-label-info">Seu e-mail </p>
-      <input type="text" name="email" placeholder="Escreva seu email" value="<?php echo $usuario->email ?>" required >
+      <input type="text" name="email" placeholder="Escreva seu email" value="<?php echo $usuario_editar->email ?>" required >
     </label>
 
     <label class="ls-label col-md-3">
       <span class="ls-label-text">Matrícula</span>
       <p class="ls-label-info">Matrícula institucional</p>
-      <input type="text" name="matricula" value="<?php echo $usuario->matricula ?>"required>
+      <input type="text" name="matricula" value="<?php echo $usuario_editar->matricula ?>"required>
      </label>
 
     <label class="ls-label col-md-8">
       <b class="ls-label-text">Endereço</b>
-      <input type="text" name="endereco" placeholder="O nome da sua rua, número"  value="<?php echo $usuario->endereco ?>" required >
+      <input type="text" name="endereco" placeholder="O nome da sua rua, número"  value="<?php echo $usuario_editar->endereco ?>" required >
     </label>
 
     <label class="ls-label col-md-4">
       <b class="ls-label-text">Telefone</b>
-      <input type="text" name="telefone" class="ls-mask-phone9_with_ddd" placeholder="(xx) xxxxx-xxxx" value="<?php echo $usuario->telefone ?>" required>
+      <input type="text" name="telefone" class="ls-mask-phone9_with_ddd" placeholder="(xx) xxxxx-xxxx" value="<?php echo $usuario_editar->telefone ?>" required>
     </label>
 </fieldset>
 
