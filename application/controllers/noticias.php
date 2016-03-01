@@ -19,6 +19,7 @@ class Noticias extends CI_Controller {
             $this->form_validation->set_rules('titulo', 'Título', 'required');
             $this->form_validation->set_rules('descricao', 'Descrição', 'required');
 
+            //var_dump($this->input->post());die();
 
             if($this->form_validation->run() == TRUE){
 
@@ -43,6 +44,8 @@ class Noticias extends CI_Controller {
                     $noticia = new Noticia_model($form);
 
                     $noticia->arquivo_1 = $dados_arquivo['full_path'];
+
+                    //var_dump($noticia);die();
                     $noticia->cadastrar();
 
                 }

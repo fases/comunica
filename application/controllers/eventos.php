@@ -38,7 +38,7 @@ class Eventos extends CI_Controller {
             $this->session->set_flashdata('mensagem', 
             array('tipo' => 'success', 'texto' => 'Solicitação de cobetura de evento enviada com sucesso!'));
 
-            redirect('eventos/cobertura');
+            redirect(base_url().'eventos/cobertura');
 
 
 

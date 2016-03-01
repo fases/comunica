@@ -75,21 +75,21 @@
 
         <div class="ls-prefix-group">
           <span class="ls-label-text-prefix">URL</span>
-          <input type="text" name="link_1"  placeholder="Insira o URL de um link externo">
+          <input type="text" name="url_1"  placeholder="Insira o URL de um link externo">
         </div>
       </label>
 
       <label class="ls-label col-md-12">
         <div class="ls-prefix-group">
           <span class="ls-label-text-prefix">URL</span>
-          <input type="text" name="link_2" placeholder="Insira o URL de um link externo">
+          <input type="text" name="url_2" placeholder="Insira o URL de um link externo">
         </div>
       </label>
 
       <label class="ls-label col-md-12">
         <div class="ls-prefix-group">
           <span class="ls-label-text-prefix">URL</span>
-          <input type="text" name="link_3" placeholder="Insira o URL de um link externo">
+          <input type="text" name="url_3" placeholder="Insira o URL de um link externo">
         </div>
       </label>
       </fieldset>
