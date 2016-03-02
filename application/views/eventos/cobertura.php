@@ -12,7 +12,7 @@
     <fieldset>
   <label class="ls-label col-md-3">
     <b class="ls-label-text">Data</b>
-    <input type="text" name="data" class="datepicker"  placeholder="dd/mm/aaaa"required>
+    <input type="text" id="data" name="data" class="datepicker"  placeholder="dd/mm/aaaa"required>
   </label>
 
     <label class="ls-label col-md-3">

@@ -85,7 +85,7 @@
                     <?php echo '#'. $noticia['id'];?>
                 </td>
                 <td>
-                    <?php echo $noticia['data_cadastro'];?>
+                <?php echo date ("d/m/Y \à\s H:i", strtotime($noticia['data_cadastro']));?>
                 </td>
 
                 <td>
@@ -93,7 +93,8 @@
                     
                 </td>
                 <td>
-                    <?php echo $noticia['data_publicacao'];?>
+                <?php echo date ("d/m/Y", strtotime($noticia['data_publicacao']));?>
+
                 </td>
                 <td class="ls-txt-center hidden-xs">
                 <?php
@@ -120,8 +121,8 @@
 
                         <a href="<?php echo base_url() ?>noticias/" class="ls-btn ls-btn-sm" aria-expanded="false" role="combobox">Status</a>
                         <ul class="ls-dropdown-nav" aria-hidden="true">
-                            <li><a href="<?php echo base_url() ?>noticias/editar/<?php echo $noticia['id'];?>" class="ls-color-danger" role="option">Em andamento</a></li>
-                            <li><a href="<?php echo base_url() ?>noticias/excluir/<?php echo $noticia['id'];?>"  role="option">Concluido</a></li>
+                            <li><a href="<?php echo base_url() ?>noticias/aprovar/<?php echo $noticia['id'];?>" class="ls-color-danger" role="option">Em andamento</a></li>
+                            <li><a href="<?php echo base_url() ?>noticias/concluir/<?php echo $noticia['id'];?>"  role="option">Concluido</a></li>
                         </ul>
                     </div>
 

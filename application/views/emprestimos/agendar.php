@@ -19,25 +19,19 @@
 
       <label class="ls-label col-md-3">
         <b class="ls-label-text">Horário</b>
-        <input type="text" name="hora" class="ls-mask-time" placeholder="00:00" >
+        <input type="text" name="hora" class="ls-mask-time" placeholder="00:00" required>
       </label>
 
       <label class="ls-label col-md-3">
         <b class="ls-label-text">Data da devolução</b>
-        <input type="text" name="data_devolucao" class="datepicker"  placeholder="dd/mm/aaaa">
+        <input type="text" name="data_devolucao" class="datepicker"  placeholder="dd/mm/aaaa" required>
       </label>
 
       <label class="ls-label col-md-3">
         <b class="ls-label-text">Horário</b>
-        <input type="text" name="hora_devolucao" class="ls-mask-time" placeholder="00:00" >
+        <input type="text" name="hora_devolucao" class="ls-mask-time" placeholder="00:00" required>
       </label>
 
-
-
-       <!-- <label class="ls-label col-md-12">
-          <b class="ls-label-text">Local de uso do material</b>
-          <input type="text"  name="local" placeholder="Local do evento"  >
-        </label> -->
 
 
         <label class="ls-label col-md-12">
@@ -51,12 +45,7 @@
                 ?>
 
                 <option value="<?= $local->id?>"><?= $local->nome; ?></option>
-           <!-- <option>Refletor</option>
-            <option>Câmera</option>
-            <option>Tecidos</option>
-            <option>Toalha de mesa</option>
-            <option>Arranjo de flores</option>
-            <option>Microfone</option> -->,
+
 
             <?php }?>
           </select>
@@ -75,12 +64,6 @@
               ?>
 
               <option value="<?= $material->id?>"><?= $material->nome; ?></option>
-           <!-- <option>Refletor</option>
-            <option>Câmera</option>
-            <option>Tecidos</option>
-            <option>Toalha de mesa</option>
-            <option>Arranjo de flores</option>
-            <option>Microfone</option> -->,
 
             <?php }?>
           </select>

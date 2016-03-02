@@ -74,5 +74,27 @@ class Material_producao_model extends CI_Model {
     }
 
 
+        public function aprovar($id){
+
+        $this->db->where('id',$id);
+        $this->db->update('producao', array('status' => 2));
+
+    }
+
+    public function concluir($id){
+
+        $this->db->where('id',$id);
+        $this->db->update('producao', array('status' => 3));
+
+    }
+
+    public function suspender($id){
+
+        $this->db->where('id',$id);
+        $this->db->update('producao', array('status' => 4));
+
+    }
+
+
     
 }

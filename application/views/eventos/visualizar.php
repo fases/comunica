@@ -44,7 +44,7 @@
 
  
  
- <a aria-expanded="false" onClick="JavaScript: window.history.back();" class="ls-btn ls-float-right">Voltar</a>
+ <a <?php echo '<a href='.base_url().'solicitacoes/cobertura/'?> aria-expanded="false" class="ls-btn ls-float-right">Voltar</a>
 
 </h1>
 
@@ -133,7 +133,7 @@
 
 
  ?>
-        <a aria-expanded="false" onClick="JavaScript: window.history.back();" class="ls-btn ls-float-right">Voltar</a>
+        <a <?php echo '<a href='.base_url().'solicitacoes/cobertura/'?> aria-expanded="false" class="ls-btn ls-float-right">Voltar</a>
       </div>
 
     </div>

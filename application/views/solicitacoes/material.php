@@ -78,15 +78,15 @@
             
             <tr>
                 <td>
-                    #<?php echo $impressao['id'];?>
+                    #00<?php echo $impressao['id'];?>
                 </td>
                 <td>
-                     <?php echo $impressao['data_cadastro'];?>
+                <?php $d = new DateTime($impressao['data_cadastro']); echo $d->format('d/m/Y \à\s H:i'); ;?>
                 </td>
 
                 <td>
                     
-                    <a href="<?php echo base_url() ?>usuarios/visualizar/<?php echo $impressao['usuario']->id;?>"><?php echo $impressao['usuario']->nome;?></a>
+                    <a href="<?php echo base_url() ?>usuarios/visualizar_impressao/<?php echo $impressao['usuario']->id;?>"><?php echo $impressao['usuario']->nome;?></a>
                     
                 </td>
                 <td>
@@ -112,13 +112,13 @@
         </td>
                 <td class="ls-txt-right ls-regroup">
 
-                    <a href="<?php echo base_url() ?>material/visualizar/<?php echo $impressao['id'];?>" class="ls-btn ls-btn-sm" aria-expanded="false">Visualizar</a>
+                    <a href="<?php echo base_url() ?>material/visualizar_impressao/<?php echo $impressao['id'];?>" class="ls-btn ls-btn-sm" aria-expanded="false">Visualizar</a>
                     <div data-ls-module="dropdown" class="ls-dropdown ls-pos-right">
 
                         <a href="<?php echo base_url() ?>material/" class="ls-btn ls-btn-sm" aria-expanded="false" role="combobox"></a>
                         <ul class="ls-dropdown-nav" aria-hidden="true">
-                            <li><a href="<?php echo base_url() ?>material/editar/" class="ls-color-danger" role="option">Em andamento</a></li>
-                            <li><a href="<?php echo base_url() ?>material/excluir/"  role="option">Concluido</a></li>
+                            <li><a href="<?php echo base_url() ?>material/aprovar_impressao/<?php echo $impressao['id'];?>" class="ls-color-danger" role="option">Em andamento</a></li>
+                            <li><a href="<?php echo base_url() ?>material/concluir_impressao/<?php echo $impressao['id'];?>"  role="option">Concluido</a></li>
                         </ul>
                     </div>
 
@@ -134,14 +134,14 @@
             
             <tr>
                 <td>
-                    #<?php echo $producao['id'];?>
+                    #00<?php echo $producao['id'];?>
                 </td>
                 <td>
-                     <?php echo $producao['data_cadastro'];?>
+                     <?php $d = new DateTime($producao['data_cadastro']); echo $d->format('d/m/Y \a\s H:i'); ;?>
                 </td>
 
                 <td>
-                    <a href="<?php echo base_url() ?>usuarios/visualizar/<?php echo $producao['usuario']->id;?>"><?php echo $producao['usuario']->nome;?></a>
+                    <a href="<?php echo base_url() ?>usuarios/visualizar_producao/<?php echo $producao['usuario']->id;?>"><?php echo $producao['usuario']->nome;?></a>
                     
                 </td>
                 <td>
@@ -167,13 +167,13 @@
         </td>
                 <td class="ls-txt-right ls-regroup">
 
-                    <a href="<?php echo base_url() ?>material/visualizar/<?php echo $producao['id'];?>" class="ls-btn ls-btn-sm" aria-expanded="false">Visualizar</a>
+                    <a href="<?php echo base_url() ?>material/visualizar_producao/<?php echo $producao['id'];?>" class="ls-btn ls-btn-sm" aria-expanded="false">Visualizar</a>
                     <div data-ls-module="dropdown" class="ls-dropdown ls-pos-right">
 
                         <a href="<?php echo base_url() ?>material/" class="ls-btn ls-btn-sm" aria-expanded="false" role="combobox"></a>
                         <ul class="ls-dropdown-nav" aria-hidden="true">
-                            <li><a href="<?php echo base_url() ?>material/editar/" class="ls-color-danger" role="option">Em andamento</a></li>
-                            <li><a href="<?php echo base_url() ?>material/excluir/"  role="option">Concluido</a></li>
+                            <li><a href="<?php echo base_url() ?>material/aprovar_producao/<?php echo $producao['id'];?>" class="ls-color-danger" role="option">Em andamento</a></li>
+                            <li><a href="<?php echo base_url() ?>material/concluir_producao/<?php echo $producao['id'];?>"  role="option">Concluido</a></li>
                         </ul>
                     </div>
 

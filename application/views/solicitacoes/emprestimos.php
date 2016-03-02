@@ -83,7 +83,7 @@
                     #<?php echo $emprestimo['id'];?>
                 </td>
                 <td>
-                    <?php $d = new DateTime($emprestimo['data_cadastro']); echo $d->format('d/m/Y \a\s H:i'); ;?>
+                    <?php $d = new DateTime($emprestimo['data_cadastro']); echo $d->format('d/m/Y \à\s H:i'); ;?>
                 </td>
 
                 <td>
@@ -91,10 +91,13 @@
                     
                 </td>
                 <td>
-                    <?php echo $emprestimo['data'];?>
+                <?php echo date ("d/m/Y",strtotime($emprestimo['data']));?>
+              <!--  <?php $d1 = new DateTime($emprestimo['data']); echo $d1->format('d/m/Y'); ?> -->
+
                 </td>
                 <td>
-                    <?php echo $emprestimo['data_devolucao'];?>
+                <?php echo date ("d/m/Y",strtotime($emprestimo['data_devolucao']));?>
+                   <!-- <?php $d2 = new DateTime($emprestimo['data_devolucao']); echo $d2->format('d/m/Y'); ?> -->
                 </td>
                 <td class="ls-txt-center hidden-xs">
 

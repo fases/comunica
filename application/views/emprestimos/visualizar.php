@@ -50,7 +50,7 @@
 
  
  
- <a aria-expanded="false" onClick="JavaScript: window.history.back();" class="ls-btn ls-float-right">Voltar</a>
+ <a <?php echo '<a href='.base_url().'solicitacoes/emprestimos/'?> aria-expanded="false" class="ls-btn ls-float-right">Voltar</a>
 
 </h1>
 
@@ -71,7 +71,9 @@
   <div class="col-md-3">
     <div class="ls-box ls-box-gray">
       <p><strong>Aberta em:</strong></p>
-      <p class="ls-break-text"><?php echo $emprestimo->data_cadastro ?></p>
+      <p class="ls-break-text">
+
+      <?php $d = new DateTime($emprestimo->data_cadastro); echo $d->format('d/m/Y \a\s H:i'); ;?></p>
       
         <!--   <hr>
         <p><strong>Aceita por:</strong></p>
@@ -103,10 +105,12 @@
 
     <div class="col-md-3">
       <p><strong> Data do empréstimo e Horário</strong></p>
-      <p class="ls-break-text"><?php echo $emprestimo->data ?> as <?php echo $emprestimo->hora ?></p>
+      <p class="ls-break-text">
+
+      <?php echo date ("d/m/Y",strtotime($emprestimo->data));?> as <?php echo $emprestimo->hora ?></p>
       <hr>
       <p><strong>Data da devolução e Horário</strong></p>
-      <p class="ls-break-text"><?php echo $emprestimo->data_devolucao?> as <?php echo $emprestimo->hora_devolucao ?></p>
+      <p class="ls-break-text"><?php echo date ("d/m/Y",strtotime($emprestimo->data_devolucao));?> as <?php echo $emprestimo->hora_devolucao ?></p>
       <hr>
         <!-- <p><strong>Quantidade</strong></p>
         <p class="ls-break-text"><?php echo $quantidade ?></p> -->
@@ -150,7 +154,7 @@
 
    
    
-   <a aria-expanded="false" onClick="JavaScript: window.history.back();" class="ls-btn ls-float-right">Voltar</a>
+   <a <?php echo '<a href='.base_url().'solicitacoes/emprestimos/'?> aria-expanded="false" class="ls-btn ls-float-right">Voltar</a>
  </div>
 
 </div>

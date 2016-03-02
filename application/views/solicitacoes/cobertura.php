@@ -83,10 +83,10 @@
             <tr>
                 <td>
                     
-                     <?php echo '#'. $evento['id'];?>
+                     <?php echo '#00'. $evento['id'];?>
                 </td>
                 <td>
-                    <?php echo $evento['data_cadastro'];?>
+                    <?php $d = new DateTime($evento['data_cadastro']); echo $d->format('d/m/Y \à\s H:i'); ;?>
                 </td>
 
                 <td>
@@ -94,7 +94,7 @@
                     
                 </td>
                 <td>
-                    <?php echo $evento['data'];?>
+                    <?php echo date ("d/m/Y",strtotime($evento['data']));?>
                 </td>
                 <td class="ls-txt-center hidden-xs">
 
@@ -123,8 +123,8 @@
                     <div data-ls-module="dropdown" class="ls-dropdown ls-pos-right">
                         <a href="#" class="ls-btn ls-btn-sm" aria-expanded="false" role="combobox"></a>
                         <ul class="ls-dropdown-nav" aria-hidden="true">
-                            <li><a href="<?php echo base_url() ?>solicitacoes/editar/<?php echo $evento['id'];?> " role="option">Editar</a></li>
-                            <li><a href="<?php echo base_url() ?>solicitacoes/excluir/<?php echo $evento['id'];?> " class="ls-color-danger" role="option">Excluir</a></li>
+                            <li><a href="<?php echo base_url() ?>eventos/aprovar/<?php echo $evento['id'];?> " role="option">Em andamento</a></li>
+                            <li><a href="<?php echo base_url() ?>eventos/concluir/<?php echo $evento['id'];?> " class="ls-color-danger" role="option">Concluir</a></li>
                         </ul>
                     </div>
 
