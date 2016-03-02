@@ -136,7 +136,8 @@
           <div class="ls-actions-btn">
         <button type="submit" class="ls-btn-primary ls-float-left" aria-expanded="false">Atualizar</button>
         <button type="reset" class="ls-btn-danger ls-float-left">Cancelar</button>
-        <a href="<?php echo base_url() ?>usuarios/desativar/<?php echo$usuario->id;?>" class="ls-btn-dark ls-float-right">Desativar minha conta</a>
+        <a href="<?php echo base_url() ?>usuarios/desativar/<?php echo $usuario->id;?>" class="ls-btn-dark ls-float-right">Desativar minha conta</a>
+        <a href="#" data-ls-module="modal" data-target="#editPassword" class="ls-btn ls-float-right">Alterar senha</a>
         <a aria-expanded="false" onClick="JavaScript: window.history.back();" class="ls-btn ls-float-left">Voltar</a>
       </div>
 
@@ -145,6 +146,34 @@
 
     </form>
 
+
+    <!-- Modal de senha -->
+    <div class="ls-modal" id="editPassword">
+        <form method="post" action="<?php echo base_url() ?>usuarios/senha" class="ls-form">
+            <div class="ls-modal-box">
+                <input type="hidden" name="id" value="<?php echo $usuario->id;?>">
+                <div class="ls-modal-header">
+                    <button data-dismiss="modal">×</button>
+                    <h4 class="ls-modal-title">Alterar senha</h4>
+                </div>
+                <div class="ls-modal-body">
+
+                    <label class="ls-label">
+                        <b class="ls-label-text">Senha *</b>
+                        <input type="password" name="senha" required>
+                    </label>
+                    <label class="ls-label">
+                        <b class="ls-label-text">Confirmação de senha *</b>
+                        <input type="password" name="confirma_senha" required>
+                    </label>
+                </div>
+                <div class="ls-modal-footer">
+                    <button type="submit" class="ls-btn-primary" aria-expanded="false">Salvar</button>
+                    <a href="#atualizar-senha" class="ls-btn ls-float-right" data-dismiss="modal" aria-expanded="false">Cancelar</a>
+                </div>
+            </div>
+        </form>
+    </div>
 
 </div>    
 
