@@ -40,13 +40,15 @@ class Usuario_model extends CI_Model {
 
     public function listar(){
         //listagem de todos os usuários
+        $this->db->where('status !=', 3);
         return $this->db->get('usuario');
     }
 
-    public function deletar($id) {
-    $this->db->where('id', $id);
-    return $this->db->delete('usuario');
+    public function deletar($id){
+        $this->db->where('id',$id);
+        $this->db->update('usuario', array('status' => 3));
     }
+
     public function atualizar(){
         $this->db->where('id', $this->id);
         return $this->db->update('usuario',$this);

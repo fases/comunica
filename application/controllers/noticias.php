@@ -48,6 +48,20 @@ class Noticias extends CI_Controller {
                     //var_dump($noticia);die();
                     $noticia->cadastrar();
 
+                } else {
+
+                    $this->load->model('noticia_model');
+
+                    //print_r($form); die();
+                    // Imprime na tela os dados enviados do form e mata a aplicacão 
+                    
+                    $noticia = new Noticia_model($form);
+
+                    $noticia->arquivo_1 = $dados_arquivo['full_path'];
+
+                    //var_dump($noticia);die();
+                    $noticia->cadastrar();
+
                 }
 
                 $this->session->set_flashdata('mensagem', 

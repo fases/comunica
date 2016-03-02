@@ -132,17 +132,11 @@ class Usuarios extends CI_Controller {
         $this->load->view('templates/footer');
     }
         
-        public function deletar($id){
-
-    $this->load->model('usuario_model');
-    if ($this->usuario_model->deletar($id)) {
-        redirect(base_url("usuarios/listar"));
-        $usuario_invalido=TRUE;
-    } else {
-        log_message('error', 'Erro ao deletar...');
+           public function deletar($id){
+         $this->usuario_model->deletar($id);
+         redirect(base_url('usuarios/listar'));
+ 
     }
-
-        }
 
     public function desativar($id){
 

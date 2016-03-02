@@ -24,7 +24,7 @@ class Material_impressao_model extends CI_Model {
 
             $this->tipo_material          = isset($arr['tipo_material']) ? $arr['tipo_material'] : null;
             $this->tipo_papel              = isset($arr['tipo_papel']) ? $arr['tipo_papel'] : null;           
-            $this->id_usuario              = isset($arr['id_usuario']) ? $arr['id_usuario'] : 1;
+            $this->id_usuario              = isset($arr['id_usuario']) ? $arr['id_usuario'] : $this->session->userdata('usuario')->id;
             $this->justificativa           = isset($arr['justificativa']) ? $arr['justificativa'] : null;
             $this->id                      = isset($arr['id']) ? $arr['id'] : null;
             $this->status                  = isset($arr['status']) ? $arr['status'] : 1;
@@ -67,6 +67,18 @@ class Material_impressao_model extends CI_Model {
 
         //Busca com condição
         $query = $this->db->get_where('impressao', array('id' => $id));
+ 
+        //row_object() retorna direto o objeto produto e não um array
+        return $query->row_object();
+
+    }
+
+        public function consultar_usuario($id){
+
+        //$this->db->join('usuario','id_usuario=id','inner');
+
+        //Busca com condição
+        $query = $this->db->get_where('impressao', array('id_usuario' => $id));
  
         //row_object() retorna direto o objeto produto e não um array
         return $query->row_object();

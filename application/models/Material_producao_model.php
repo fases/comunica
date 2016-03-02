@@ -23,7 +23,7 @@ class Material_producao_model extends CI_Model {
         if(!is_null($arr)){
 
             
-            $this->id_usuario    = isset($arr['id_usuario']) ? $arr['id_usuario'] : 1;
+            $this->id_usuario    = isset($arr['id_usuario']) ? $arr['id_usuario'] : $this->session->userdata('usuario')->id;
             $this->justificativa = isset($arr['justificativa']) ? $arr['justificativa'] : null;
             $this->id            = isset($arr['id']) ? $arr['id'] : null;
             $this->status        = isset($arr['status']) ? $arr['status'] : 1;
@@ -67,6 +67,16 @@ class Material_producao_model extends CI_Model {
 
         //Busca com condição
         $query = $this->db->get_where('producao', array('id' => $id));
+        
+        //row_object() retorna direto o objeto produto e não um array
+        return $query->row_object();
+
+    }
+
+        public function consultar_usuario($id){
+
+        //Busca com condição
+        $query = $this->db->get_where('producao', array('id_usuario' => $id));
         
         //row_object() retorna direto o objeto produto e não um array
         return $query->row_object();

@@ -26,7 +26,7 @@ class Noticia_model extends CI_Model {
             $my_date = mdate($datestring , $my_time);
 
             $this->data_publicacao          = isset($arr['data_publicacao']) ? $my_date : null;
-            $this->id_usuario    = isset($arr['id_usuario']) ? $arr['id_usuario'] : 1;
+            $this->id_usuario    = isset($arr['id_usuario']) ? $arr['id_usuario'] : $this->session->userdata('usuario')->id;
             $this->titulo        = isset($arr['titulo']) ? $arr['titulo'] : null;
             $this->descricao     = isset($arr['descricao']) ? $arr['descricao'] : null;
             $this->id            = isset($arr['id']) ? $arr['id'] : null;

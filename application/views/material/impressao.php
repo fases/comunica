@@ -77,7 +77,7 @@
 
        <div class="ls-label col-md-12">
             <label for="exampleInputFile">Envio de arquivos</label>
-            <input id="exampleInputFile" name="arquivo_1" type="file">
+            <input id="exampleInputFile" name="arquivo_1" type="file" required>
         </div>
 
       <label class="ls-label col-md-12">
