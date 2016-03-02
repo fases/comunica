@@ -4,6 +4,8 @@
 
 <div class="ls-clearfix"></div>
 
+   <?php $this->mensagem_model->exibir(); ?>
+
 
     <form method="post" class="ls-form ls-form-horizontal" data-ls-module="form">
       <fieldset>
@@ -79,6 +81,7 @@
       <b class="ls-label-text" >Nome</b>
       <p class="ls-label-info">Digite seu nome completo</p>
       <input type="text" name="nome" class="ls-field" placeholder="Nome e sobrenome" value="<?php echo $usuario_editar->nome?>" required >
+      <input type="hidden" name="id" value="<?php echo $usuario_editar->id?>">
     </label>
     <label class="ls-label col-md-9">
       <b class="ls-label-text">E-mail</b>

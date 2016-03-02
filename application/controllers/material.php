@@ -40,6 +40,8 @@ class Material extends CI_Controller {
                     
                     $material_producao = new Material_producao_model($form);
 
+                    //var_dump($material_producao);die();
+
                     $material_producao->arquivo_1 = $dados_arquivo['full_path'];
                     $material_producao->cadastrar();
 

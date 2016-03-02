@@ -86,8 +86,9 @@
 
     <!-- Modal de senha -->
     <div class="ls-modal" id="editPassword">
-        <form action="#change-password" class="ls-form">
+        <form method="post" action="<?php echo base_url() ?>usuarios/alterar_senha" class="ls-form">
             <div class="ls-modal-box">
+                <input type="hidden" name="id" value="<?php echo $id ?>">
                 <div class="ls-modal-header">
                     <button data-dismiss="modal">×</button>
                     <h4 class="ls-modal-title">Alterar senha</h4>

@@ -48,8 +48,18 @@ class Noticia_model extends CI_Model {
     }
 
     public function listar(){
-    return $this->db->get('noticias'); //SELECT * FROM noticias
-}
+
+        $result = $this->db->get('noticias')->result_array();
+
+        foreach($result as $k=>$r) {
+            $usuario = $this->usuario_model->consultar($r['id_usuario']);
+
+            $result[$k]['usuario'] = $usuario;
+        }
+
+
+        return $result;
+    }
 
     public function consultar($id){
 

@@ -44,8 +44,19 @@ class Evento_model extends CI_Model {
         $this->id = $this->db->insert_id();      
     }
     public function listar(){
-         return $this->db->get('eventos');
+        //listagem de todos os usuários
+        //$this->load->model('Usuario_model');
 
+        $result = $this->db->get('eventos')->result_array();
+
+        foreach($result as $k=>$r) {
+            $usuario = $this->usuario_model->consultar($r['id_usuario']);
+
+            $result[$k]['usuario'] = $usuario;
+        }
+
+
+        return $result;
     } 
     public function consultar($id){
 

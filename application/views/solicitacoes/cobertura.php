@@ -90,7 +90,7 @@
                 </td>
 
                 <td>
-                    <a href="http://localhost/comunica/usuarios/visualizar.php"><?php echo $evento['id_usuario'];?></a>
+                    <a href="<?php echo base_url() ?>usuarios/visualizar/<?php echo $evento['usuario']->id;?>"><?php echo $evento['usuario']->nome;?></a>
                     
                 </td>
                 <td>

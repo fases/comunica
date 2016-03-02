@@ -86,19 +86,28 @@
 
                 <td>
                     
-                    <a href="<?php echo base_url() ?>usuarios/visualizar/<?php echo $impressao['id_usuario'];?>"> <?php echo $impressao['id_usuario'];?></a>
+                    <a href="<?php echo base_url() ?>usuarios/visualizar/<?php echo $impressao['usuario']->id;?>"><?php echo $impressao['usuario']->nome;?></a>
                     
                 </td>
                 <td>
                      Impressão | <?php echo $impressao['tipo_material'];?>
                 </td>
-                <td class="ls-txt-center hidden-xs"><?php 
-
-      if($impressao['status']==1){
-            echo "Enviado";
-        }else{echo "Em andamento";}
-
-        ?>
+                <td class="ls-txt-center hidden-xs">                <?php
+                  switch ($impressao['status']){
+                    case 1:
+                     echo "Enviado";
+                      break;
+                    case 2:
+                      echo "Em andamento";
+                      break;
+                    case 3:
+                      echo "Concluído";
+                      break;
+                    case 4:
+                      echo "Cancelado";
+                      break;
+                  }
+                ?>
 
         </td>
                 <td class="ls-txt-right ls-regroup">
@@ -118,7 +127,8 @@
 <?php } ?>
 
 <?php 
-        foreach ($materiais_producao as $producao ) { ?>
+
+        foreach ($materiais_producao as $producao) { ?>
         <tbody>
             
             
@@ -131,19 +141,28 @@
                 </td>
 
                 <td>
-                    <a href="http://localhost/comunica/usuarios/visualizar.php"> <?php echo $producao['id_usuario'];?></a>
+                    <a href="<?php echo base_url() ?>usuarios/visualizar/<?php echo $producao['usuario']->id;?>"><?php echo $producao['usuario']->nome;?></a>
                     
                 </td>
                 <td>
                      Produção | <?php echo $producao['tipo'];?>
                 </td>
-                <td class="ls-txt-center hidden-xs"><?php 
-
-      if($producao['status']==1){
-            echo "Enviado";
-        }else{echo "Em andamento";}
-
-        ?>
+                <td class="ls-txt-center hidden-xs">                <?php
+                  switch ($producao['status']){
+                    case 1:
+                     echo "Enviado";
+                      break;
+                    case 2:
+                      echo "Em andamento";
+                      break;
+                    case 3:
+                      echo "Concluído";
+                      break;
+                    case 4:
+                      echo "Cancelado";
+                      break;
+                  }
+                ?>
 
         </td>
                 <td class="ls-txt-right ls-regroup">

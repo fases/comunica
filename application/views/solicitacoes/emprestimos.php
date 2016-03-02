@@ -60,6 +60,7 @@
 
     <!-- Lista dos pedidos-->
 
+
 <table class="ls-table">
         <thead>
             <tr>
@@ -74,7 +75,6 @@
         </thead>
         <tbody>
                <?php foreach ($emprestimos as $emprestimo ) { ?>
-        <tbody>
             
             
             
@@ -83,7 +83,7 @@
                     #<?php echo $emprestimo['id'];?>
                 </td>
                 <td>
-                    <?php echo $emprestimo['data_cadastro'];?>
+                    <?php $d = new DateTime($emprestimo['data_cadastro']); echo $d->format('d/m/Y \a\s H:i'); ;?>
                 </td>
 
                 <td>
@@ -96,20 +96,37 @@
                 <td>
                     <?php echo $emprestimo['data_devolucao'];?>
                 </td>
-                <td class="ls-txt-center hidden-xs"><?php 
+                <td class="ls-txt-center hidden-xs">
 
-      if($emprestimo['status']==1){
-            echo "Pendente";
-        }else{echo "Efetuado";}
 
-        ?></td>
+
+  <?php
+
+  switch ($emprestimo['status']) {
+   case 1:
+   echo "Pendente";
+   break;
+   case 2:
+   echo "Em andamento";
+   break;
+   case 3:
+   echo "Concluido";
+   break;
+   case 4:
+   echo "Cancelado";
+   break;
+ } 
+
+
+ ?>
+</td>
                 <td class="ls-txt-right ls-regroup">
                     <a href="http://localhost/comunica/emprestimos/visualizar/<?php echo $emprestimo['id'];?>" class="ls-btn ls-btn-sm" aria-expanded="false">Visualizar</a>
                     <div data-ls-module="dropdown" class="ls-dropdown ls-pos-right">
                        <a href="<?php echo base_url() ?>emprestimos/" class="ls-btn ls-btn-sm" aria-expanded="false" role="combobox"></a>
                         <ul class="ls-dropdown-nav" aria-hidden="true">
-                            <li><a href="<?php echo base_url() ?>emprestimos/editar/<?php echo $emprestimo['id'];?>" class="ls-color-danger" role="option">Em andamento</a></li>
-                            <li><a href="<?php echo base_url() ?>emprestimos/excluir/<?php echo $emprestimo['id'];?>"  role="option">Concluido</a></li>
+                            <li><a href="<?php echo base_url() ?>emprestimos/aprovar/<?php echo $emprestimo['id'];?>" class="ls-color-danger" role="option">Em andamento</a></li>
+                            <li><a href="<?php echo base_url() ?>emprestimos/concluir/<?php echo $emprestimo['id'];?>"  role="option">Concluido</a></li>
                         </ul>
                     </div>
 

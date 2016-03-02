@@ -46,8 +46,19 @@ class Material_impressao_model extends CI_Model {
 
     public function listar(){
         //listagem de todos os usuários
-        
-        return $this->db->get('impressao');
+        //$this->load->model('Usuario_model');
+        //$this->db->where('status !=',3);
+
+        $result = $this->db->get('impressao')->result_array();
+
+        foreach($result as $k=>$r) {
+            $usuario = $this->usuario_model->consultar($r['id_usuario']);
+
+            $result[$k]['usuario'] = $usuario;
+        }
+
+
+        return $result;
     }
 
     public function consultar($id){

@@ -47,8 +47,8 @@ class Usuario_model extends CI_Model {
     $this->db->where('id', $id);
     return $this->db->delete('usuario');
     }
-    public function atualizar($id){
-        $this->db->where('id', $id);
+    public function atualizar(){
+        $this->db->where('id', $this->id);
         return $this->db->update('usuario',$this);
 
     }
