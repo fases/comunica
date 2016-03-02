@@ -93,7 +93,7 @@
                     
                 </td>
                 <td>
-                <?php echo date ("d/m/Y", strtotime($contato['data_publicacao']));?>
+                <?php echo date ("d/m/Y", strtotime($contato['data_cadastro']));?>
 
                 </td>
                 <td class="ls-txt-center hidden-xs">
@@ -116,13 +116,13 @@
                 </td>
                 <td class="ls-txt-right ls-regroup">
 
-                    <a href="<?php echo base_url() ?>contatos/visualizar/<?php echo $contato['id'];?>" class="ls-btn ls-btn-sm" aria-expanded="false">Visualizar</a>
+                    <a href="<?php echo base_url() ?>contato/visualizar/<?php echo $contato['id'];?>" class="ls-btn ls-btn-sm" aria-expanded="false">Visualizar</a>
                     <div data-ls-module="dropdown" class="ls-dropdown ls-pos-right">
 
-                        <a href="<?php echo base_url() ?>contatos/" class="ls-btn ls-btn-sm" aria-expanded="false" role="combobox">Status</a>
+                        <a href="<?php echo base_url() ?>contato/" class="ls-btn ls-btn-sm" aria-expanded="false" role="combobox">Status</a>
                         <ul class="ls-dropdown-nav" aria-hidden="true">
-                            <li><a href="<?php echo base_url() ?>contatos/aprovar/<?php echo $contato['id'];?>" class="ls-color-danger" role="option">Em andamento</a></li>
-                            <li><a href="<?php echo base_url() ?>contatos/concluir/<?php echo $contato['id'];?>"  role="option">Concluido</a></li>
+                            <li><a href="<?php echo base_url() ?>contato/aprovar/<?php echo $contato['id'];?>" class="ls-color-danger" role="option">Em andamento</a></li>
+                            <li><a href="<?php echo base_url() ?>contato/concluir/<?php echo $contato['id'];?>"  role="option">Concluido</a></li>
                         </ul>
                     </div>
 

@@ -41,7 +41,7 @@ public function agendar()
                 // Imprime na tela os dados enviados do form e mata a aplicacão 
             
             $emprestimo = new Emprestimo_model($form);
-            var_dump($emprestimo); die();
+            //var_dump($emprestimo); die();
             $emprestimo->cadastrar();
 
             $this->session->set_flashdata('mensagem', 

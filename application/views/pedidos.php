@@ -21,7 +21,7 @@
         ?>
 
         <tr>
-          <td><a href="" title=""><?php echo '#00'. $impressao['id']?></a></td>
+          <td><a href="" title=""><?php echo '#00'. $impressao->id?></a></td>
         </tr>
 
         <?php }?> <!-- Fecha o foreach-->

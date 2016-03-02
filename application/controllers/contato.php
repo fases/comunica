@@ -21,10 +21,17 @@ class Contato extends CI_Controller {
             
             if($this->form_validation->run() == TRUE){
 
-            
+            $this->load->model('contato_model');
+
+            $contato = new Contato_model($form);
+            //var_dump($contato); die();
+            $contato->cadastrar();
+
 
             $this->session->set_flashdata('mensagem', 
             array('tipo' => 'success', 'texto' => 'E-mail de contato enviado com sucesso!'));
+
+            redirect(base_url('/contato'));
 
             }else{
        
@@ -82,6 +89,30 @@ class Contato extends CI_Controller {
 
 
        }
+
+    public function aprovar($id){
+
+         $this->load->model('contato_model'); //carrega o model
+         $this->contato_model->aprovar($id);
+         redirect(base_url().'contato/visualizar/'.$id);
+ 
+    }
+
+    public function concluir($id){
+
+         $this->load->model('contato_model'); //carrega o model
+         $this->contato_model->concluir($id);
+         redirect(base_url().'contato/visualizar/'.$id);
+ 
+    }
+
+    public function suspender($id){
+
+         $this->load->model('contato_model'); //carrega o model
+         $this->contato_model->suspender($id);
+         redirect(base_url().'contato/visualizar/'.$id);
+ 
+    }
     
 
 }

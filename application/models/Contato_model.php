@@ -17,10 +17,9 @@ class Contato_model extends CI_Model {
         if(!is_null($arr)){           
 
             $this->id        = isset($arr['id']) ? $arr['id'] : null;
-            $this->id_usuario        = isset($arr['id_usuario']) ? $arr['id_usuario'] : null;
+            $this->id_usuario        = isset($arr['id_usuario']) ? $arr['id_usuario'] : $this->session->userdata('usuario')->id;
             $this->assunto        = isset($arr['assunto']) ? $arr['assunto'] : null;
             $this->mensagem        = isset($arr['mensagem']) ? $arr['mensagem'] : null;
-            $this->data_cadastro     = isset($arr['data_cadastro']) ? $arr['data_cadastro'] : null;
             $this->status     = isset($arr['status']) ? $arr['status'] : 1;
             
         }
@@ -56,7 +55,7 @@ class Contato_model extends CI_Model {
 
     }
 
-    public function responder($id){
+    public function aprovar($id){
 
         $this->db->where('id',$id);
         $this->db->update('contatos', array('status' => 2));

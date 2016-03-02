@@ -22,15 +22,11 @@ class Emprestimo_model extends CI_Model {
 
         if(!is_null($arr)){
 
-            $datestring = '%Y/%m/%d';
-            $my_time = time($arr['data']); 
-            $my_date = mdate($datestring , $my_time);
-            $this->data  = isset($arr['data']) ? $my_date : null;
+            list($dia, $mes, $ano) = explode('/', $arr['data']);
+            $this->data  = isset($arr['data']) ? "$ano-$mes-$dia" : null;
 
-            $datestring = '%Y/%m/%d';
-            $my_time = time($arr['data_devolucao']); 
-            $my_date = mdate($datestring , $my_time);
-            $this->data_devolucao          = isset($arr['data_devolucao']) ? $my_date : null;
+            list($dia, $mes, $ano) = explode('/', $arr['data_devolucao']);
+            $this->data_devolucao  = isset($arr['data_devolucao']) ? "$ano-$mes-$dia" : null;
 
             $this->hora = isset($arr['hora']) ? $arr['hora'] : null;
             $this->id_material    = isset($arr['id_material']) ? $arr['id_material'] : null;

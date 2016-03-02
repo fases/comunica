@@ -1,7 +1,7 @@
 <!-- Componentes na página -->
 
 <div class="container-fluid">
-    <h1 class="ls-title-intro ls-ico-arrow-right ">Solicitação #00<?php echo $contato->id; ?> 
+    <h1 class="ls-title-intro ls-ico-arrow-right ">Contato #00<?php echo $contato->id; ?> 
 
     <?php
 
@@ -21,29 +21,6 @@
    ?> 
 
  <h1 class="ls-title">
-
-  <?php
-
-  switch ($contato->status) {
-   case 1:
-   echo '<a href='.base_url().'contatos/aprovar/'.$contato->id. ' class="ls-btn-primary ls-btn-sm ls-ico-plus">Aceitar</a>';
-
-   echo '<a href='.base_url().'contatos/suspender/'.$contato->id. ' class="ls-btn-dark  ls-float-right">Suspender</a>';
-   break;
-   case 2:
-   echo '<a href='.base_url().'contatos/concluir/'.$contato->id. ' class="ls-btn-primary ls-btn-sm ls-ico-checkmark">Concluido</a>';
-   break;
-   case 3:
-   echo '<a class="ls-tooltip-right ls-btn" aria-label="Esta solicitação já foi atendida!" aria-expanded="false">Concluída!</a>';
-   break;
- } 
-
-
- ?>
-
- 
- 
- <a <?php echo '<a href='.base_url().'solicitacoes/contatos/'?> aria-expanded="false" class="ls-btn ls-float-right">Voltar</a>
 
 </h1>
 
@@ -74,52 +51,22 @@
     </div>
     </div>
 
-    <div class="ls-box ">
-<div class="col-md-8">
-      <p><strong>Tipo</strong></p>
-      <p class="ls-break-text">Envio de notícias</p>
-
-  </div>
-
-  <div class="col-md-3">
-      <p><strong>Data para publicação</strong></p>
-      <p class="ls-break-text">
-      <?php echo date ("d/m/Y", strtotime($contato->data_publicacao));?></p>
-
-    </div>
-
-  <div class="col-md-12">
-       <hr>
-<div class="ls-box ls-box-gray">
-          <p><strong>Título</strong></p>
-      <p class="ls-break-text"><?php echo $contato->titulo ?></p>
+    <div class="ls-box ls-box-gray">
+ <div class="col-md-12">
+          <p><strong>Assunto</strong></p>
+      <p class="ls-break-text"><?php echo $contato->assunto ?></p>
 <hr>
-          <p><strong>Descrição</strong></p>
-      <p class="ls-break-text"><?php echo $contato->descricao ?></p>
-    </div>
+          <p><strong>Mensagem</strong></p>
+      <p class="ls-break-text"><?php echo $contato->mensagem ?></p>
 
 
-    </div>
 
     </div>
 
-<ul class="ls-tabs-nav">
-  <li class="ls-active"><a data-ls-module="tabs" href="#track">Anexos</a></li>
-  <li><a data-ls-module="tabs" href="#laps">Links</a></li>
-</ul>
-<div class="ls-tabs-container">
-  <div id="track" class="ls-tab-content ls-active">
-    <span class="ls-ico-link ls-ico-left"><a href="<?php echo $contato->arquivo_1 ?>" target="_blank">Clique aqui para visualizar</a></span>
 
-  </div>
-  <div id="laps" class="ls-tab-content">
-    <span class="ls-ico-link ls-ico-left"><?php echo $contato->url_1 ?></span>
-    <hr>
-    <span class="ls-ico-link ls-ico-left"><?php echo $contato->url_2 ?></span>
-    <hr>
-    <span class="ls-ico-link ls-ico-left"><?php echo $contato->url_3 ?></span>
-  </div>
-</div>
+ 
+
+    </div>
 
 
 
@@ -127,12 +74,12 @@
 
   switch ($contato->status) {
    case 1:
-   echo '<a href='.base_url().'contatos/aprovar/'.$contato->id. ' class="ls-btn-primary ls-btn-sm ls-ico-plus">Aceitar</a>';
+   echo '<a href='.base_url().'contato/aprovar/'.$contato->id. ' class="ls-btn-primary ls-btn-sm ls-ico-plus">Aceitar</a>';
 
-   echo '<a href='.base_url().'contatos/suspender/'.$contato->id. ' class="ls-btn-dark  ls-float-right">Suspender</a>';
+   echo '<a href='.base_url().'contato/suspender/'.$contato->id. ' class="ls-btn-dark  ls-float-right">Suspender</a>';
    break;
    case 2:
-   echo '<a href='.base_url().'contatos/concluir/'.$contato->id. ' class="ls-btn-primary ls-btn-sm ls-ico-checkmark">Concluido</a>';
+   echo '<a href='.base_url().'contato/concluir/'.$contato->id. ' class="ls-btn-primary ls-btn-sm ls-ico-checkmark">Concluido</a>';
    break;
    case 3:
    echo '<a class="ls-tooltip-right ls-btn" aria-label="Esta solicitação já foi atendida!" aria-expanded="false">Concluída!</a>';
@@ -141,7 +88,7 @@
 
 
  ?>
-        <a <?php echo '<a href='.base_url().'solicitacoes/contatos/'?> aria-expanded="false" class="ls-btn ls-float-right">Voltar</a>
+        <a <?php echo '<a href='.base_url().'contato/listar'?> aria-expanded="false" class="ls-btn ls-float-right">Voltar</a>
       </div>
 
     </div>

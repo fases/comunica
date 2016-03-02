@@ -81,7 +81,7 @@ class Material_impressao_model extends CI_Model {
         $query = $this->db->get_where('impressao', array('id_usuario' => $id));
  
         //row_object() retorna direto o objeto produto e não um array
-        return $query->row_object();
+        return $query->result();
 
     }
 
