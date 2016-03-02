@@ -3,9 +3,11 @@
 <div class="container-fluid">
     <h1 class="ls-title-intro ls-ico-envelope ">Contato</h1>
 
+       <?php $this->mensagem_model->exibir(); ?>
+
         <!-- Apartir daqui, vocês devem inserir os componentes na página -->
 
-        <form action="" class="ls-form row">
+        <form method="post" class="ls-form row">
   <fieldset>
     <label class="ls-label col-md-12">
       <b class="ls-label-text">Assunto</b>
@@ -14,7 +16,7 @@
 
                  <label class="ls-label col-md-12">
           <b class="ls-label-text">Mensagem</b>
-          <textarea rows="8" name="mensagem-impressao"  class="ls-textarea-autoresize" required></textarea>
+          <textarea rows="8" name="mensagem"  class="ls-textarea-autoresize" required></textarea>
         </label>
 
     </fieldset>

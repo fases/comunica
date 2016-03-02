@@ -35,11 +35,15 @@ Página de login
 
         <div class="ls-login-parent">
 
+
             <div class="ls-login-inner">
 
                 <div class="ls-login-container">
 
+
                     <div class="ls-login-box">
+
+
                                             <header>
                         </header>
                         
@@ -48,15 +52,31 @@ Página de login
                             COMUNICA
                         </h1>
 
-                        <?php 
-                        if($usuario_invalido):
+
+                                                                                    <?php 
+                        if($usuario_valido):
                             ?>
 
-                        <div class="ls-alert-danger"><strong>Vish!</strong> Algo muito ruim aconteceu, seu login não deu certo. </div>
+<div class="ls-alert-success ls-dismissable">
+  <span data-ls-module="dismiss" class="ls-dismiss">&times;</span>
+                       <span class="ls-ico-checkmark"></span><strong>Bazinga!</strong>  Você conseguiu, seu cadastro foi realizado, mas ficará pendente até que o Administrador o aprove, em caso de dúvidas, consulte seu e-mail. </div>
+
+
 
                         <?php 
                     endif; 
                             ?>
+
+                        <?php 
+                        if($usuario_invalido):
+                            ?>
+
+                        <div class="ls-alert-danger"><span class="ls-ico-close"></span><strong>Vish!</strong> Seu login não deu certo. </div>
+
+                        <?php 
+                    endif; 
+                            ?>
+
 
 
                         <form method="post" class="ls-form ls-login-form">
@@ -87,16 +107,56 @@ Página de login
                             </fieldset>
                         </form>
 
-                        <a href="<?= base_url() ?>cadastro" class="ls-btn ls-ico-user ls-btn-block">Cadastre-se agora!</a>
+                        <a href="#" data-ls-module="modal" data-target="#cadastrar"  class="ls-btn ls-ico-user ls-btn-block">Cadastre-se agora!</a>
 
                         <!-- <button data-ls-module="modal" data-action="http://locaweb.com.br/" data-content="<h2>Preencha os campos abaixo para se cadastrar!
 </h2><p>Conteúdo feito dentro do data-content</p>" data-class="ls-btn-danger" data-save="Cadastrar" data-close="Fechar" class="ls-btn-danger ls-ico-user ls-btn-block ls-btn-lg"> Cadastre-se agora </button>-->
 
+<!-- Modal de senha -->
+    <div class="ls-modal" id="cadastrar">
+        <form method="post" action="<?php echo base_url() ?>login/cadastrar" class="ls-form">
+            <div class="ls-modal-box">
+                <div class="ls-modal-header">
+                    <button data-dismiss="modal">×</button>
+                    <h2 class="ls-ico-user-add">Cadastre-se!</h2>
+                </div>
+                <div class="ls-modal-body">
 
+                    <label class="ls-label">
+                        <b class="ls-label-text">Matrícula Institucional*</b>
+                        <input type="text" maxlength=14 name="matricula" required>
+                    </label>
+                    <label class="ls-label">
+                        <b class="ls-label-text">Nome*</b>
+                        <input type="text" name="nome" required>
+                    </label>
+                    <label class="ls-label">
+                        <b class="ls-label-text">E-mail*</b>
+                        <input type="text" name="email" required>
+                    </label>
+
+                    <label class="ls-label">
+                        <b class="ls-label-text">Senha*</b>
+                        <input type="password" maxlength="20" name="senha" required>
+                    </label>
+                    <label class="ls-label">
+                        <b class="ls-label-text">Confirmação de senha*</b>
+                        <input type="password" maxlength="20" name="confirma_senha" required>
+                    </label>
+                </div>
+                <div class="ls-modal-footer">
+                    <button type="submit" class="ls-btn-primary ls-btn-lg" aria-expanded="false">Efetuar cadastro</button>
+                    <a href="#atualizar-senha" class="ls-btn ls-float-right" data-dismiss="modal" aria-expanded="false">Cancelar</a>
+                </div>
+            </div>
+        </form>
+    </div>
 
                 </div>
             </div>
         </div>
+
+            
 
 
 

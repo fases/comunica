@@ -4,6 +4,8 @@
 
 <div class="ls-clearfix"></div>
 
+   <?php $this->mensagem_model->exibir(); ?>
+
     <form method="post" class="ls-form ls-form-horizontal" data-ls-module="form">
 
 
@@ -30,11 +32,11 @@
         <select class="ls-custom" name="tipo_acesso">
 
 
-<?php if ($tipo_acesso==2) {
+<?php if ($usuario_editar->tipo_acesso==2) {
   echo '<option selected="selected" value="2">Não</option>';
   echo '<option value="1">Sim</option>';
 
-}elseif ($tipo_acesso==1) {
+}elseif ($usuario_editar->tipo_acesso==1) {
   echo '-<option selected="selected" value="1">Sim</option>';
   echo '<option value="2">Não</option>';
 } ?>
@@ -50,11 +52,11 @@
         <select class="ls-custom" name="status">
 
 
-<?php if ($status==0) {
+<?php if ($usuario_editar->status==0) {
   echo '<option selected="selected" value="0">Inativo</option>';
   echo '<option value="1">Ativo</option>';
 
-}elseif ($status==1) {
+}elseif ($usuario_editar->status==1) {
   echo '-<option selected="selected" value="1">Ativo</option>';
   echo '<option value="0">Inativo</option>';
 } ?>
@@ -68,7 +70,10 @@
    <div class="col-md-3">
       <div class="ls-box">
        
-       <b class="ls-label-text ls-ico-calendar">Data de cadastro: <?php echo $data_cadastro ?></b>
+       <b class="ls-label-text ls-ico-calendar">Data de cadastro: 
+        <?php $d = new DateTime($usuario_editar->data_cadastro); echo $d->format('d/m/Y \à\s H:i'); ;?></p>
+
+       </b>
       </div>
     </div> 
     </div>
@@ -77,28 +82,28 @@
     <label class="ls-label col-md-12 " >
       <b class="ls-label-text" >Nome</b>
       <p class="ls-label-info">Digite seu nome completo</p>
-      <input type="text" name="nome" class="ls-field" placeholder="Nome e sobrenome" value="<?php echo $nome ?>" required >
+      <input type="text" name="nome" class="ls-field" placeholder="Nome e sobrenome" value="<?php echo $usuario_editar->nome ?>" required >
     </label>
     <label class="ls-label col-md-9">
       <b class="ls-label-text">E-mail</b>
       <p class="ls-label-info">Seu e-mail </p>
-      <input type="text" name="email" placeholder="Escreva seu email" value="<?php echo $email ?>" required >
+      <input type="text" name="email" placeholder="Escreva seu email" value="<?php echo $usuario_editar->email ?>" required >
     </label>
 
     <label class="ls-label col-md-3">
       <span class="ls-label-text">Matrícula</span>
       <p class="ls-label-info">Matrícula institucional</p>
-      <input type="text" name="matricula" value="<?php echo $matricula ?>"required>
+      <input type="text" name="matricula" value="<?php echo $usuario_editar->matricula ?>"required>
      </label>
 
     <label class="ls-label col-md-8">
       <b class="ls-label-text">Endereço</b>
-      <input type="text" name="endereco" placeholder="O nome da sua rua, número"  value="<?php echo $endereco ?>" required >
+      <input type="text" name="endereco" placeholder="O nome da sua rua, número"  value="<?php echo $usuario_editar->endereco ?>" required >
     </label>
 
     <label class="ls-label col-md-4">
       <b class="ls-label-text">Telefone</b>
-      <input type="text" name="telefone" class="ls-mask-phone9_with_ddd" placeholder="(xx) xxxxx-xxxx" value="<?php echo $telefone ?>" required>
+      <input type="text" name="telefone" class="ls-mask-phone9_with_ddd" placeholder="(xx) xxxxx-xxxx" value="<?php echo $usuario_editar->telefone ?>" required>
     </label>
 </fieldset>
 
@@ -130,7 +135,7 @@
 
           <div class="ls-actions-btn">
         <button type="submit" class="ls-btn-primary" aria-expanded="false">Atualizar</button>
-        <button type="reset" class="ls-btn-danger">Cancelar</button>
+        <button type="reset" onClick="JavaScript: window.history.back();"  class="ls-btn-danger">Cancelar</button>
         <a aria-expanded="false" onClick="JavaScript: window.history.back();" class="ls-btn">Voltar</a>
       </div>
 

@@ -73,7 +73,7 @@
       <p><strong>Aberta em:</strong></p>
       <p class="ls-break-text">
 
-      <?php $d = new DateTime($emprestimo->data_cadastro); echo $d->format('d/m/Y \a\s H:i'); ;?></p>
+      <?php $d = new DateTime($emprestimo->data_cadastro); echo $d->format('d/m/Y \à\s H:i'); ;?></p>
       
         <!--   <hr>
         <p><strong>Aceita por:</strong></p>

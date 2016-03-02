@@ -71,31 +71,67 @@ class Usuarios extends CI_Controller {
 
 
         }
-        
-        public function editar($id){
 
-            $data = array(// cria array;
-    'usuario' => $this->session->userdata('usuario') //preenche com os dados da sessão;
-        );
+        public function editar($id)
+    {
 
+        $data = array(); // cria array;
+        $data['usuario'] = $this->session->userdata('usuario'); //preenche com os dados da sessão;
+        $data['usuario_editar'] = $this->usuario_model->consultar($id);//carrega os dados apartir do id;
 
-        $this->load->model('usuario_model');
-        $this->load->view('templates/header', $data);
-        
-        $usuario = $this->usuario_model->consultar($id);
-
+        //var_dump($data);die();
 
         if($this->input->post()) {
             $form = $this->input->post();
-            //unset($form['confirma_senha']); // tem que fazer algo pra validar a senha antes de remover isso!
-            $this->db->update('usuario', $form, array('id' => $id));
-            $usuario = $this->usuario_model->consultar($id);
-        }
-        $this->load->view('usuarios/editar',$usuario);
+
+            //var_dump($form);die();
+
+            $this->form_validation->set_rules('nome', 'Nome', 'required');
+            $this->form_validation->set_rules('email', 'E-mail', 'required|valid_email');
+            $this->form_validation->set_rules('matricula', 'Matrícula', 'required|numeric');
+            $this->form_validation->set_rules('endereco', 'Endereço', 'required');
+            $this->form_validation->set_rules('telefone', 'Telefone', 'required');
+            $this->form_validation->set_rules('tipo_acesso', 'Tipo acesso', 'required');
+            $this->form_validation->set_rules('status', 'Status', 'required');
+            
+
+            if($this->form_validation->run() == TRUE){
+
+            $this->load->model('usuario_model');
+
+            $usuario = new Usuario_model((array) $data['usuario_editar']);
+
+//            var_dump($usuario); die();
+
+            $usuario->nome = $form['nome'];
+            $usuario->email = $form['email'];
+            $usuario->matricula = $form['matricula'];
+            $usuario->endereco = $form['endereco'];
+            $usuario->telefone = $form['telefone'];
+            $usuario->status = $form['status'];
+            $usuario->tipo_acesso = $form['tipo_acesso'];
+
+            $usuario->atualizar();
+
+            $this->session->set_flashdata('mensagem', 
+            array('tipo' => 'success', 'texto' => 'Alteração realizada com sucesso!'));
+
+            redirect(base_url('usuarios/editar/'.$id));
+
+//            $this->db->update('usuario', $form, array('id' => $this->session->userdata('usuario')->id)); 
+
+            } else {
+                            $this->session->set_flashdata('mensagem', 
+            array('tipo' => 'error', 'texto' => 'Por favor, confira seus dados!'));
+            }
+        } 
+
+
+        $this->load->view('templates/header',$data);
+        $this->load->view('usuarios/editar',$data);
         $this->load->view('templates/footer');
-
-        }
-
+    }
+        
         public function deletar($id){
 
     $this->load->model('usuario_model');
@@ -122,24 +158,51 @@ class Usuarios extends CI_Controller {
 
         public function visualizar($id){
 
-                    $data = array(// cria array;
-    'usuario' => $this->session->userdata('usuario') //preenche com os dados da sessão;
-        );
+        $data = array(); // cria array;
+        $data['usuario'] = $this->session->userdata('usuario'); //preenche com os dados da sessão;
+        $data['usuario_editar'] = $this->usuario_model->consultar($id);//carrega os dados apartir do id;
 
-        $this->load->model('usuario_model');
-        $this->load->view('templates/header',$data);
-        
-        $usuario = $this->usuario_model->consultar($id);
-
+        //var_dump($data);die();
 
         if($this->input->post()) {
-
             $form = $this->input->post();
-            unset($form['confirma_senha']); // tem que fazer algo pra validar a senha antes de remover isso!
-            $this->db->update('usuario', $form, array('id' => $id));
-            $usuario = $this->usuario_model->consultar($id);
+
+            //var_dump($form);die();
+
+            $this->form_validation->set_rules('nome', 'Nome', 'required');
+            $this->form_validation->set_rules('email', 'E-mail', 'required|valid_email');
+            $this->form_validation->set_rules('matricula', 'Matrícula', 'required|numeric');
+            $this->form_validation->set_rules('status', 'Status', 'required');
+            
+
+            if($this->form_validation->run() == TRUE){
+
+            $this->load->model('usuario_model');
+
+            $usuario = new Usuario_model((array) $data['usuario_editar']);
+
+//            var_dump($usuario); die();
+
+            $usuario->nome = $form['nome'];
+            $usuario->email = $form['email'];
+            $usuario->matricula = $form['matricula'];
+            $usuario->status = $form['status'];
+
+            $usuario->atualizar();
+
+            $this->session->set_flashdata('mensagem', 
+            array('tipo' => 'success', 'texto' => 'Alteração realizada com sucesso!'));
+
+            redirect(base_url('usuarios/visualizar/'.$id));
+
+            } else {
+                            $this->session->set_flashdata('mensagem', 
+            array('tipo' => 'error', 'texto' => 'Por favor, confira seus dados!'));
+            }
         }
-        $this->load->view('usuarios/visualizar',$usuario);
+
+        $this->load->view('templates/header',$data);
+        $this->load->view('usuarios/visualizar',$data);
         $this->load->view('templates/footer');
 
         }
@@ -174,39 +237,6 @@ class Usuarios extends CI_Controller {
 
         }
 
-
-        }
-
-                public function senha(){
-
-            if($this->input->post()) {
-            $form = $this->input->post();
-
-            $this->form_validation->set_rules('id', 'ID', 'required');
-            $this->form_validation->set_rules('senha', 'Senha', 'required|matches[confirma_senha]');
-            $this->form_validation->set_rules('confirma_senha', 'Confirma Senha', 'required');
-
-            if($this->form_validation->run() == TRUE){
-
-            $usuario = new Usuario_model((array) $this->usuario_model->consultar($form['id']));
-
-            //var_dump($usuario); die();
-
-            $usuario->senha = md5($form['senha']);
-
-            $usuario->atualizar();
-
-            $this->session->set_flashdata('mensagem', 
-            array('tipo' => 'success', 'texto' => 'Alteração de senha realizada com sucesso!'));
-
-            redirect(base_url('perfil'));
-
-//            $this->db->update('usuario', $form, array('id' => $this->session->userdata('usuario')->id)); 
-
-            }
-
-        }
-        
 
         }
 

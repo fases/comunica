@@ -139,7 +139,7 @@
                         </li>
 
                         <li>
-                            <a href="#" class="ls-ico-book" title="Configurações">Material</a>
+                            <a href="#" class="ls-ico-book" title="Material">Material</a>
                             <ul>
                                 <li><a href="<?php echo base_url() ?>material/cadastrar">Cadastrar material</a></li>
                                 <li><a href="<?php echo base_url() ?>material/consultar">Consultar</a></li>
@@ -148,7 +148,11 @@
                         </li>
 
                         <li>
-                            <a href="<?php echo base_url() ?>contato" class="ls-ico-envelope">Contato</a>
+                            <a href="#" class="ls-ico-envelope" title="Contato">Contato</a>
+                            <ul>
+                                <li><a href="<?php echo base_url() ?>contato">Enviar</a></li>
+                                <li><a href="<?php echo base_url() ?>contato/listar">Visualizar</a></li>
+                            </ul>
                         </li
 
                     </ul>

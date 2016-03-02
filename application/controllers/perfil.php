@@ -54,6 +54,8 @@ class Perfil extends CI_Controller {
 
 //            $this->db->update('usuario', $form, array('id' => $this->session->userdata('usuario')->id)); 
 
+            } else {
+                
             }
         } 
 
@@ -62,6 +64,39 @@ class Perfil extends CI_Controller {
         $this->load->view('perfil',$data);
         $this->load->view('templates/footer');
     }
+
+            public function alterar_senha(){
+
+            if($this->input->post()) {
+            $form = $this->input->post();
+
+            $this->form_validation->set_rules('id', 'ID', 'required');
+            $this->form_validation->set_rules('senha', 'Senha', 'required|matches[confirma_senha]');
+            $this->form_validation->set_rules('confirma_senha', 'Confirma Senha', 'required');
+
+            if($this->form_validation->run() == TRUE){
+
+            $usuario = new Usuario_model((array) $this->usuario_model->consultar($form['id']));
+
+            //var_dump($usuario); die();
+
+            $usuario->senha = md5($form['senha']);
+
+            $usuario->atualizar();
+
+            $this->session->set_flashdata('mensagem', 
+            array('tipo' => 'success', 'texto' => 'Alteração de senha realizada com sucesso!'));
+
+            redirect(base_url('perfil'));
+
+//            $this->db->update('usuario', $form, array('id' => $this->session->userdata('usuario')->id)); 
+
+            }
+
+        }
+        
+
+        }
 
 }
 

@@ -149,7 +149,7 @@
 
     <!-- Modal de senha -->
     <div class="ls-modal" id="editPassword">
-        <form method="post" action="<?php echo base_url() ?>usuarios/senha" class="ls-form">
+        <form method="post" action="<?php echo base_url() ?>perfil/alterar_senha" class="ls-form">
             <div class="ls-modal-box">
                 <input type="hidden" name="id" value="<?php echo $usuario->id;?>">
                 <div class="ls-modal-header">
