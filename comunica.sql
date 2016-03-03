@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 02-Mar-2016 às 23:56
+-- Generation Time: 03-Mar-2016 às 20:59
 -- Versão do servidor: 10.1.9-MariaDB
 -- PHP Version: 5.5.30
 
@@ -19,6 +19,31 @@ SET time_zone = "+00:00";
 --
 -- Database: `comunica`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `comentarios`
+--
+
+CREATE TABLE `comentarios` (
+  `id` int(11) NOT NULL,
+  `id_contato` int(11) NOT NULL,
+  `mensagem` text NOT NULL,
+  `id_usuario` int(11) NOT NULL,
+  `data_cadastro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `comentarios`
+--
+
+INSERT INTO `comentarios` (`id`, `id_contato`, `mensagem`, `id_usuario`, `data_cadastro`) VALUES
+(1, 5, 'Olá!', 21, '2016-03-03 19:48:30'),
+(2, 5, 'olá cinthian', 21, '2016-03-03 19:50:43'),
+(3, 5, 'olá!', 21, '2016-03-03 19:53:47'),
+(4, 5, 'olá!', 21, '2016-03-03 19:54:09'),
+(5, 5, 'olá!', 21, '2016-03-03 19:54:25');
 
 -- --------------------------------------------------------
 
@@ -40,7 +65,8 @@ CREATE TABLE `contatos` (
 --
 
 INSERT INTO `contatos` (`id`, `assunto`, `mensagem`, `id_usuario`, `data_cadastro`, `status`) VALUES
-(4, 'assunto', 'mensagem', 21, '2016-03-02 22:31:23', 3);
+(4, 'assunto', 'mensagem', 21, '2016-03-02 22:31:23', 3),
+(5, 'Duis aute irure dolor in reprehenderit', 'Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 21, '2016-03-03 01:34:52', 1);
 
 -- --------------------------------------------------------
 
@@ -70,7 +96,8 @@ CREATE TABLE `emprestimo` (
 
 INSERT INTO `emprestimo` (`data`, `hora`, `id_material`, `justificativa`, `obs`, `id`, `status`, `id_usuario`, `data_devolucao`, `hora_devolucao`, `id_local`, `data_cadastro`, `termos`) VALUES
 ('2016-03-02', '14:00:00', 1, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. ', 'Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 20, 2, 2, '2016-03-05', '15:00:00', 4, '2016-03-02 02:51:44', 1),
-('2016-03-17', '14:00:00', 1, 'HDSAJDKHSAKDJSHDSKJDHASJ', 'fkajskldjsadskldjsdklsadjs', 21, 1, 21, '2016-03-31', '15:00:00', 5, '2016-03-02 22:43:35', 1);
+('2016-03-17', '14:00:00', 1, 'HDSAJDKHSAKDJSHDSKJDHASJ', 'fkajskldjsadskldjsdklsadjs', 21, 2, 21, '2016-03-31', '15:00:00', 5, '2016-03-02 22:43:35', 1),
+('2016-03-03', '14:00:00', 2, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. ', 'Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 22, 3, 21, '2016-03-04', '15:00:00', 1, '2016-03-03 01:32:31', 1);
 
 -- --------------------------------------------------------
 
@@ -103,7 +130,8 @@ INSERT INTO `eventos` (`data`, `hora`, `responsavel`, `id_local`, `descricao`, `
 ('2016-03-01', '14:00:00', 'Geovane', '6', 'testando', 'testando', 5, 1, 1, '2016-03-01 14:10:12'),
 ('2016-03-01', '12:00:00', 'Cinthia', '5', 'testando', 'testando', 6, 1, 1, '2016-03-01 17:43:56'),
 ('2016-03-02', '15:00:00', 'Geovane', '4', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. ', 'Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 7, 1, 2, '2016-03-02 03:39:42'),
-('2016-03-02', '15:00:00', 'Jadson', '1', 'Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.Duis aute irure dolor in reprehenderit i', 'Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 8, 1, 2, '2016-03-02 03:43:12');
+('2016-03-02', '15:00:00', 'Jadson', '1', 'Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.Duis aute irure dolor in reprehenderit i', 'Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 8, 1, 2, '2016-03-02 03:43:12'),
+('2016-03-03', '15:00:00', 'Geovane', '1', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. ', 'Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 9, 1, 21, '2016-03-03 01:19:55');
 
 -- --------------------------------------------------------
 
@@ -211,7 +239,7 @@ CREATE TABLE `noticias` (
 INSERT INTO `noticias` (`id`, `titulo`, `descricao`, `arquivo_1`, `arquivo_2`, `arquivo_3`, `status`, `url_1`, `url_2`, `url_3`, `id_usuario`, `data_publicacao`, `data_cadastro`) VALUES
 (12, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporLorem ipsum dolor ', 'C:/xampp/htdocs/comunica/arquivos/noticias/10367591_10152065983281080_8515879487756079752_n.png', NULL, NULL, 1, '', '', '', 21, '2016-03-02', '2016-03-02 21:34:27'),
 (13, 'titulo', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor', 'C:/xampp/htdocs/comunica/arquivos/noticias/10367591_10152065983281080_8515879487756079752_n1.png', NULL, NULL, 1, '', '', '', 21, '2016-03-02', '2016-03-02 21:36:47'),
-(14, 'testando', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor', NULL, NULL, NULL, 1, '', '', '', 21, '2016-03-02', '2016-03-02 21:38:23'),
+(14, 'testando', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor', NULL, NULL, NULL, 2, 'www.facebook.com', 'www.facebook.com', 'www.facebook.com', 21, '2016-03-02', '2016-03-02 21:38:23'),
 (15, 'titulo teste 2', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor', 'C:/xampp/htdocs/comunica/arquivos/noticias/Mother.jpg', NULL, NULL, 1, '', '', '', 21, '2016-03-02', '2016-03-02 21:38:53'),
 (16, 'testando cadastro', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor', NULL, NULL, NULL, 1, '', '', '', 21, '2016-03-02', '2016-03-02 22:19:30'),
 (17, 'testando novamente', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dol', NULL, NULL, NULL, 1, '', '', '', 21, '2016-03-02', '2016-03-02 22:24:55');
@@ -243,7 +271,8 @@ CREATE TABLE `producao` (
 --
 
 INSERT INTO `producao` (`data_publicacao`, `id_usuario`, `justificativa`, `id`, `status`, `url_1`, `url_2`, `url_3`, `arquivo_1`, `arquivo_2`, `arquivo_3`, `tipo`, `data_cadastro`) VALUES
-('2016-03-01 18:27:07', 1, 'var_dumpvar_dumpvar_dumpvar_dumpvar_dumpvar_dumpvar_dumpvar_dumpvar_dumpvar_dumpvar_dumpvar_dumpvar_dumpvar_dumpvar_dumpvar_dumpvar_dumpvar_dumpvar_dumpvar_dumpvar_dump', 11, 2, 'www.w3schools.com', 'www.w3schools.com', 'www.w3schools.com', 'C:/xampp/htdocs/comunica/arquivos/producao/Mother1.jpg', NULL, NULL, 'Banner (A3)', '2016-03-02 02:43:36');
+('2016-03-01 18:27:07', 1, 'var_dumpvar_dumpvar_dumpvar_dumpvar_dumpvar_dumpvar_dumpvar_dumpvar_dumpvar_dumpvar_dumpvar_dumpvar_dumpvar_dumpvar_dumpvar_dumpvar_dumpvar_dumpvar_dumpvar_dumpvar_dump', 11, 3, 'www.w3schools.com', 'www.w3schools.com', 'www.w3schools.com', 'C:/xampp/htdocs/comunica/arquivos/producao/Mother1.jpg', NULL, NULL, 'Banner (A3)', '2016-03-02 02:43:36'),
+('2016-03-03 01:15:43', 21, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dol', 12, 1, '', '', '', 'C:/xampp/htdocs/comunica/arquivos/producao/Mother.jpg', NULL, NULL, 'Banner (120mmx80mm)', '2016-03-03 01:15:43');
 
 -- --------------------------------------------------------
 
@@ -271,13 +300,19 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`id`, `nome`, `senha`, `matricula`, `email`, `telefone`, `tipo_acesso`, `status`, `endereco`, `informacao`, `data_cadastro`) VALUES
 (1, 'Damião', '4d014da2b931c2e08ee5d841899afc2f', '202020202', 'ed.mota@comunica.com', '(77) 77777-7777', 2, 3, 'Lorem ipsum dolor sit amet, XX', NULL, '2016-03-02 19:06:14'),
-(2, 'Admin', '28c8edde3d61a0411511d3b1866f0636', '123456789', 'admin@comunica', '(99) 99999-9999', 2, 1, 'Lorem ipsum dolor sit amet, XX', NULL, '2016-03-02 04:09:29'),
-(3, 'admin', 'c81e728d9d4c2f636f067f89cc14862c', '123456', 'admin', NULL, 2, 3, NULL, NULL, '2016-03-02 17:06:38'),
-(21, 'Jadson Gomes de Medeiros', 'c4ca4238a0b923820dcc509a6f75849b', '20121044010174', 'jadson', '(77) 77777-7777', 2, 1, 'Lorem ipsum dolor sit amet, XX', NULL, '2016-03-02 18:14:19');
+(2, 'Admin', 'c4ca4238a0b923820dcc509a6f75849b', '123456789', 'admin@comunica', '(99) 99999-9999', 2, 1, 'Lorem ipsum dolor sit amet, XX', NULL, '2016-03-02 04:09:29'),
+(3, 'admin', 'c4ca4238a0b923820dcc509a6f75849b', '123456', 'admin', NULL, 2, 1, NULL, NULL, '2016-03-02 17:06:38'),
+(21, 'Jadson Gomes de Medeiros', 'c4ca4238a0b923820dcc509a6f75849b', '20121044010174', 'jadson', '(77) 77777-7777', 1, 1, 'Lorem ipsum dolor sit amet, XX', NULL, '2016-03-02 18:14:19');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `comentarios`
+--
+ALTER TABLE `comentarios`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `contatos`
@@ -348,20 +383,25 @@ ALTER TABLE `usuario`
 --
 
 --
+-- AUTO_INCREMENT for table `comentarios`
+--
+ALTER TABLE `comentarios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
 -- AUTO_INCREMENT for table `contatos`
 --
 ALTER TABLE `contatos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `emprestimo`
 --
 ALTER TABLE `emprestimo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT for table `eventos`
 --
 ALTER TABLE `eventos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `impressao`
 --
@@ -386,7 +426,7 @@ ALTER TABLE `noticias`
 -- AUTO_INCREMENT for table `producao`
 --
 ALTER TABLE `producao`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `usuario`
 --
@@ -433,6 +473,12 @@ ALTER TABLE `noticias`
 --
 ALTER TABLE `producao`
   ADD CONSTRAINT `fk_usuario_producao` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`);
+
+ALTER TABLE `comentarios`
+  ADD CONSTRAINT `fk_usuario_comentarios` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`);
+
+  ALTER TABLE `comentarios`
+  ADD CONSTRAINT `fk_contatos` FOREIGN KEY (`id_contatos`) REFERENCES `contato` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
