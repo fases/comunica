@@ -79,7 +79,7 @@ class Material_producao_model extends CI_Model {
         $query = $this->db->get_where('producao', array('id_usuario' => $id));
         
         //row_object() retorna direto o objeto produto e não um array
-        return $query->row_object();
+        return $query->result();
 
     }
 

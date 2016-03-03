@@ -96,5 +96,17 @@ class Emprestimo_model extends CI_Model {
         $this->db->update('emprestimo', array('status' => 0));
 
     }
+
+        public function consultar_usuario($id){
+
+        //$this->db->join('usuario','id_usuario=id','inner');
+
+        //Busca com condição
+        $query = $this->db->get_where('emprestimo', array('id_usuario' => $id));
+ 
+        //row_object() retorna direto o objeto produto e não um array
+        return $query->result();
+
+    }
     
 }

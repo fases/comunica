@@ -24,6 +24,9 @@ class Pedidos extends CI_Controller {
         $data['usuario'] = $this->session->userdata('usuario'); //preenche com os dados da sessão;
         $data['materiais_impressao'] = $this->material_impressao_model->consultar_usuario($this->session->userdata('usuario')->id); //cria variável, realiza a consulta e organiza em uma array
         $data['materiais_producao'] = $this->material_producao_model->consultar_usuario($this->session->userdata('usuario')->id); //cria variável, realiza a consulta e organiza em uma array
+        $data['emprestimos'] = $this->emprestimo_model->consultar_usuario($this->session->userdata('usuario')->id); //cria variável, realiza a consulta e organiza em uma array
+        $data['eventos'] = $this->evento_model->consultar_usuario($this->session->userdata('usuario')->id); //cria variável, realiza a consulta e organiza em uma array,
+        $data['noticias'] = $this->noticia_model->consultar_usuario($this->session->userdata('usuario')->id); //cria variável, realiza a consulta e organiza em uma array
 
         //var_dump($id);die();
         //var_dump($data);die();
