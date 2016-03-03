@@ -8,6 +8,23 @@ class Solicitacoes extends CI_Controller {
         if (!$this->session->userdata('usuario')){ 
             redirect(base_url("login/"), 'refresh');
         }
+        
+        $tipo_usuario = $this->session->userdata('usuario')->tipo_acesso;
+
+        //var_dump($tipo_usuario); die();
+        switch($tipo_usuario) {
+            case '1':
+            $this->template = 'header_admin';
+            break;
+            case '2':
+            $this->template = 'header_servidor';
+            break;
+            case '3':
+            $this->template = 'header_aluno';
+            break;
+            default:
+            redirect(base_url('logout'));
+        }
     }
 
 
@@ -17,7 +34,7 @@ class Solicitacoes extends CI_Controller {
     'usuario' => $this->session->userdata('usuario') //preenche com os dados da sessão;
     );
 
-        $this->load->view('templates/header',$data);
+        $this->load->view('templates/' . $this->template, $data);
 
         $this->load->model('usuario_model'); //carrega o model
         $this->db->where('status', 0); //carrega apenas usuarios indefiridos
@@ -39,7 +56,7 @@ class Solicitacoes extends CI_Controller {
         $data['materiais_producao'] = $this->material_producao_model->listar(); //cria variável, realiza a consulta e organiza em uma array
 
 
-        $this->load->view('templates/header',$data);
+        $this->load->view('templates/' . $this->template, $data);
         $this->load->view('solicitacoes/material', $data);
         $this->load->view('templates/footer');
 
@@ -49,7 +66,7 @@ class Solicitacoes extends CI_Controller {
     'usuario' => $this->session->userdata('usuario') //preenche com os dados da sessão;
     );
 
-             $this->load->view('templates/header',$data);
+             $this->load->view('templates/' . $this->template, $data);
              $this->load->view('material/visualizar',$data);
              $this->load->view('templates/footer');
          }
@@ -61,7 +78,7 @@ class Solicitacoes extends CI_Controller {
     'usuario' => $this->session->userdata('usuario') //preenche com os dados da sessão;
     );
 
-        $this->load->view('templates/header',$data);
+        $this->load->view('templates/' . $this->template, $data);
 
         $this->load->model('evento_model'); //carrega o model
         $data['eventos'] = $this->evento_model->listar(); //cria variável, realiza a consulta e organiza em uma array
@@ -90,7 +107,7 @@ class Solicitacoes extends CI_Controller {
     'usuario' => $this->session->userdata('usuario') //preenche com os dados da sessão;
     );
 
-        $this->load->view('templates/header',$data);
+        $this->load->view('templates/' . $this->template, $data);
 
         $this->load->model('noticia_model'); //carrega o model
         $data['noticias'] = $this->noticia_model->listar(); //cria variável, realiza a consulta e organiza em uma array
@@ -106,7 +123,7 @@ class Solicitacoes extends CI_Controller {
     'usuario' => $this->session->userdata('usuario') //preenche com os dados da sessão;
     );
 
-        $this->load->view('templates/header',$data);
+        $this->load->view('templates/' . $this->template, $data);
 
         $this->load->model('emprestimo_model'); //carrega o model
         $data['emprestimos'] = $this->emprestimo_model->listar(); //cria variável, realiza a consulta e organiza em uma array

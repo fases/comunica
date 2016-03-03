@@ -7,7 +7,24 @@ class Perfil extends CI_Controller {
 
         if (!$this->session->userdata('usuario')){ 
             redirect(base_url("login/"), 'refresh');
-            }
+        }
+
+        $tipo_usuario = $this->session->userdata('usuario')->tipo_acesso;
+
+        //var_dump($tipo_usuario); die();
+        switch($tipo_usuario) {
+            case '1':
+            $this->template = 'header_admin';
+            break;
+            case '2':
+            $this->template = 'header_servidor';
+            break;
+            case '3':
+            $this->template = 'header_aluno';
+            break;
+            default:
+            redirect(base_url('logout'));
+        }
 
     }
     public function index()
@@ -33,24 +50,24 @@ class Perfil extends CI_Controller {
 
             if($this->form_validation->run() == TRUE){
 
-            $this->load->model('usuario_model');
+                $this->load->model('usuario_model');
 
-            $usuario = new Usuario_model((array) $data['usuario_editar']);
+                $usuario = new Usuario_model((array) $data['usuario_editar']);
 
 //            var_dump($usuario); die();
 
-            $usuario->nome = $form['nome'];
-            $usuario->email = $form['email'];
-            $usuario->matricula = $form['matricula'];
-            $usuario->endereco = $form['endereco'];
-            $usuario->telefone = $form['telefone'];
+                $usuario->nome = $form['nome'];
+                $usuario->email = $form['email'];
+                $usuario->matricula = $form['matricula'];
+                $usuario->endereco = $form['endereco'];
+                $usuario->telefone = $form['telefone'];
 
-            $usuario->atualizar();
+                $usuario->atualizar();
 
-            $this->session->set_flashdata('mensagem', 
-            array('tipo' => 'success', 'texto' => 'Alteração realizada com sucesso!'));
+                $this->session->set_flashdata('mensagem', 
+                    array('tipo' => 'success', 'texto' => 'Alteração realizada com sucesso!'));
 
-            redirect(base_url('/perfil'));
+                redirect(base_url('/perfil'));
 
 //            $this->db->update('usuario', $form, array('id' => $this->session->userdata('usuario')->id)); 
 
@@ -60,14 +77,14 @@ class Perfil extends CI_Controller {
         } 
 
 
-        $this->load->view('templates/header',$data);
+        $this->load->view('templates/' . $this->template, $data);
         $this->load->view('perfil',$data);
         $this->load->view('templates/footer');
     }
 
-            public function alterar_senha(){
+    public function alterar_senha(){
 
-            if($this->input->post()) {
+        if($this->input->post()) {
             $form = $this->input->post();
 
             $this->form_validation->set_rules('id', 'ID', 'required');
@@ -76,18 +93,18 @@ class Perfil extends CI_Controller {
 
             if($this->form_validation->run() == TRUE){
 
-            $usuario = new Usuario_model((array) $this->usuario_model->consultar($form['id']));
+                $usuario = new Usuario_model((array) $this->usuario_model->consultar($form['id']));
 
             //var_dump($usuario); die();
 
-            $usuario->senha = md5($form['senha']);
+                $usuario->senha = md5($form['senha']);
 
-            $usuario->atualizar();
+                $usuario->atualizar();
 
-            $this->session->set_flashdata('mensagem', 
-            array('tipo' => 'success', 'texto' => 'Alteração de senha realizada com sucesso!'));
+                $this->session->set_flashdata('mensagem', 
+                    array('tipo' => 'success', 'texto' => 'Alteração de senha realizada com sucesso!'));
 
-            redirect(base_url('perfil'));
+                redirect(base_url('perfil'));
 
 //            $this->db->update('usuario', $form, array('id' => $this->session->userdata('usuario')->id)); 
 
@@ -96,7 +113,7 @@ class Perfil extends CI_Controller {
         }
         
 
-        }
+    }
 
 }
 

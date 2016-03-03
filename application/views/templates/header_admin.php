@@ -82,7 +82,7 @@
                 <nav class="ls-menu">
                     <ul>
                         <li><a href="<?php echo base_url() ?>" class="ls-ico-dashboard">Início</a></li>
-                        <li>
+                        <!-- <li>
                             <a href="#" class="ls-ico-stats">Pedidos</a>
                             <ul>
                                 <li><a href="<?php echo base_url() ?>pedidos">Meus Pedidos</a></li>
@@ -116,7 +116,7 @@
                                 <li><a href="<?php echo base_url() ?>material/producao">Produção de Material Gráfico</a></li>
                                 <li><a href="<?php echo base_url() ?>material/impressao">Impressão de Material Gráfico</a></li>
                             </ul>
-                        </li>
+                        </li> -->
                         <li>
                             <a href="#" class="ls-ico-user" title="Configurações">Usuários</a>
                             <ul>

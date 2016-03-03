@@ -8,6 +8,23 @@ class Local extends CI_Controller {
         if (!$this->session->userdata('usuario')){ 
             redirect(base_url("login/"), 'refresh');
         }
+
+        $tipo_usuario = $this->session->userdata('usuario')->tipo_acesso;
+
+        //var_dump($tipo_usuario); die();
+        switch($tipo_usuario) {
+            case '1':
+            $this->template = 'header_admin';
+            break;
+            case '2':
+            $this->template = 'header_servidor';
+            break;
+            case '3':
+            $this->template = 'header_aluno';
+            break;
+            default:
+            redirect(base_url('logout'));
+        }
     }
 
 
@@ -38,7 +55,7 @@ class Local extends CI_Controller {
     'usuario' => $this->session->userdata('usuario') //preenche com os dados da sessão;
     );
 
-        $this->load->view('templates/header', $data);
+        $this->load->view('templates/' . $this->template, $data);
         $this->load->view('local/cadastrar');
         $this->load->view('templates/footer');
     }

@@ -8,6 +8,23 @@ class Pedidos extends CI_Controller {
         if (!$this->session->userdata('usuario')){ 
             redirect(base_url("login/"), 'refresh');
             }
+            
+        $tipo_usuario = $this->session->userdata('usuario')->tipo_acesso;
+
+        //var_dump($tipo_usuario); die();
+        switch($tipo_usuario) {
+            case '1':
+                $this->template = 'header_admin';
+                break;
+            case '2':
+                $this->template = 'header_servidor';
+                break;
+            case '3':
+                $this->template = 'header_aluno';
+                break;
+            default:
+                redirect(base_url('logout'));
+        }
 
 
     }
@@ -33,9 +50,26 @@ class Pedidos extends CI_Controller {
 
        //var_dump( $this->session->userdata('usuario')->id); die();
 
-        $this->load->view('templates/header',$data);
+        $this->load->view('templates/' . $this->template, $data);
         $this->load->view('pedidos',$data);
         $this->load->view('templates/footer');
+    }
+
+    public function noticias($id){
+
+        $this->load->model('noticia_model');
+
+        $data = array(); // cria array;
+        $data['usuario'] = $this->session->userdata('usuario'); //preenche com os dados da sessão;
+        $data['noticia'] = $this->noticia_model->consultar($id);//carrega apenas a notícia pelo id;
+        //$data['usuario_noticia'] = $this->usuario_model->consultar($data['noticia']->id_usuario);
+
+
+        $this->load->view('templates/' . $this->template, $data);
+        $this->load->view('pedidos/noticia',$data);
+        $this->load->view('templates/footer');
+
+
     }
 
 }

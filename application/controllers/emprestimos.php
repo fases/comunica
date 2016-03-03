@@ -8,11 +8,28 @@ class Emprestimos extends CI_Controller {
     if (!$this->session->userdata('usuario')){ 
         redirect(base_url("login/"), 'refresh');
     }
+
+    $tipo_usuario = $this->session->userdata('usuario')->tipo_acesso;
+
+        //var_dump($tipo_usuario); die();
+    switch($tipo_usuario) {
+        case '1':
+        $this->template = 'header_admin';
+        break;
+        case '2':
+        $this->template = 'header_servidor';
+        break;
+        case '3':
+        $this->template = 'header_aluno';
+        break;
+        default:
+        redirect(base_url('logout'));
+    }
 }
 
 
 public function index(){
-    $this->load->view('dashboard');
+    $this->load->view('home');
 }
 
 public function agendar()
@@ -45,14 +62,14 @@ public function agendar()
             $emprestimo->cadastrar();
 
             $this->session->set_flashdata('mensagem', 
-            array('tipo' => 'success', 'texto' => 'Solicitação de empréstimo realizada com sucesso!'));
+                array('tipo' => 'success', 'texto' => 'Solicitação de empréstimo realizada com sucesso!'));
 
             redirect('emprestimos/agendar');
 
 
         } else{
             $this->session->set_flashdata('mensagem', 
-            array('tipo' => 'danger', 'texto' => 'Dados inválidos! Tente novamente.'));
+                array('tipo' => 'danger', 'texto' => 'Dados inválidos! Tente novamente.'));
         }
     }
 
@@ -61,7 +78,7 @@ public function agendar()
         );
 
 
-        $this->load->view('templates/header',$data);
+        $this->load->view('templates/' . $this->template, $data);
         $this->db->order_by("nome", "asc");
         $dados['materiais'] = $this->db->get('material')->result();
 
@@ -85,7 +102,7 @@ public function agendar()
     $data['local'] = $this->local_model->consultar($data['emprestimo']->id_local);
     $data['material'] = $this->material_model->consultar($data['emprestimo']->id_material);
 
-        $this->load->view('templates/header',$data);
+    $this->load->view('templates/' . $this->template, $data);
 
 
         //echo "<pre>";
@@ -94,28 +111,28 @@ public function agendar()
 
         //var_dump($material->nome);die();
 
-        $this->load->view('emprestimos/visualizar', $data);
+    $this->load->view('emprestimos/visualizar', $data);
 
-        $this->load->view('templates/footer');
-
-
-    }
+    $this->load->view('templates/footer');
 
 
-    public function aprovar($id){
+}
+
+
+public function aprovar($id){
 
          $this->load->model('emprestimo_model'); //carrega o model
          $this->emprestimo_model->aprovar($id);
          redirect(base_url().'emprestimos/visualizar/'.$id);
- 
-    }
 
-    public function concluir($id){
+     }
+
+     public function concluir($id){
 
          $this->load->model('emprestimo_model'); //carrega o model
          $this->emprestimo_model->concluir($id);
          redirect(base_url().'emprestimos/visualizar/'.$id);
- 
-    }
 
-}
+     }
+
+ }

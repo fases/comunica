@@ -1,6 +1,8 @@
 <div class="container-fluid">
     <h1 class="ls-title-intro ls-ico-home ">Sejam bem vindo(a), <?php $nomes = explode(' ', $usuario->nome); echo $nomes[0]; ?>!</h1>
 
+      <?php $this->mensagem_model->exibir(); ?>
+
 <div class="ls-box ls-lg-space ls-ico-lamp ls-ico-bg">
   <h1 class="ls-title-1 ls-color-theme">O COMUNICA é o sistema online da Comunicação Social</h1>
   <p>Comece a usar agora: faça sua primeira solicitação, defina suas preferências e acompanhe o seu desenvolvimento.</p>

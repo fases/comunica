@@ -62,7 +62,16 @@ class Usuario_model extends CI_Model {
         //row_object() retorna direto o objeto produto e não um array
         return $query->row_object();
 
+    }
 
+        public function tem_permissao($id) 
+    {
+        if(is_array($id)) 
+        {
+            return (in_array($this->session->usuario->tipo_acesso, $id)) ? true : false;
+        }
+
+        return ($this->session->usuario->tipo_acesso == $id) ? true : false;
     }
 
 

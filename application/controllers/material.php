@@ -8,6 +8,23 @@ class Material extends CI_Controller {
         if (!$this->session->userdata('usuario')){ 
             redirect(base_url("login/"), 'refresh');
         }
+
+        $tipo_usuario = $this->session->userdata('usuario')->tipo_acesso;
+
+        //var_dump($tipo_usuario); die();
+        switch($tipo_usuario) {
+            case '1':
+            $this->template = 'header_admin';
+            break;
+            case '2':
+            $this->template = 'header_servidor';
+            break;
+            case '3':
+            $this->template = 'header_aluno';
+            break;
+            default:
+            redirect(base_url('logout'));
+        }
     }
 
     public function producao(){
@@ -62,7 +79,7 @@ class Material extends CI_Controller {
     'usuario' => $this->session->userdata('usuario') //preenche com os dados da sessão;
     );
 
-        $this->load->view('templates/header',$data);
+        $this->load->view('templates/' . $this->template, $data);
         $this->load->view('material/producao',$data);
         $this->load->view('templates/footer');
     }
@@ -117,7 +134,7 @@ class Material extends CI_Controller {
     'usuario' => $this->session->userdata('usuario') //preenche com os dados da sessão;
     );
 
-        $this->load->view('templates/header',$data);
+        $this->load->view('templates/' . $this->template, $data);
         $this->load->view('material/impressao');
         $this->load->view('templates/footer');
     }
@@ -149,7 +166,7 @@ class Material extends CI_Controller {
     'usuario' => $this->session->userdata('usuario') //preenche com os dados da sessão;
     );
 
-        $this->load->view('templates/header', $data);
+        $this->load->view('templates/' . $this->template, $data);
         $this->load->view('material/cadastrar');
         $this->load->view('templates/footer');
     }
@@ -164,7 +181,7 @@ class Material extends CI_Controller {
         //$data['data'] = $data;
 
 
-            $this->load->view('templates/header',$data);
+            $this->load->view('templates/' . $this->template, $data);
 
             $this->load->model('material_model');
             $data['materiais'] = $this->material_model->listar()->result_array();
@@ -184,38 +201,38 @@ class Material extends CI_Controller {
             $data['usuario'] = $this->session->userdata('usuario'); //preenche com os dados da sessão;
             $data['impressao'] = $this->material_impressao_model->consultar($id); //carrega o evento apenas pelo id;
             $data['usuario_impressao'] = $this->usuario_model->consultar($data['impressao']->id_usuario);
-        
-            $this->load->view('templates/header',$data);
+            
+            $this->load->view('templates/' . $this->template, $data);
             $this->load->view('material/visualizar_impressao',$data);
             $this->load->view('templates/footer');
 
-    }
+        }
 
         public function aprovar_impressao($id){
 
          $this->load->model('material_impressao_model'); //carrega o model
          $this->material_impressao_model->aprovar($id);
          redirect(base_url().'material/visualizar_impressao/'.$id);
- 
-    }
+         
+     }
 
-    public function concluir_impressao($id){
+     public function concluir_impressao($id){
 
          $this->load->model('material_impressao_model'); //carrega o model
          $this->material_impressao_model->concluir($id);
          redirect(base_url().'material/visualizar_impressao/'.$id);
- 
-    }
+         
+     }
 
-        public function suspender_impressao($id){
+     public function suspender_impressao($id){
 
          $this->load->model('material_model'); //carrega o model
          $this->material_impressao_model->suspender($id);
          redirect(base_url().'material/visualizar_impressao/'.$id);
- 
-    }
+         
+     }
 
-    public function visualizar_producao($id){
+     public function visualizar_producao($id){
 
 
             $this->load->model('usuario_model'); //carrega o model
@@ -226,37 +243,37 @@ class Material extends CI_Controller {
             $data['usuario'] = $this->session->userdata('usuario'); //preenche com os dados da sessão;
             $data['producao'] = $this->material_producao_model->consultar($id); //carrega o evento apenas pelo id;
             $data['usuario_producao'] = $this->usuario_model->consultar($data['producao']->id_usuario);
-        
-            $this->load->view('templates/header',$data);
+            
+            $this->load->view('templates/' . $this->template, $data);
             $this->load->view('material/visualizar_producao',$data);
             $this->load->view('templates/footer');
 
-    }
+        }
 
-    public function aprovar_producao($id){
+        public function aprovar_producao($id){
 
          $this->load->model('material_producao_model'); //carrega o model
          $this->material_producao_model->aprovar($id);
          redirect(base_url().'material/visualizar_producao/'.$id);
- 
-    }
+         
+     }
 
-    public function concluir_producao($id){
+     public function concluir_producao($id){
 
          $this->load->model('material_producao_model'); //carrega o model
          $this->material_producao_model->concluir($id);
          redirect(base_url().'material/visualizar_producao/'.$id);
- 
-    }
+         
+     }
 
-        public function suspender_producao($id){
+     public function suspender_producao($id){
 
          $this->load->model('material_model'); //carrega o model
          $this->material_producao_model->suspender($id);
          redirect(base_url().'material/visualizar_producao/'.$id);
- 
-    }
+         
+     }
 
 
 
-}
+ }

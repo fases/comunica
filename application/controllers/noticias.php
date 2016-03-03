@@ -8,6 +8,23 @@ class Noticias extends CI_Controller {
         if (!$this->session->userdata('usuario')){ 
             redirect(base_url("login/"), 'refresh');
         }
+
+        $tipo_usuario = $this->session->userdata('usuario')->tipo_acesso;
+
+        //var_dump($tipo_usuario); die();
+        switch($tipo_usuario) {
+            case '1':
+            $this->template = 'header_admin';
+            break;
+            case '2':
+            $this->template = 'header_servidor';
+            break;
+            case '3':
+            $this->template = 'header_aluno';
+            break;
+            default:
+            redirect(base_url('logout'));
+        }
     }
 
     public function enviar(){
@@ -78,7 +95,7 @@ class Noticias extends CI_Controller {
     'usuario' => $this->session->userdata('usuario') //preenche com os dados da sessão;
     );
 
-        $this->load->view('templates/header',$data);
+        $this->load->view('templates/' . $this->template, $data);
         $this->load->view('noticias/enviar',$data);
         $this->load->view('templates/footer');
     }
@@ -95,36 +112,36 @@ class Noticias extends CI_Controller {
 
 
 
-           $this->load->view('templates/header',$data);
-           $this->load->view('noticias/visualizar',$data);
-           $this->load->view('templates/footer');
+        $this->load->view('templates/' . $this->template, $data);
+        $this->load->view('noticias/visualizar',$data);
+        $this->load->view('templates/footer');
 
 
-       }
+    }
 
-           public function aprovar($id){
+    public function aprovar($id){
 
          $this->load->model('noticia_model'); //carrega o model
          $this->noticia_model->aprovar($id);
          redirect(base_url().'noticias/visualizar/'.$id);
- 
-    }
+         
+     }
 
-    public function concluir($id){
+     public function concluir($id){
 
          $this->load->model('noticia_model'); //carrega o model
          $this->noticia_model->concluir($id);
          redirect(base_url().'noticias/visualizar/'.$id);
- 
-    }
+         
+     }
 
-        public function suspender($id){
+     public function suspender($id){
 
          $this->load->model('noticia_model'); //carrega o model
          $this->noticia_model->suspender($id);
          redirect(base_url().'noticias/visualizar/'.$id);
- 
-    }
+         
+     }
 
 
-   }
+ }

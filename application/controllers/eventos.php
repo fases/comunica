@@ -2,12 +2,29 @@
 
 class Eventos extends CI_Controller {
 
-        public function __construct(){
+    public function __construct(){
         parent::__construct();
 
         if (!$this->session->userdata('usuario')){ 
             redirect(base_url("login/"), 'refresh');
-            }
+        }
+
+        $tipo_usuario = $this->session->userdata('usuario')->tipo_acesso;
+
+        //var_dump($tipo_usuario); die();
+        switch($tipo_usuario) {
+            case '1':
+            $this->template = 'header_admin';
+            break;
+            case '2':
+            $this->template = 'header_servidor';
+            break;
+            case '3':
+            $this->template = 'header_aluno';
+            break;
+            default:
+            redirect(base_url('logout'));
+        }
     }
 
     public function cobertura(){
@@ -35,10 +52,10 @@ class Eventos extends CI_Controller {
                 //var_dump($evento);die();
                 $evento->cadastrar();
 
-            $this->session->set_flashdata('mensagem', 
-            array('tipo' => 'success', 'texto' => 'Solicitação de cobetura de evento enviada com sucesso!'));
+                $this->session->set_flashdata('mensagem', 
+                    array('tipo' => 'success', 'texto' => 'Solicitação de cobetura de evento enviada com sucesso!'));
 
-            redirect(base_url().'eventos/cobertura');
+                redirect(base_url().'eventos/cobertura');
 
 
 
@@ -49,7 +66,7 @@ class Eventos extends CI_Controller {
         'usuario' => $this->session->userdata('usuario') //preenche com os dados da sessão;
         );
 
-        $this->load->view('templates/header',$data);
+        $this->load->view('templates/' . $this->template, $data);
 
         $this->db->order_by("nome", "asc");
         $dados['locais'] = $this->db->get('local')->result();
@@ -61,9 +78,9 @@ class Eventos extends CI_Controller {
 
     public function visualizar($id){
 
-            $this->load->model('usuario_model');
-            $this->load->model('evento_model');
-            $this->load->model('local_model');
+        $this->load->model('usuario_model');
+        $this->load->model('evento_model');
+        $this->load->model('local_model');
 
             $data = array();// cria array;
             $data['usuario'] = $this->session->userdata('usuario'); //preenche com os dados da sessão;
@@ -72,35 +89,35 @@ class Eventos extends CI_Controller {
             $data['local_evento'] = $this->local_model->consultar($data['evento']->id_local);
 
 
-        $this->load->view('templates/header',$data);
-        $this->load->view('eventos/visualizar',$data);
-        $this->load->view('templates/footer');
+            $this->load->view('templates/' . $this->template, $data);
+            $this->load->view('eventos/visualizar',$data);
+            $this->load->view('templates/footer');
 
 
-    }
+        }
 
-    public function aprovar($id){
+        public function aprovar($id){
 
          $this->load->model('evento_model'); //carrega o model
          $this->evento_model->aprovar($id);
          redirect(base_url().'eventos/visualizar/'.$id);
- 
-    }
+         
+     }
 
-    public function concluir($id){
+     public function concluir($id){
 
          $this->load->model('evento_model'); //carrega o model
          $this->evento_model->concluir($id);
          redirect(base_url().'eventos/visualizar/'.$id);
- 
-    }
+         
+     }
 
-    public function suspender($id){
+     public function suspender($id){
 
          $this->load->model('evento_model'); //carrega o model
          $this->evento_model->suspender($id);
          redirect(base_url().'eventos/visualizar/'.$id);
- 
-    }
+         
+     }
 
-}
+ }

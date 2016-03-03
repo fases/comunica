@@ -120,7 +120,7 @@
 
                                           <td class="ls-txt-right ls-regroup">
 
-                    <a href="<?php echo base_url() ?>pedidos/noticia/<?php echo $noticia->id;?>" class="ls-btn ls-btn-sm" aria-expanded="false">Visualizar</a>
+                    <a href="<?php echo base_url() ?>pedidos/noticias/<?php echo $noticia->id;?>" class="ls-btn ls-btn-sm" aria-expanded="false">Visualizar</a>
                     </td>
 
               </tr>

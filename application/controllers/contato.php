@@ -7,13 +7,30 @@ class Contato extends CI_Controller {
 
         if (!$this->session->userdata('usuario')){ 
             redirect(base_url("login/"), 'refresh');
-            }
+        }
+
+        $tipo_usuario = $this->session->userdata('usuario')->tipo_acesso;
+
+        //var_dump($tipo_usuario); die();
+        switch($tipo_usuario) {
+            case '1':
+            $this->template = 'header_admin';
+            break;
+            case '2':
+            $this->template = 'header_servidor';
+            break;
+            case '3':
+            $this->template = 'header_aluno';
+            break;
+            default:
+            redirect(base_url('logout'));
+        }
     }
 
     public function index()
     {
 
-    if($this->input->post()) {
+        if($this->input->post()) {
             $form = $this->input->post();
 
             $this->form_validation->set_rules('assunto', 'Assunto', 'required');
@@ -21,22 +38,22 @@ class Contato extends CI_Controller {
             
             if($this->form_validation->run() == TRUE){
 
-            $this->load->model('contato_model');
+                $this->load->model('contato_model');
 
-            $contato = new Contato_model($form);
+                $contato = new Contato_model($form);
             //var_dump($contato); die();
-            $contato->cadastrar();
+                $contato->cadastrar();
 
 
-            $this->session->set_flashdata('mensagem', 
-            array('tipo' => 'success', 'texto' => 'E-mail de contato enviado com sucesso!'));
+                $this->session->set_flashdata('mensagem', 
+                    array('tipo' => 'success', 'texto' => 'E-mail de contato enviado com sucesso!'));
 
-            redirect(base_url('/contato'));
+                redirect(base_url('/contato'));
 
             }else{
-       
-            $this->session->set_flashdata('mensagem', 
-            array('tipo' => 'error', 'texto' => 'Algo está errado, tente novamente!'));
+             
+                $this->session->set_flashdata('mensagem', 
+                    array('tipo' => 'error', 'texto' => 'Algo está errado, tente novamente!'));
 
             }
         }
@@ -45,9 +62,9 @@ class Contato extends CI_Controller {
 
         $data = array(// cria array;
     'usuario' => $this->session->userdata('usuario') //preenche com os dados da sessão;
-        );
+    );
 
-        $this->load->view('templates/header',$data);
+        $this->load->view('templates/' . $this->template, $data);
         $this->load->view('contato');
         $this->load->view('templates/footer');
 
@@ -62,7 +79,7 @@ class Contato extends CI_Controller {
         $data['usuario'] = $this->session->userdata('usuario'); //preenche com os dados da sessão;
         $data['contatos'] = $this->contato_model->listar(); //cria variável, realiza a consulta e organiza em uma array;
 
-        $this->load->view('templates/header',$data);          
+        $this->load->view('templates/' . $this->template, $data);          
 
         //var_dump($data);die();
 
@@ -83,36 +100,36 @@ class Contato extends CI_Controller {
         $data['usuario_contato'] = $this->usuario_model->consultar($data['contato']->id_usuario);
 
 
-           $this->load->view('templates/header',$data);
-           $this->load->view('contato/visualizar',$data);
-           $this->load->view('templates/footer');
+        $this->load->view('templates/' . $this->template, $data);
+        $this->load->view('contato/visualizar',$data);
+        $this->load->view('templates/footer');
 
 
-       }
+    }
 
     public function aprovar($id){
 
          $this->load->model('contato_model'); //carrega o model
          $this->contato_model->aprovar($id);
          redirect(base_url().'contato/visualizar/'.$id);
- 
-    }
+         
+     }
 
-    public function concluir($id){
+     public function concluir($id){
 
          $this->load->model('contato_model'); //carrega o model
          $this->contato_model->concluir($id);
          redirect(base_url().'contato/visualizar/'.$id);
- 
-    }
+         
+     }
 
-    public function suspender($id){
+     public function suspender($id){
 
          $this->load->model('contato_model'); //carrega o model
          $this->contato_model->suspender($id);
          redirect(base_url().'contato/visualizar/'.$id);
- 
-    }
-    
+         
+     }
+     
 
-}
+ }
