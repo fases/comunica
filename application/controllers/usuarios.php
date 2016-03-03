@@ -31,7 +31,7 @@ class Usuarios extends CI_Controller {
 
     public function cadastrar(){
 
-        if(!$this->usuario_model->tem_permissao(PERM__ADMIN))
+        if(!$this->usuario_model->administrador())
         {
             $this->session->set_flashdata('mensagem', 
                 array('tipo' => 'danger', 'texto' => 'Você não possui credenciais para esta ação!'));
@@ -159,7 +159,7 @@ class Usuarios extends CI_Controller {
     public function deletar($id){
      $this->usuario_model->deletar($id);
      redirect(base_url('usuarios/listar'));
-     
+
  }
 
  public function desativar($id){

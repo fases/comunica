@@ -51,7 +51,7 @@ class Contato extends CI_Controller {
                 redirect(base_url('/contato'));
 
             }else{
-             
+
                 $this->session->set_flashdata('mensagem', 
                     array('tipo' => 'error', 'texto' => 'Algo está errado, tente novamente!'));
 
@@ -131,5 +131,35 @@ class Contato extends CI_Controller {
          
      }
      
+     public function cadastrar_comentario(){
 
- }
+        //echo "oi, eu sou a action!";
+
+        if($this->input->post()) {
+            $form = $this->input->post();
+
+            $this->form_validation->set_rules('mensagem', 'Mensagem', 'required');
+            
+            if($this->form_validation->run() == TRUE){
+
+                $this->load->model('comentario_model');
+
+                $comentario = new Comentario_model($form);
+            //var_dump($comentario); die();
+                $comentario->cadastrar();
+
+                //var_dump($comentario->id_contato);die();
+
+                redirect(base_url('/contato/visualizar/'.$comentario->id_contato));
+
+            }else{
+
+                $this->session->set_flashdata('mensagem', 
+                    array('tipo' => 'error', 'texto' => 'Algo está errado, tente novamente!'));
+
+            }
+
+        }
+
+    }
+}

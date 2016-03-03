@@ -58,13 +58,13 @@ class Usuario_model extends CI_Model {
 
         //Busca com condição
         $query = $this->db->get_where('usuario', array('id' => $id));
- 
+
         //row_object() retorna direto o objeto produto e não um array
         return $query->row_object();
 
     }
 
-        public function tem_permissao($id) 
+    public function tem_permissao($id) 
     {
         if(is_array($id)) 
         {
@@ -72,6 +72,14 @@ class Usuario_model extends CI_Model {
         }
 
         return ($this->session->usuario->tipo_acesso == $id) ? true : false;
+    }
+
+    public function administrador(){
+        return $this->session->userdata('usuario')->tipo_acesso < PERM__SERVIDOR ? true : false;
+    }
+
+    public function servidor(){
+        return $this->session->userdata('usuario')->tipo_acesso < PERM__ALUNO ? true : false;
     }
 
 
