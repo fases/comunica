@@ -94,7 +94,7 @@
 
 
 
-<a <?php echo '<a href='.base_url().'pedidos/'?> aria-expanded="false" class="ls-btn ls-float-right">Voltar</a>
+<a <?php echo '<a href='.base_url().'solicitacoes/noticias/'?> aria-expanded="false" class="ls-btn ls-float-right">Voltar</a>
 </div>
 
 </div>
