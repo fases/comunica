@@ -29,14 +29,18 @@ class Comentario_model extends CI_Model {
         $this->id = $this->db->insert_id();      
     }
 
-    public function consultar($id){
 
-            //Busca com condição
-        $query = $this->db->get_where('comentarios', array('id' => $id));
+    public function listar($id){
+
+        $result = $this->db->get_where('comentarios', array('id_contato' => $id))->result_array();
+
+        foreach($result as $k=>$r) {
+            $usuario = $this->usuario_model->consultar($r['id_usuario']);
+
+            $result[$k]['usuario'] = $usuario;
+        }
         
-            //row_object() retorna direto o objeto produto e não um array
-        return $query->row_object();
-
+        return $result;
     }
 
     public function concluir($id){

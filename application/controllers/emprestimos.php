@@ -35,6 +35,13 @@ public function index(){
 public function agendar()
 {
 
+    if(!$this->usuario_model->servidor())
+    {
+        $this->session->set_flashdata('mensagem', 
+            array('tipo' => 'danger', 'texto' => 'Você não possui credenciais para esta ação!'));
+        redirect(base_url('home'));
+    }
+
     if($this->input->post()) {
         $form = $this->input->post();
 
@@ -90,6 +97,13 @@ public function agendar()
 
     public function visualizar($id){
 
+        if(!$this->usuario_model->servidor())
+        {
+            $this->session->set_flashdata('mensagem', 
+                array('tipo' => 'danger', 'texto' => 'Você não possui credenciais para esta ação!'));
+            redirect(base_url('home'));
+        }
+
         $this->load->model('emprestimo_model'); //carrega o model
         $this->load->model('usuario_model');
         $this->load->model('material_model');
@@ -121,6 +135,13 @@ public function agendar()
 
 public function aprovar($id){
 
+    if(!$this->usuario_model->administrador())
+    {
+        $this->session->set_flashdata('mensagem', 
+            array('tipo' => 'danger', 'texto' => 'Você não possui credenciais para esta ação!'));
+        redirect(base_url('home'));
+    }
+
          $this->load->model('emprestimo_model'); //carrega o model
          $this->emprestimo_model->aprovar($id);
          redirect(base_url().'emprestimos/visualizar/'.$id);
@@ -128,6 +149,13 @@ public function aprovar($id){
      }
 
      public function concluir($id){
+
+        if(!$this->usuario_model->administrador())
+        {
+            $this->session->set_flashdata('mensagem', 
+                array('tipo' => 'danger', 'texto' => 'Você não possui credenciais para esta ação!'));
+            redirect(base_url('home'));
+        }
 
          $this->load->model('emprestimo_model'); //carrega o model
          $this->emprestimo_model->concluir($id);

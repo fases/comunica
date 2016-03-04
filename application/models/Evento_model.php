@@ -22,10 +22,9 @@ class Evento_model extends CI_Model {
         parent::__construct();
 
         if(!is_null($arr)){
-            $datestring = '%Y/%m/%d';
-            $my_time = time($arr['data']); 
-            $my_date = mdate($datestring , $my_time);
-            $this->data                   = isset($arr['data']) ? $my_date : null;
+            list($dia, $mes, $ano) = explode('/', $arr['data']);
+            $this->data  = isset($arr['data']) ? "$ano-$mes-$dia" : null;
+            
             $this->hora                   = isset($arr['hora']) ? $arr['hora'] : null;
             $this->responsavel            = isset($arr['responsavel']) ? $arr['responsavel'] : null;
             $this->id_local                  = isset($arr['id_local']) ? $arr['id_local'] : null;
@@ -62,7 +61,7 @@ class Evento_model extends CI_Model {
 
         //Busca com condição
         $query = $this->db->get_where('eventos', array('id' => $id));
- 
+        
         //row_object() retorna direto o objeto produto e não um array
         return $query->row_object();
 
@@ -90,13 +89,13 @@ class Evento_model extends CI_Model {
     }
     
 
-        public function consultar_usuario($id){
+    public function consultar_usuario($id){
 
         //$this->db->join('usuario','id_usuario=id','inner');
 
         //Busca com condição
         $query = $this->db->get_where('eventos', array('id_usuario' => $id));
- 
+        
         //row_object() retorna direto o objeto produto e não um array
         return $query->result();
 

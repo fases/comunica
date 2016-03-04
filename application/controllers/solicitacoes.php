@@ -30,6 +30,13 @@ class Solicitacoes extends CI_Controller {
 
     public function cadastro(){
 
+        if(!$this->usuario_model->administrador())
+        {
+            $this->session->set_flashdata('mensagem', 
+                array('tipo' => 'danger', 'texto' => 'Você não possui credenciais para esta ação!'));
+            redirect(base_url('home'));
+        }
+
         $data = array(// cria array;
     'usuario' => $this->session->userdata('usuario') //preenche com os dados da sessão;
     );
@@ -45,6 +52,13 @@ class Solicitacoes extends CI_Controller {
     }
 
     public function material(){  
+
+        if(!$this->usuario_model->administrador())
+        {
+            $this->session->set_flashdata('mensagem', 
+                array('tipo' => 'danger', 'texto' => 'Você não possui credenciais para esta ação!'));
+            redirect(base_url('home'));
+        }
 
         $this->load->model('material_impressao_model'); //carrega o model
         $this->load->model('material_producao_model'); //carrega o model
@@ -62,6 +76,13 @@ class Solicitacoes extends CI_Controller {
 
         function visualizar_producao(){
 
+            if(!$this->usuario_model->administrador())
+            {
+                $this->session->set_flashdata('mensagem', 
+                    array('tipo' => 'danger', 'texto' => 'Você não possui credenciais para esta ação!'));
+                redirect(base_url('home'));
+            }
+
              $data = array(// cria array;
     'usuario' => $this->session->userdata('usuario') //preenche com os dados da sessão;
     );
@@ -74,11 +95,19 @@ class Solicitacoes extends CI_Controller {
 
      }
      public function cobertura(){
+
+        if(!$this->usuario_model->administrador())
+        {
+            $this->session->set_flashdata('mensagem', 
+                array('tipo' => 'danger', 'texto' => 'Você não possui credenciais para esta ação!'));
+            redirect(base_url('home'));
+        }
+
                     $data = array(// cria array;
     'usuario' => $this->session->userdata('usuario') //preenche com os dados da sessão;
     );
 
-        $this->load->view('templates/' . $this->template, $data);
+                    $this->load->view('templates/' . $this->template, $data);
 
         $this->load->model('evento_model'); //carrega o model
         $data['eventos'] = $this->evento_model->listar(); //cria variável, realiza a consulta e organiza em uma array
@@ -88,6 +117,13 @@ class Solicitacoes extends CI_Controller {
     }
 
     public function editar($id){
+
+        if(!$this->usuario_model->administrador())
+        {
+            $this->session->set_flashdata('mensagem', 
+                array('tipo' => 'danger', 'texto' => 'Você não possui credenciais para esta ação!'));
+            redirect(base_url('home'));
+        }
 
         $this->load->model('usuario');
         $evento = $this->evento_model->localizar($id);
@@ -103,11 +139,18 @@ class Solicitacoes extends CI_Controller {
 
     public function noticias(){
 
+        if(!$this->usuario_model->administrador())
+        {
+            $this->session->set_flashdata('mensagem', 
+                array('tipo' => 'danger', 'texto' => 'Você não possui credenciais para esta ação!'));
+            redirect(base_url('home'));
+        }
+
                     $data = array(// cria array;
     'usuario' => $this->session->userdata('usuario') //preenche com os dados da sessão;
     );
 
-        $this->load->view('templates/' . $this->template, $data);
+                    $this->load->view('templates/' . $this->template, $data);
 
         $this->load->model('noticia_model'); //carrega o model
         $data['noticias'] = $this->noticia_model->listar(); //cria variável, realiza a consulta e organiza em uma array
@@ -119,11 +162,18 @@ class Solicitacoes extends CI_Controller {
     }
     public function emprestimos(){
 
+        if(!$this->usuario_model->administrador())
+        {
+            $this->session->set_flashdata('mensagem', 
+                array('tipo' => 'danger', 'texto' => 'Você não possui credenciais para esta ação!'));
+            redirect(base_url('home'));
+        }
+
                     $data = array(// cria array;
     'usuario' => $this->session->userdata('usuario') //preenche com os dados da sessão;
     );
 
-        $this->load->view('templates/' . $this->template, $data);
+                    $this->load->view('templates/' . $this->template, $data);
 
         $this->load->model('emprestimo_model'); //carrega o model
         $data['emprestimos'] = $this->emprestimo_model->listar(); //cria variável, realiza a consulta e organiza em uma array
@@ -136,4 +186,4 @@ class Solicitacoes extends CI_Controller {
 
 
 
-    }
+}

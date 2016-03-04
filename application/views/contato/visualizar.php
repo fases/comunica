@@ -64,17 +64,25 @@
 <div class="ls-box ">
  <div class="col-md-12">
   <h3 class="ls-label-text">Comentários</h3>
-     <?php $this->mensagem_model->exibir(); ?>
+  <?php $this->mensagem_model->exibir(); ?>
   <hr>
 
-  <h5>Cínthia Diniz <spam class="ls-tag-info ls-float-right">03/03/2016 às 17:00</spam></h5>
+  <!-- Abre o foreach--> <?php 
+  foreach ($comentarios as $comentario) { 
+    ?>
+    <h5 class="ls-ico-user ">
 
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-    consequat.</p>
+      <?php echo $comentario['usuario']->nome;?> 
+      <spam class="ls-tag-info ls-float-right">
+        <?php echo date ("d/m/Y \à\s H:i", strtotime($comentario['data_cadastro']));?>
+      </spam>
+    </h5>
+
+    <p><?php echo $comentario['mensagem'];?></p>
 
     <hr>
+
+    <?php }?> <!-- Fecha o foreach-->
 
   </div>
 </div>

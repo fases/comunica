@@ -73,6 +73,13 @@ class Contato extends CI_Controller {
 
     public function listar(){
 
+        if(!$this->usuario_model->administrador())
+        {
+            $this->session->set_flashdata('mensagem', 
+                array('tipo' => 'danger', 'texto' => 'Você não possui credenciais para esta ação!'));
+            redirect(base_url('home'));
+        }
+
         $this->load->model('contato_model'); //carrega o model
 
         $data = array(); // cria array;
@@ -91,14 +98,25 @@ class Contato extends CI_Controller {
 
     public function visualizar($id){
 
+        if(!$this->usuario_model->administrador())
+        {
+            $this->session->set_flashdata('mensagem', 
+                array('tipo' => 'danger', 'texto' => 'Você não possui credenciais para esta ação!'));
+            redirect(base_url('home'));
+        }
+
         $this->load->model('usuario_model');
         $this->load->model('contato_model');
+        $this->load->model('comentario_model');
 
         $data = array(); // cria array;
         $data['usuario'] = $this->session->userdata('usuario'); //preenche com os dados da sessão;
         $data['contato'] = $this->contato_model->consultar($id);//carrega apenas a notícia pelo id;
         $data['usuario_contato'] = $this->usuario_model->consultar($data['contato']->id_usuario);
+        $data['comentarios'] = $this->comentario_model->listar($id);
 
+        //echo "<pre>";
+        //var_dump($data);die('</pre>');
 
         $this->load->view('templates/' . $this->template, $data);
         $this->load->view('contato/visualizar',$data);
@@ -109,6 +127,13 @@ class Contato extends CI_Controller {
 
     public function aprovar($id){
 
+
+        if(!$this->usuario_model->administrador())
+        {
+            $this->session->set_flashdata('mensagem', 
+                array('tipo' => 'danger', 'texto' => 'Você não possui credenciais para esta ação!'));
+            redirect(base_url('home'));
+        }
          $this->load->model('contato_model'); //carrega o model
          $this->contato_model->aprovar($id);
          redirect(base_url().'contato/visualizar/'.$id);
@@ -117,6 +142,13 @@ class Contato extends CI_Controller {
 
      public function concluir($id){
 
+        if(!$this->usuario_model->administrador())
+        {
+            $this->session->set_flashdata('mensagem', 
+                array('tipo' => 'danger', 'texto' => 'Você não possui credenciais para esta ação!'));
+            redirect(base_url('home'));
+        }
+
          $this->load->model('contato_model'); //carrega o model
          $this->contato_model->concluir($id);
          redirect(base_url().'contato/visualizar/'.$id);
@@ -124,6 +156,13 @@ class Contato extends CI_Controller {
      }
 
      public function suspender($id){
+
+        if(!$this->usuario_model->administrador())
+        {
+            $this->session->set_flashdata('mensagem', 
+                array('tipo' => 'danger', 'texto' => 'Você não possui credenciais para esta ação!'));
+            redirect(base_url('home'));
+        }
 
          $this->load->model('contato_model'); //carrega o model
          $this->contato_model->suspender($id);

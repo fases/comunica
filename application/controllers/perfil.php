@@ -71,7 +71,12 @@ class Perfil extends CI_Controller {
 
 //            $this->db->update('usuario', $form, array('id' => $this->session->userdata('usuario')->id)); 
 
-            } else {
+            }elseif($this->form_validation->run() == FALSE) {
+
+                $this->session->set_flashdata('mensagem', 
+                    array('tipo' => 'error', 'texto' => '<strong>Epa!</strong> Por favor, verifique os dados e tente novamente!'));
+
+                redirect(base_url('/perfil'));
                 
             }
         } 
@@ -108,6 +113,13 @@ class Perfil extends CI_Controller {
 
 //            $this->db->update('usuario', $form, array('id' => $this->session->userdata('usuario')->id)); 
 
+            }elseif($this->form_validation->run() == FALSE) {
+
+                $this->session->set_flashdata('mensagem', 
+                    array('tipo' => 'error', 'texto' => '<strong>Epa!</strong> Por favor, verifique os dados e tente novamente!'));
+
+                redirect(base_url('/perfil'));
+                
             }
 
         }

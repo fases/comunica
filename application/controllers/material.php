@@ -139,6 +139,14 @@ class Material extends CI_Controller {
         $this->load->view('templates/footer');
     }
     public function cadastrar(){
+
+        if(!$this->usuario_model->administrador())
+        {
+            $this->session->set_flashdata('mensagem', 
+                array('tipo' => 'danger', 'texto' => 'Você não possui credenciais para esta ação!'));
+            redirect(base_url('home'));
+        }
+
         if($this->input->post()) {
             $form = $this->input->post();
 
@@ -172,6 +180,13 @@ class Material extends CI_Controller {
     }
     public function consultar(){
 
+        if(!$this->usuario_model->administrador())
+        {
+            $this->session->set_flashdata('mensagem', 
+                array('tipo' => 'danger', 'texto' => 'Você não possui credenciais para esta ação!'));
+            redirect(base_url('home'));
+        }
+
             $data = array(// cria array;
     'usuario' => $this->session->userdata('usuario') //preenche com os dados da sessão;
     );
@@ -192,6 +207,13 @@ class Material extends CI_Controller {
 
         public function visualizar_impressao($id){
 
+            if(!$this->usuario_model->administrador())
+            {
+                $this->session->set_flashdata('mensagem', 
+                    array('tipo' => 'danger', 'texto' => 'Você não possui credenciais para esta ação!'));
+                redirect(base_url('home'));
+            }
+
 
             $this->load->model('usuario_model'); //carrega o model
             $this->load->model('material_impressao_model'); //carrega o model
@@ -210,6 +232,13 @@ class Material extends CI_Controller {
 
         public function aprovar_impressao($id){
 
+            if(!$this->usuario_model->administrador())
+            {
+                $this->session->set_flashdata('mensagem', 
+                    array('tipo' => 'danger', 'texto' => 'Você não possui credenciais para esta ação!'));
+                redirect(base_url('home'));
+            }
+
          $this->load->model('material_impressao_model'); //carrega o model
          $this->material_impressao_model->aprovar($id);
          redirect(base_url().'material/visualizar_impressao/'.$id);
@@ -217,6 +246,13 @@ class Material extends CI_Controller {
      }
 
      public function concluir_impressao($id){
+
+        if(!$this->usuario_model->administrador())
+        {
+            $this->session->set_flashdata('mensagem', 
+                array('tipo' => 'danger', 'texto' => 'Você não possui credenciais para esta ação!'));
+            redirect(base_url('home'));
+        }
 
          $this->load->model('material_impressao_model'); //carrega o model
          $this->material_impressao_model->concluir($id);
@@ -226,6 +262,13 @@ class Material extends CI_Controller {
 
      public function suspender_impressao($id){
 
+        if(!$this->usuario_model->administrador())
+        {
+            $this->session->set_flashdata('mensagem', 
+                array('tipo' => 'danger', 'texto' => 'Você não possui credenciais para esta ação!'));
+            redirect(base_url('home'));
+        }
+
          $this->load->model('material_model'); //carrega o model
          $this->material_impressao_model->suspender($id);
          redirect(base_url().'material/visualizar_impressao/'.$id);
@@ -233,6 +276,13 @@ class Material extends CI_Controller {
      }
 
      public function visualizar_producao($id){
+
+        if(!$this->usuario_model->administrador())
+        {
+            $this->session->set_flashdata('mensagem', 
+                array('tipo' => 'danger', 'texto' => 'Você não possui credenciais para esta ação!'));
+            redirect(base_url('home'));
+        }
 
 
             $this->load->model('usuario_model'); //carrega o model
@@ -252,6 +302,13 @@ class Material extends CI_Controller {
 
         public function aprovar_producao($id){
 
+            if(!$this->usuario_model->administrador())
+            {
+                $this->session->set_flashdata('mensagem', 
+                    array('tipo' => 'danger', 'texto' => 'Você não possui credenciais para esta ação!'));
+                redirect(base_url('home'));
+            }
+
          $this->load->model('material_producao_model'); //carrega o model
          $this->material_producao_model->aprovar($id);
          redirect(base_url().'material/visualizar_producao/'.$id);
@@ -260,6 +317,13 @@ class Material extends CI_Controller {
 
      public function concluir_producao($id){
 
+        if(!$this->usuario_model->administrador())
+        {
+            $this->session->set_flashdata('mensagem', 
+                array('tipo' => 'danger', 'texto' => 'Você não possui credenciais para esta ação!'));
+            redirect(base_url('home'));
+        }
+
          $this->load->model('material_producao_model'); //carrega o model
          $this->material_producao_model->concluir($id);
          redirect(base_url().'material/visualizar_producao/'.$id);
@@ -267,6 +331,13 @@ class Material extends CI_Controller {
      }
 
      public function suspender_producao($id){
+
+        if(!$this->usuario_model->administrador())
+        {
+            $this->session->set_flashdata('mensagem', 
+                array('tipo' => 'danger', 'texto' => 'Você não possui credenciais para esta ação!'));
+            redirect(base_url('home'));
+        }
 
          $this->load->model('material_model'); //carrega o model
          $this->material_producao_model->suspender($id);
