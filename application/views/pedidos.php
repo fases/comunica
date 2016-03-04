@@ -46,7 +46,7 @@
 
                           <td class="ls-txt-right ls-regroup">
 
-                    <a href="<?php echo base_url() ?>pedidos/emprestimo/<?php echo $emprestimo->id;?>" class="ls-btn ls-btn-sm" aria-expanded="false">Visualizar</a>
+                    <a href="<?php echo base_url() ?>pedidos/emprestimos/<?php echo $emprestimo->id;?>" class="ls-btn ls-btn-sm" aria-expanded="false">Visualizar</a>
                     </td>
 
           </tr>
@@ -83,7 +83,7 @@
 
                                         <td class="ls-txt-right ls-regroup">
 
-                    <a href="<?php echo base_url() ?>pedidos/evento/<?php echo $evento->id;?>" class="ls-btn ls-btn-sm" aria-expanded="false">Visualizar</a>
+                    <a href="<?php echo base_url() ?>pedidos/eventos/<?php echo $evento->id;?>" class="ls-btn ls-btn-sm" aria-expanded="false">Visualizar</a>
                     </td>
 
             </tr>
@@ -158,7 +158,7 @@
 
                                             <td class="ls-txt-right ls-regroup">
 
-                    <a href="<?php echo base_url() ?>pedidos/impressao/<?php echo $impressao->id;?>" class="ls-btn ls-btn-sm" aria-expanded="false">Visualizar</a>
+                    <a href="<?php echo base_url() ?>pedidos/material_impressao/<?php echo $impressao->id;?>" class="ls-btn ls-btn-sm" aria-expanded="false">Visualizar</a>
                     </td>
 
 
@@ -196,7 +196,7 @@
 
                                               <td class="ls-txt-right ls-regroup">
 
-                    <a href="<?php echo base_url() ?>pedidos/producao/<?php echo $producao->id;?>" class="ls-btn ls-btn-sm" aria-expanded="false">Visualizar</a>
+                    <a href="<?php echo base_url() ?>pedidos/material_producao/<?php echo $producao->id;?>" class="ls-btn ls-btn-sm" aria-expanded="false">Visualizar</a>
                     </td>
 
                   </tr>

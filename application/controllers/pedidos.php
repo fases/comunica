@@ -72,6 +72,76 @@ class Pedidos extends CI_Controller {
 
     }
 
+    public function emprestimos($id){
+
+        $this->load->model('emprestimo_model');
+        $this->load->model('material_model');
+        $this->load->model('local_model');
+
+        $data = array(); // cria array;
+        $data['usuario'] = $this->session->userdata('usuario'); //preenche com os dados da sessão;
+        $data['emprestimo'] = $this->emprestimo_model->consultar($id);//carrega apenas o emprestimo pelo id;
+        $data['local'] = $this->local_model->consultar($data['emprestimo']->id_local);
+        $data['material'] = $this->material_model->consultar($data['emprestimo']->id_material);
+
+
+        $this->load->view('templates/' . $this->template, $data);
+        $this->load->view('pedidos/emprestimo',$data);
+        $this->load->view('templates/footer');
+
+
+    }
+
+    public function eventos($id){
+
+        $this->load->model('evento_model');
+        $this->load->model('local_model');
+
+        $data = array(); // cria array;
+        $data['usuario'] = $this->session->userdata('usuario'); //preenche com os dados da sessão;
+        $data['evento'] = $this->evento_model->consultar($id);//carrega apenas o evento pelo id;
+        $data['local'] = $this->local_model->consultar($data['evento']->id_local);
+
+
+        $this->load->view('templates/' . $this->template, $data);
+        $this->load->view('pedidos/evento',$data);
+        $this->load->view('templates/footer');
+
+
+    }
+
+    public function material_producao($id){
+
+        $this->load->model('material_producao_model');
+
+        $data = array(); // cria array;
+        $data['usuario'] = $this->session->userdata('usuario'); //preenche com os dados da sessão;
+        $data['producao'] = $this->material_producao_model->consultar($id);//carrega apenas a produção pelo id;
+        
+
+        $this->load->view('templates/' . $this->template, $data);
+        $this->load->view('pedidos/producao',$data);
+        $this->load->view('templates/footer');
+
+
+    }
+
+    public function material_impressao($id){
+
+        $this->load->model('material_impressao_model');
+
+        $data = array(); // cria array;
+        $data['usuario'] = $this->session->userdata('usuario'); //preenche com os dados da sessão;
+        $data['impressao'] = $this->material_impressao_model->consultar($id);//carrega apenas a produção pelo id;
+        
+
+        $this->load->view('templates/' . $this->template, $data);
+        $this->load->view('pedidos/impressao',$data);
+        $this->load->view('templates/footer');
+
+
+    }
+
 }
 
 /* End of file welcome.php */
