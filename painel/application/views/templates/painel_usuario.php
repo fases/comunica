@@ -20,8 +20,8 @@
           <h6 class="ls-title-4">SOLICITAÇÕES <strong>ATENDIDAS</strong></h6>
         </div>
         <div class="ls-box-body">
-          <strong class="ls-color-theme">100.000</strong>
-          <small>envios até agora</small>
+          <strong class="ls-color-theme"><?php echo $pedidos_concluidos+$pedidos_recebidos?></strong>
+          <small>até agora</small>
         </div>
         <!--  <div class="ls-box-footer">
         <a href="#" aria-label="Mudar o Plano de Revenda" class="ls-btn ls-btn-sm" title="Mudar o Plano de Revenda">Mudar de plano</a> 

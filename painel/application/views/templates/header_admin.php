@@ -117,14 +117,6 @@
                                 <li><a href="<?php echo base_url() ?>material/impressao">Impressão de Material Gráfico</a></li>
                             </ul>
                         </li> -->
-                        <li>
-                            <a href="#" class="ls-ico-user" title="Configurações">Usuários</a>
-                            <ul>
-                                <li><a href="<?php echo base_url() ?>usuarios/cadastrar">Cadastro</a></li>
-                                <li><a href="<?php echo base_url() ?>usuarios/listar">Listar</a></li>
-                                <!--<li><a href="<?php echo base_url() ?>usuarios/solicitacoes">Solitações</a></li> -->
-                            </ul>
-                        </li>
 
                         <li>
                             <a href="#" class="ls-ico-folder" title="Solicitações">Solicitações</a>
@@ -135,6 +127,15 @@
                                 <li><a href="<?php echo base_url() ?>solicitacoes/noticias">Notícias</a></li>
                                 <!-- <li><a href="<?php echo base_url() ?>solicitacoes/impressao">Impressão de arquivos</a></li> -->
                                 <li><a href="<?php echo base_url() ?>solicitacoes/emprestimos">Empréstimos</a></li>
+                            </ul>
+                        </li>
+
+                                                <li>
+                            <a href="#" class="ls-ico-user" title="Configurações">Usuários</a>
+                            <ul>
+                                <li><a href="<?php echo base_url() ?>usuarios/cadastrar">Cadastro</a></li>
+                                <li><a href="<?php echo base_url() ?>usuarios/listar">Listar</a></li>
+                                <!--<li><a href="<?php echo base_url() ?>usuarios/solicitacoes">Solitações</a></li> -->
                             </ul>
                         </li>
 

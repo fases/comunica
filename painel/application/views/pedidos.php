@@ -5,6 +5,25 @@
 
   <!-- Apartir daqui, vocês devem inserir os componentes na página -->
 
+  <div class="ls-box-filter">
+        <form class="ls-form ls-form-inline ls-float-left" action="">
+            <label class="ls-label col-md-6 col-sm-8">
+                <b class="ls-label-text">Status</b>
+                <div class="ls-custom-select ls-field-sm">
+                    <select class="ls-select" name="">
+                        <option>Ativos</option>
+                        <option>Desativados</option>
+                        <option>Todos</option>
+                    </select>
+                </div>
+            </label>
+                        <div class="ls-actions-btn ">
+                <input type="submit" aria-expanded="false" title="Buscar" class="ls-btn ls-btn-sm" value="Buscar">
+            </div>
+        </form>
+    </div>
+
+
   <table class="ls-table ls-bg-header">
     <thead>
       <tr>

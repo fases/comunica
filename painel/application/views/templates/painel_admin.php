@@ -8,8 +8,8 @@
     <h2 class="ls-title-4">Relatório de solicitações</h2>
 
     <div class="row">
-        <div class="col-md-6 col-sm-6"><p>Resumo de e-mail enviados e entregues por período.</p></div>
-        <div class="col-md-6 col-sm-6"><p class="ls-float-right ls-float-none-xs">Período selecionado: <strong>15/06/2015 à 22/06/2015</strong></p></div>
+        <div class="col-md-6 col-sm-6"><p>Resumo de solicitações enviadas, pendentes e conclúida.</p></div>
+       <!-- <div class="col-md-6 col-sm-6"><p class="ls-float-right ls-float-none-xs">Período selecionado: <strong>15/06/2015 à 22/06/2015</strong></p></div> -->
     </div>
 
     <div class="ls-clearfix"></div>
@@ -20,11 +20,11 @@
             <div class="col-sm-6 col-lg-3">
                 <div class="ls-box">
                     <div class="ls-box-head">
-                        <h6 class="ls-title-4">Enviados</h6>
+                        <h6 class="ls-title-4">Recebidos</h6>
                     </div>
                     <div class="ls-box-body">
-                        <strong>99.999.999</strong>
-                        <small>e-mails</small>
+                        <strong><?php echo $pedidos_pendentes?></strong>
+                        <small>solicitações</small>
                     </div>
                 </div>
             </div>
@@ -32,7 +32,7 @@
             <div class="col-sm-6 col-lg-3">
                 <div class="ls-box">
                     <div class="ls-box-head">
-                        <h6 class="ls-title-4">Entregas x Bounces</h6>
+                        <h6 class="ls-title-4">Pendentes x Em andamento</h6>
                     </div>
                     <div class="ls-box-body">
                         <div class="ls-half-board-data">
@@ -40,10 +40,10 @@
                             </div>
                         </div>
                         <div class="ls-half-board-data">
-                            <strong class="ls-color-theme">20.000</strong>
-                            <small>entregues</small>
-                            <strong class="ls-color-danger">5.000</strong>
-                            <small>bounces</small>
+                            <strong class="ls-color-theme"><?php echo $pedidos_pendentes?></strong>
+                            <small>Pendentes</small>
+                            <strong class="ls-color-danger"><?php echo $pedidos_recebidos?></strong>
+                            <small>Em andamento</small>
                         </div>
                     </div>
                 </div>
@@ -52,7 +52,7 @@
             <div class="col-sm-6 col-lg-3">
                 <div class="ls-box">
                     <div class="ls-box-head">
-                        <h6 class="ls-title-4">Abertos</h6>
+                        <h6 class="ls-title-4">Concluídas</h6>
                     </div>
                     <div class="ls-box-body">
                         <div class="ls-half-board-data">
@@ -60,8 +60,8 @@
                             </div>
                         </div>
                         <div class="ls-half-board-data">
-                            <strong class="ls-color-info">10.000</strong>
-                            <small>dos e-mails entregues</small>
+                            <strong class="ls-color-info"><?php echo $pedidos_concluidos?></strong>
+                            <small>solicitações até agora</small>
                         </div>
                     </div>
                 </div>
@@ -70,11 +70,11 @@
             <div class="col-sm-6 col-lg-3">
                 <div class="ls-box">
                     <div class="ls-box-head">
-                        <h6 class="ls-title-4">Denúncias</h6>
+                              <h6 class="ls-title-4">Contato <a data-content="&lt;p&gt;Este número corresponde ao número de vezes que seus destinatários entraram em contato, mas que não foram atendidos ou concluídos. Essas solicitações de contato  podem comprometer a entrega das suas próximas solicitações.&lt;/p&gt;" data-custom-classes="ls-width-300" data-placement="left" data-ls-module="popover" data-trigger="hover" class="ls-ico-help" href="#" data-target="#ls-popover-0"></a></h6>
                     </div>
                     <div class="ls-box-body">
-                        <strong>80</strong>
-                        <small>spam</small>
+                        <strong><?php echo $pedidos_contato ?></strong>
+                        <small>solicitações</small>
                     </div>
                 </div>
             </div>

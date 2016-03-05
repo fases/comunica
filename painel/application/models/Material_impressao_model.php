@@ -47,7 +47,7 @@ class Material_impressao_model extends CI_Model {
     public function listar(){
         //listagem de todos os usuários
         //$this->load->model('Usuario_model');
-        //$this->db->where('status !=',3);
+        //$this->db->where('status !=',3); //retorna apenas solicitações que não foram concluídas
 
         $result = $this->db->get('impressao')->result_array();
 

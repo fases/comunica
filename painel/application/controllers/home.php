@@ -38,14 +38,24 @@ class Home extends CI_Controller {
 		// var_dump($this->session->userdata('usuario')); die();
 		//$this->session['usuario'] = $usuario; //cria sessão com os dados do usuário;
 
-        $data = array( // cria array;
-            'usuario' => $this->session->userdata('usuario') //preenche com os dados da sessão;
-        );
+		  $this->load->model('painel_model');
+
+        $data = array();// cria array;
+        $data['usuario'] = $this->session->userdata('usuario'); //preenche com os dados da sessão;
+        $data['pedidos_pendentes'] = $this->painel_model->pedidos_consultar(1); //cria variável, realiza a consulta e organiza em uma array;
+        $data['pedidos_recebidos'] = $this->painel_model->pedidos_consultar(2); //cria variável, realiza a consulta e organiza em uma array;
+        $data['pedidos_concluidos'] = $this->painel_model->pedidos_consultar(3); //cria variável, realiza a consulta e organiza em uma array;
+        $data['pedidos'] = $this->painel_model->pedidos();
+         $data['pedidos_contato'] = $this->painel_model->pedidos_contato();
+
+        //var_dump($data);die();
 
         $this->load->view('templates/' . $this->template, $data);
         $this->load->view('templates/' . $this->painel, $data);
         $this->load->view('templates/footer');
 	}
+
+
 
 
 }
