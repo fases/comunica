@@ -19,6 +19,10 @@ class Login extends CI_Controller {
      */
     public function index()
     {
+
+        if($this->usuario_model->logado())
+            redirect(base_url());
+
         $usuario_invalido=FALSE;
         $usuario_valido=FALSE;
 

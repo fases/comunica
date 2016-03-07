@@ -1,3 +1,16 @@
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#status').change(function(){
+            console.log(status);
+            window.location.href = '<?php echo base_url("usuarios/listar")?>/' + $(this).val();
+
+        });
+
+    });
+
+</script>
+
+
 <div class="container-fluid">
     <h1 class="ls-title-intro ls-ico-users">Listagem de usuários</h1>
     <hr />
@@ -8,10 +21,10 @@
             <label class="ls-label col-md-6 col-sm-8">
                 <b class="ls-label-text">Status</b>
                 <div class="ls-custom-select ls-field-sm">
-                    <select name="" class="ls-select">
-                        <option>Todos</option>
-                        <option>Ativos</option>
-                        <option>Desativados</option>
+                    <select name="status" id="status" class="ls-select">
+                        <option value="" <?php if($this->uri->segment(3) == 0) echo "selected"; ?>>Todos</option>
+                        <option value="1" <?php if($this->uri->segment(3) == 1) echo "selected"; ?>>Ativos</option>
+                        <option value="2" <?php if($this->uri->segment(3) == 2) echo "selected"; ?>>Desativados</option>
                     </select>
                 </div>
             </label>
@@ -41,9 +54,6 @@
             
                     <?php 
         foreach ($usuarios as $usuario ) { ?>
-
-
-
 
             
             <tr>

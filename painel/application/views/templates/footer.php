@@ -80,7 +80,7 @@
             </nav>
         </aside>
 
-        <script src="<?= base_url() ?>www/js/libs/jquery-2.1.0.min.js" type="text/javascript"></script>
+
         <script src="<?= base_url() ?>www/js/libs/example.js" type="text/javascript"></script>
         <script src="<?= base_url() ?>www/js/locastyle.js" type="text/javascript"></script>
         <script src="//code.highcharts.com/highcharts.js" type="text/javascript"></script>

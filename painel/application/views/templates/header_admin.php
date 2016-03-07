@@ -16,6 +16,7 @@
         <meta name="apple-mobile-web-app-title" content="Painel 2">
         <script src="<?php echo base_url() ?>www/js/libs/mediaqueries-ie.js" type="text/javascript"></script>
         <script src="<?php echo base_url() ?>www/js/libs/html5shiv.js" type="text/javascript"></script>
+        <script src="<?= base_url() ?>www/js/libs/jquery-2.1.0.min.js" type="text/javascript"></script>
 
         <link href="<?php echo base_url() ?>www/css/locastyle.css" rel="stylesheet" type="text/css" />
 

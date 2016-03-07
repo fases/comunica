@@ -71,15 +71,15 @@ class Usuarios extends CI_Controller {
                 $this->load->view('templates/footer');
             }
 
-            public function listar(){
+            public function listar($status=null, $pag=1){
 
 
-        if(!$this->usuario_model->administrador())
-        {
-            $this->session->set_flashdata('mensagem', 
-                array('tipo' => 'danger', 'texto' => 'Você não possui credenciais para esta ação!'));
-            redirect(base_url('home'));
-        }
+                if(!$this->usuario_model->administrador())
+                {
+                    $this->session->set_flashdata('mensagem', 
+                        array('tipo' => 'danger', 'texto' => 'Você não possui credenciais para esta ação!'));
+                    redirect(base_url('home'));
+                }
 
 
         $data = array(// cria array;
@@ -89,7 +89,7 @@ class Usuarios extends CI_Controller {
         $this->load->view('templates/' . $this->template, $data);
 
         $this->load->model('usuario_model'); //carrega o model
-        $data['usuarios'] = $this->usuario_model->listar()->result_array(); //cria variável, realiza a consulta e organiza em uma array
+        $data['usuarios'] = $this->usuario_model->listar($status, $pag)->result_array(); //cria variável, realiza a consulta e organiza em uma array
 
         $this->load->view('usuarios/listar',$data);
         $this->load->view('templates/footer');
@@ -97,7 +97,7 @@ class Usuarios extends CI_Controller {
 
     public function aprovar($id){
 
-                if(!$this->usuario_model->administrador())
+        if(!$this->usuario_model->administrador())
         {
             $this->session->set_flashdata('mensagem', 
                 array('tipo' => 'danger', 'texto' => 'Você não possui credenciais para esta ação!'));
@@ -180,20 +180,20 @@ class Usuarios extends CI_Controller {
     
     public function deletar($id){
 
-                if(!$this->usuario_model->administrador())
+        if(!$this->usuario_model->administrador())
         {
             $this->session->set_flashdata('mensagem', 
                 array('tipo' => 'danger', 'texto' => 'Você não possui credenciais para esta ação!'));
             redirect(base_url('home'));
         }
-     $this->usuario_model->deletar($id);
-     redirect(base_url('usuarios/listar'));
+        $this->usuario_model->deletar($id);
+        redirect(base_url('usuarios/listar'));
 
- }
+    }
 
- public function desativar($id){
+    public function desativar($id){
 
-            if(!$this->usuario_model->administrador())
+        if(!$this->usuario_model->administrador())
         {
             $this->session->set_flashdata('mensagem', 
                 array('tipo' => 'danger', 'texto' => 'Você não possui credenciais para esta ação!'));
@@ -202,17 +202,17 @@ class Usuarios extends CI_Controller {
 
     //$this->load->model('usuario_model');
 
-    $this->db->where('id',$id);
-    $this->db->update('usuario', array('status' => 3));
+        $this->db->where('id',$id);
+        $this->db->update('usuario', array('status' => 3));
 
-    $this->session->sess_destroy();
-    redirect(base_url(), 'refresh');
+        $this->session->sess_destroy();
+        redirect(base_url(), 'refresh');
 
-}
+    }
 
-public function visualizar($id){
+    public function visualizar($id){
 
-            if(!$this->usuario_model->administrador())
+        if(!$this->usuario_model->administrador())
         {
             $this->session->set_flashdata('mensagem', 
                 array('tipo' => 'danger', 'texto' => 'Você não possui credenciais para esta ação!'));

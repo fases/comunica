@@ -38,9 +38,15 @@ class Usuario_model extends CI_Model {
         $this->id = $this->db->insert_id();      
     }
 
-    public function listar(){
-        //listagem de todos os usuários
-        $this->db->where('status !=', 3);
+    public function listar($status, $pag){
+        //listagem de todos não exclusos
+        //$this->db->where('status !=', 3);
+
+        //var_dump($status);die();
+
+        if($status) {
+            $this->db->where('status =', $status);
+        }
         return $this->db->get('usuario');
     }
 
@@ -80,6 +86,14 @@ class Usuario_model extends CI_Model {
 
     public function servidor(){
         return $this->session->userdata('usuario')->tipo_acesso < PERM__ALUNO ? true : false;
+    }
+
+    public function logado(){
+
+        $usuario = $this->session->userdata('usuario');
+
+        return (!empty($usuario) ? ture: false);
+
     }
 
 
