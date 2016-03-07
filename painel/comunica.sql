@@ -483,6 +483,10 @@ ALTER TABLE `noticias`
 ALTER TABLE `producao`
   ADD CONSTRAINT `fk_usuario_producao` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`);
 
+ALTER TABLE `comentarios`
+  ADD CONSTRAINT `fk_usuario_comentarios` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`),
+  ADD CONSTRAINT `fk_contato_comentarios` FOREIGN KEY (`id_contato`) REFERENCES `contatos` (`id`);
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
