@@ -38,15 +38,38 @@ class Usuario_model extends CI_Model {
         $this->id = $this->db->insert_id();      
     }
 
-    public function listar($status, $pag){
-        //listagem de todos não exclusos
-        //$this->db->where('status !=', 3);
+    public function listar($status, $limite = SITE__LIMITE, $inicio = 1){
+
+        $this->db->limit($limite, $inicio);
+
+        if($this->input->post()) {
+            $form = $this->input->post();
+            $this->db->where('nome =', $form['nome']);
+        }
 
         //var_dump($status);die();
 
         if($status) {
             $this->db->where('status =', $status);
         }
+        $this->db->where('id !=',  $this->session->userdata('usuario')->id);
+        $this->db->order_by("nome", "asc"); 
+        return $this->db->get('usuario');
+    }
+
+        public function listar_solicitacoes($limite, $inicio){
+
+        if($this->input->post()) {
+            $form = $this->input->post();
+            list($dia, $mes, $ano) = explode('/', $form['data_inicio']);
+            $this->db->where('data_cadastro >=', "$ano-$mes-$dia");
+            list($dia, $mes, $ano) = explode('/', $form['data_fim']);
+            $this->db->where('data_cadastro <=', "$ano-$mes-$dia");
+        }
+
+        $this->db->where('status', 0);
+        $this->db->where('id !=',  $this->session->userdata('usuario')->id);
+        $this->db->order_by("nome", "asc"); 
         return $this->db->get('usuario');
     }
 
@@ -94,6 +117,10 @@ class Usuario_model extends CI_Model {
 
         return (!empty($usuario) ? ture: false);
 
+    }
+
+    public function paginacao_total() {
+        return $this->db->count_all("usuario");
     }
 
 

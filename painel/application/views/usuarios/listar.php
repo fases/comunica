@@ -22,7 +22,7 @@
                 <b class="ls-label-text">Status</b>
                 <div class="ls-custom-select ls-field-sm">
                     <select name="status" id="status" class="ls-select">
-                        <option value="" <?php if($this->uri->segment(3) == 0) echo "selected"; ?>>Todos</option>
+                        <option value="0" <?php if($this->uri->segment(3) == 0) echo "selected"; ?>>Todos</option>
                         <option value="1" <?php if($this->uri->segment(3) == 1) echo "selected"; ?>>Ativos</option>
                         <option value="2" <?php if($this->uri->segment(3) == 2) echo "selected"; ?>>Desativados</option>
                     </select>
@@ -30,10 +30,10 @@
             </label>
         </form>
 
-        <form action="" class="ls-form ls-form-inline ls-float-right">
+        <form <form method="post" class="ls-form ls-form-inline ls-float-right">
             <label class="ls-label" role="search">
                 <b class="ls-label-text ls-hidden-accessible">Nome do cliente</b>
-                <input type="text" id="q" name="q" aria-label="Faça sua busca por cliente" placeholder="Nome do cliente" required="" class="ls-field-sm">
+                <input type="text" id="nome" name="nome" aria-label="Faça sua busca por cliente" placeholder="Nome do cliente" required="" class="ls-field-sm">
             </label>
             <div class="ls-actions-btn">
                 <input type="submit" value="Buscar" class="ls-btn ls-btn-sm" title="Buscar" aria-expanded="false">
@@ -109,6 +109,8 @@
     </table>
 
     <div class="ls-pagination-filter">
+    <p><?php echo $links; ?></p>
+
         <ul class="ls-pagination">
             <li><a href="#">« Anterior</a></li>
             <li class="ls-active"><a href="#">1</a></li>

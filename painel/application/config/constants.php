@@ -43,3 +43,5 @@ define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 define("PERM__ADMIN", 1);
 define("PERM__SERVIDOR", 2);
 define("PERM__ALUNO", 3);
+define("SITE__LIMITE", 2);
+

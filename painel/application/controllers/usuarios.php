@@ -71,7 +71,17 @@ class Usuarios extends CI_Controller {
                 $this->load->view('templates/footer');
             }
 
-            public function listar($status=null, $pag=1){
+            public function listar($status=null, $pag=0){
+
+                $config = array();
+                $config["base_url"] = base_url() . "usuarios/listar";
+                $config["total_rows"] = $this->usuario_model->paginacao_total();
+                $config["per_page"] = SITE__LIMITE;
+                $config["uri_segment"] = 4;
+
+                $this->pagination->initialize($config);
+
+                $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
 
 
                 if(!$this->usuario_model->administrador())
@@ -86,10 +96,12 @@ class Usuarios extends CI_Controller {
     'usuario' => $this->session->userdata('usuario') //preenche com os dados da sessão;
     );
         
+        $data["links"] = $this->pagination->create_links();
+        
         $this->load->view('templates/' . $this->template, $data);
 
         $this->load->model('usuario_model'); //carrega o model
-        $data['usuarios'] = $this->usuario_model->listar($status, $pag)->result_array(); //cria variável, realiza a consulta e organiza em uma array
+        $data['usuarios'] = $this->usuario_model->listar($status, SITE__LIMITE, ($pag*SITE__LIMITE))->result_array(); //cria variável, realiza a consulta e organiza em uma array
 
         $this->load->view('usuarios/listar',$data);
         $this->load->view('templates/footer');

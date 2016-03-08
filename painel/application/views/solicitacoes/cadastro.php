@@ -1,3 +1,11 @@
+<style type="text/css">
+.ls-table td, .ls-table th {
+    font-size: 14px;
+    padding: 12px;
+    text-align: left;
+}    
+ 
+</style>
 <div class="container-fluid">
     <h1 class="ls-title-intro ls-ico-folder ">Solicitações de Cadastros</h1>
 
@@ -7,14 +15,14 @@
 
         <div class="ls-box-filter">
 
-        <form action="" class="ls-form ls-form-inline">
+        <form method="post" class="ls-form ls-form-inline">
 
             <input type="hidden" name="status" value="">
 
             <label class="ls-label col-lg-3 col-md-6 col-sm-12">
                 <b class="ls-label-text">Período</b>
                 <div class="ls-custom-select">
-                    <select name="period" id="select_period" class="ls-select">
+                    <select name="periodo" id="periodo" class="ls-select">
                         <option>Hoje</option>
                         <option>Ontem</option>
                         <option>Última semana</option>
@@ -29,7 +37,7 @@
             <label class="ls-label col-lg-2 col-md-3 col-sm-12">
                 <div class="ls-prefix-group">
                     <span id="new_feature_custom_filter_2" data-ls-module="popover" data-content="Escolha o período desejado e clique em 'Filtrar'."></span>
-                    <input type="text" name="range_start" class="datepicker ls-daterange" placeholder="dd/mm/aaaa" id="datepicker1" data-ls-daterange="#datepicker2">
+                    <input type="date" name="data_inicio" id="data_inicio" class="datepicker ls-daterange" placeholder="dd/mm/aaaa" data-ls-daterange="#datepicker2" required>
                     <a class="ls-label-text-prefix ls-ico-calendar" data-trigger-calendar="#datepicker1" href="#"></a>
                 </div>
             </label>
@@ -37,21 +45,21 @@
             <label class="ls-label col-lg-2 col-md-3 col-sm-12">
                 <div class="ls-prefix-group">
                     <span id="new_feature_custom_filter_3" data-ls-module="popover" data-content="Clique em 'Filtrar' para exibir  o período selecionado."></span>
-                    <input type="text" name="range_end" class="datepicker ls-daterange" placeholder="dd/mm/aaaa" id="datepicker2">
+                    <input type="date" name="data_fim" id="data_fim" class="datepicker ls-daterange" placeholder="dd/mm/aaaa" data-ls-daterange="#datepicker2" required>
                     <a class="ls-label-text-prefix ls-ico-calendar" data-trigger-calendar="#datepicker2" href="#"></a>
                 </div>
             </label>
 
             <input type="submit" class="ls-btn-primary" value="Filtrar"/>
 
-            <div data-ls-module="dropdown" class="ls-dropdown ls-float-right ls-float-none-sm ls-float-none-md" id="step4">
+           <!-- <div data-ls-module="dropdown" class="ls-dropdown ls-float-right ls-float-none-sm ls-float-none-md" id="step4">
                 <a href="#" class="ls-btn" role="combobox" aria-expanded="false">Exportar</a>
                 <ul class="ls-dropdown-nav" aria-hidden="true">
                     <li><a href="" role="option" tabindex="-1">CSV</a></li>
                     <li><a data-action="open_modal_export" data-ls-module="modal" data-report-ext="XLS" data-target="#modal_export" href="" role="option" tabindex="-1">XLS</a></li>
                     <li><a class="ls-divider" data-action="open_modal_export" data-ls-module="modal" data-target="#modal_exported_reports" data-url="/panel/exports" href="" id="link_exported_reports" role="option" tabindex="-1">Relatórios exportados</a></li>
                 </ul>
-            </div>
+            </div> -->
 
         </form>
 
@@ -59,13 +67,15 @@
 
     <!-- Lista dos pedidos-->
 
-    <table class="ls-table">
+    <?php if( count($usuarios)>0){ ?>
+
+        <table class="ls-table">
         <thead>
             <tr>
                 <th>Nome</th>
                 <th>E-mail</th>
                 <th class="ls-txt-center hidden-xs">Status</th>
-                <th></th>
+                <th ls-txt-center hidden-xs>Data</th>
             </tr>
         </thead>
                 <tbody>
@@ -104,8 +114,12 @@
 
                 </td>
 
+                                                <td class="hidden-xs">
+                    <?php echo date ("d/m/Y", strtotime($usuario['data_cadastro']));?>
+                </td>
+
                 <td class="ls-txt-right ls-regroup">
-                <a href="<?php echo base_url() ?>usuarios/aprovar/<?php echo $usuario['id'];?>" class="ls-btn-primary ls-btn-sm ls-ico-user">Aprovar usuário</a>
+                <a href="<?php echo base_url() ?>usuarios/aprovar/<?php echo $usuario['id'];?>" class="ls-btn-primary ls-btn-sm ls-ico-user">Aprovar</a>
 
                     <a href="<?php echo base_url() ?>usuarios/visualizar/<?php echo $usuario['id'];?>" class="ls-btn ls-btn-sm" aria-expanded="false">Visualizar</a>
                     <div data-ls-module="dropdown" class="ls-dropdown ls-pos-right">
@@ -116,11 +130,24 @@
                         </ul>
                     </div>
                 </td>
+
+
             </tr>
 
-            <?php }?>
+            <?php?>
 
         </tbody>
     </table>
+
+
+       <?php }?>
+
+       <?php }else{?>
+
+        <div class="ls-alert-danger" role="alert"><strong>Vish!</strong> Nenhum resultado foi encontrado para sua pesquisa.</div>
+
+       <?php }?>
+
+
 
 </div>
