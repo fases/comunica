@@ -15,6 +15,9 @@
      case 3:
      echo "<span class='ls-tag-success'>Concluída</span>";;
      break;
+    case 4:
+     echo "<span class='ls-tag-danger'>Supensa</span>";
+     break;
    } 
 
 
@@ -37,6 +40,9 @@
    break;
    case 3:
    echo '<a class="ls-tooltip-right ls-btn" aria-label="Esta solicitação já foi atendida!" aria-expanded="false">Concluída!</a>';
+   break;
+   case 4:
+   echo '<a class="ls-tooltip-right ls-btn-danger ls-btn-danger" aria-label="Esta solicitação foi suspensa por algum administrador" aria-expanded="false">Suspensa!</a>';
    break;
  } 
 
@@ -114,15 +120,26 @@
 </ul>
 <div class="ls-tabs-container">
   <div id="track" class="ls-tab-content ls-active">
+    <?php if($impressao->arquivo_1){ ?>
     <span class="ls-ico-link ls-ico-left"><a href="<?php echo $impressao->arquivo_1 ?>" target="_blank">Clique aqui para visualizar</a></span>
+        <?php }else{ ?>
 
+    <div role="alert" class="ls-alert-info"><strong>Atenção:</strong> O usuário não enviou nenhum arquivo em anexo. </div>
+
+    <?php }?>
   </div>
   <div id="laps" class="ls-tab-content">
+    <?php if($impressao->url_1 | $impressao->url_2 | $impressao->url_2){ ?>
     <span class="ls-ico-link ls-ico-left"><?php echo $impressao->url_1 ?></span>
     <hr>
     <span class="ls-ico-link ls-ico-left"><?php echo $impressao->url_2 ?></span>
     <hr>
     <span class="ls-ico-link ls-ico-left"><?php echo $impressao->url_3 ?></span>
+    <?php }else{ ?>
+
+    <div role="alert" class="ls-alert-info"><strong>Atenção:</strong> O usuário não enviou nenhum link. </div>
+
+    <?php }?>
   </div>
 </div>
 
@@ -140,6 +157,9 @@
    break;
    case 3:
    echo '<a class="ls-tooltip-right ls-btn" aria-label="Esta solicitação já foi atendida!" aria-expanded="false">Concluída!</a>';
+   break;
+   case 4:
+   echo '<a class="ls-tooltip-right ls-btn-danger ls-btn-danger" aria-label="Esta solicitação foi suspensa por algum administrador" aria-expanded="false">Suspensa!</a>';
    break;
  } 
 

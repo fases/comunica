@@ -14,6 +14,9 @@
      case 3:
      echo "<span class='ls-tag-success'>Concluída</span>";;
      break;
+    case 4:
+     echo "<span class='ls-tag-danger'>Cancelada</span>";;
+     break;
    } 
 
 
@@ -36,7 +39,10 @@
      echo '<div class="ls-alert-warning "><strong>Atenção!</strong> Sua solicitação está em andamento, em até 48h ela será concluída.</div>';
      break;
      case 3:
-     echo '<div class="ls-alert-sucess"><strong>Bazinga!</strong> Sua solicitação já foi concluída, para mais informações entre em contato com administrador</div>';
+     echo '<div class="ls-alert-sucess"><strong>Bazinga!</strong> Sua solicitação já foi concluída, para mais informações entre em contato com administrador.</div>';
+     break;
+     case 4:
+     echo '<div class="ls-alert-danger"><strong>Vish!</strong> Sua solicitação foi cancelada pelo administrador, para mais informações entre em contato com administrador.</div>';
      break;
    } 
 

@@ -114,7 +114,7 @@ class Material_impressao_model extends CI_Model {
     }
 
     public function suspender($id){
-
+        
         $this->db->where('id',$id);
         $this->db->update('impressao', array('status' => 4));
 

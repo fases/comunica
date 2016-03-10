@@ -76,8 +76,10 @@
         </label>
 
        <div class="ls-label col-md-12">
-            <label for="exampleInputFile">Envio de arquivos</label>
+            <label for="exampleInputFile">Envio de arquivos*</label>
             <input id="exampleInputFile" name="arquivo_1" type="file" required>
+            <a class="ls-tag-info ls-float-right">*Em caso de mais de um arquivo, enviá-los de maneira compactada em .zip ou .rar</a>
+
         </div>
 
       <label class="ls-label col-md-12">

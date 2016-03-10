@@ -269,7 +269,7 @@ class Material extends CI_Controller {
             redirect(base_url('home'));
         }
 
-         $this->load->model('material_model'); //carrega o model
+         $this->load->model('material_impressao_model'); //carrega o model
          $this->material_impressao_model->suspender($id);
          redirect(base_url().'material/visualizar_impressao/'.$id);
          
@@ -339,7 +339,7 @@ class Material extends CI_Controller {
             redirect(base_url('home'));
         }
 
-         $this->load->model('material_model'); //carrega o model
+         $this->load->model('material_producao_model'); //carrega o model
          $this->material_producao_model->suspender($id);
          redirect(base_url().'material/visualizar_producao/'.$id);
          

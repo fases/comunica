@@ -113,7 +113,7 @@
  ?>
 </td>
                 <td class="ls-txt-right ls-regroup">
-                    <a href="http://localhost/comunica/emprestimos/visualizar/<?php echo $emprestimo['id'];?>" class="ls-btn ls-btn-sm" aria-expanded="false">Visualizar</a>
+                    <a href="<?php echo base_url() ?>emprestimos/visualizar/<?php echo $emprestimo['id'];?>" class="ls-btn ls-btn-sm" aria-expanded="false">Visualizar</a>
                     <div data-ls-module="dropdown" class="ls-dropdown ls-pos-right">
                        <a href="<?php echo base_url() ?>emprestimos/" class="ls-btn ls-btn-sm" aria-expanded="false" role="combobox"></a>
                         <ul class="ls-dropdown-nav" aria-hidden="true">

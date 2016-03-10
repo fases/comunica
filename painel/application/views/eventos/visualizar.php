@@ -15,6 +15,9 @@
      case 3:
      echo "<span class='ls-tag-success'>Concluída</span>";;
      break;
+     case 4:
+     echo "<span class='ls-tag-danger'>Supensa</span>";
+     break;
    } 
 
 
@@ -36,6 +39,9 @@
    break;
    case 3:
    echo '<a class="ls-tooltip-right ls-btn" aria-label="Esta solicitação já foi atendida!" aria-expanded="false">Concluída!</a>';
+   break;
+   case 4:
+   echo '<a class="ls-tooltip-right ls-btn-danger ls-btn-danger" aria-label="Esta solicitação foi suspensa por algum administrador" aria-expanded="false">Suspensa!</a>';
    break;
  } 
 
@@ -128,6 +134,9 @@
    break;
    case 3:
    echo '<a class="ls-tooltip-right ls-btn" aria-label="Esta solicitação já foi atendida!" aria-expanded="false">Concluída!</a>';
+   break;
+   case 4:
+   echo '<a class="ls-tooltip-right ls-btn-danger ls-btn-danger" aria-label="Esta solicitação foi suspensa por algum administrador" aria-expanded="false">Suspensa!</a>';
    break;
  } 
 

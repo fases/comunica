@@ -116,17 +116,10 @@ public function agendar()
     $data['local'] = $this->local_model->consultar($data['emprestimo']->id_local);
     $data['material'] = $this->material_model->consultar($data['emprestimo']->id_material);
 
-    $this->load->view('templates/' . $this->template, $data);
+    $this->load->view('templates/'. $this->template, $data);
 
-
-        //echo "<pre>";
-        //var_dump($emprestimo);die('</pre>');
-
-
-        //var_dump($material->nome);die();
 
     $this->load->view('emprestimos/visualizar', $data);
-
     $this->load->view('templates/footer');
 
 
@@ -161,6 +154,14 @@ public function aprovar($id){
          $this->emprestimo_model->concluir($id);
          redirect(base_url().'emprestimos/visualizar/'.$id);
 
+     }
+
+     public function suspender($id){
+
+         $this->load->model('emprestimo_model'); //carrega o model
+         $this->emprestimo_model->suspender($id);
+         redirect(base_url().'emprestimos/visualizar/'.$id);
+         
      }
 
  }

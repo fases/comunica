@@ -108,7 +108,7 @@ class Emprestimo_model extends CI_Model {
     public function suspender($id){
 
         $this->db->where('id',$id);
-        $this->db->update('emprestimo', array('status' => 0));
+        $this->db->update('emprestimo', array('status' => 4));
 
     }
 
