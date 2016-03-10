@@ -4,33 +4,30 @@
         <!-- Apartir daqui, vocês devem inserir os componentes na página -->
 
 
-        <!-- COISINHA DE FILTRAR -->
+        <!-- Filtro de busca -->
 
         <div class="ls-box-filter">
 
-        <form action="" class="ls-form ls-form-inline">
+        <form method="post" class="ls-form ls-form-inline">
 
-            <input type="hidden" name="status" value="">
-
-            <label class="ls-label col-lg-3 col-md-6 col-sm-12">
-                <b class="ls-label-text">Período</b>
-                <div class="ls-custom-select">
-                    <select name="period" id="select_period" class="ls-select">
-                        <option>Hoje</option>
-                        <option>Ontem</option>
-                        <option>Última semana</option>
-                        <option>Últimos 30 dias</option>
-                        <option>Últimos 6 meses</option>
-                        <option>Últimos 12 meses</option>
-                        <option>Personalizado</option>
+                        <label class="ls-label col-md-6 col-sm-8">
+                <b class="ls-label-text">Status</b>
+                <div class="ls-custom-select ls-field-sm">
+                    <select name="status" id="status" class="ls-select">
+                        <option value="0" <?php if($this->uri->segment(3) == 0) echo "selected"; ?>>Todos</option>
+                        <option value="1" <?php if($this->uri->segment(3) == 1) echo "selected"; ?>>Enviados</option>
+                        <option value="2" <?php if($this->uri->segment(3) == 2) echo "selected"; ?>>Em andamento</option>
+                        <option value="3" <?php if($this->uri->segment(3) == 3) echo "selected"; ?>>Concluídos</option>
+                        <option value="4" <?php if($this->uri->segment(3) == 4) echo "selected"; ?>>Cancelados</option>
                     </select>
                 </div>
             </label>
-
-            <label class="ls-label col-lg-2 col-md-3 col-sm-12">
+           
+                                <label class="ls-label col-md-3 col-sm-4">
+      <b class="ls-label-text">Período</b>
                 <div class="ls-prefix-group">
                     <span id="new_feature_custom_filter_2" data-ls-module="popover" data-content="Escolha o período desejado e clique em 'Filtrar'."></span>
-                    <input type="text" name="range_start" class="datepicker ls-daterange" placeholder="dd/mm/aaaa" id="datepicker1" data-ls-daterange="#datepicker2">
+                    <input type="date" name="data_inicio" id="data_inicio" class="datepicker ls-daterange" placeholder="dd/mm/aaaa" data-ls-daterange="#datepicker2">
                     <a class="ls-label-text-prefix ls-ico-calendar" data-trigger-calendar="#datepicker1" href="#"></a>
                 </div>
             </label>
@@ -38,21 +35,12 @@
             <label class="ls-label col-lg-2 col-md-3 col-sm-12">
                 <div class="ls-prefix-group">
                     <span id="new_feature_custom_filter_3" data-ls-module="popover" data-content="Clique em 'Filtrar' para exibir  o período selecionado."></span>
-                    <input type="text" name="range_end" class="datepicker ls-daterange" placeholder="dd/mm/aaaa" id="datepicker2">
+                    <input type="date" name="data_fim" id="data_fim" class="datepicker ls-daterange" placeholder="dd/mm/aaaa" data-ls-daterange="#datepicker2" >
                     <a class="ls-label-text-prefix ls-ico-calendar" data-trigger-calendar="#datepicker2" href="#"></a>
                 </div>
             </label>
 
             <input type="submit" class="ls-btn-primary" value="Filtrar"/>
-
-            <div data-ls-module="dropdown" class="ls-dropdown ls-float-right ls-float-none-sm ls-float-none-md" id="step4">
-                <a href="#" class="ls-btn" role="combobox" aria-expanded="false">Exportar</a>
-                <ul class="ls-dropdown-nav" aria-hidden="true">
-                    <li><a href="" role="option" tabindex="-1">CSV</a></li>
-                    <li><a data-action="open_modal_export" data-ls-module="modal" data-report-ext="XLS" data-target="#modal_export" href="" role="option" tabindex="-1">XLS</a></li>
-                    <li><a class="ls-divider" data-action="open_modal_export" data-ls-module="modal" data-target="#modal_exported_reports" data-url="/panel/exports" href="" id="link_exported_reports" role="option" tabindex="-1">Relatórios exportados</a></li>
-                </ul>
-            </div>
 
         </form>
 
@@ -60,6 +48,7 @@
 
     <!-- Lista dos pedidos-->
 
+     <?php if( count($emprestimos)>0){ ?>
 
 <table class="ls-table">
         <thead>
@@ -138,5 +127,11 @@
             <?php } ?>
         </tbody>
     </table>
+
+    <?php }else{?>
+
+        <div class="ls-alert-danger" role="alert"><strong>Vish!</strong> Nenhum resultado foi encontrado para sua pesquisa.</div>
+
+       <?php }?>
 
 </div>

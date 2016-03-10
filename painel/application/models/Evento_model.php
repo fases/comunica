@@ -43,8 +43,23 @@ class Evento_model extends CI_Model {
         $this->id = $this->db->insert_id();      
     }
     public function listar(){
-        //listagem de todos os usuários
-        //$this->load->model('Usuario_model');
+        
+        if($this->input->post()) {
+            $form = $this->input->post();
+
+            if($form['data_inicio'] && $form['data_inicio'] != null){
+            list($dia, $mes, $ano) = explode('/', $form['data_inicio']);
+            $this->db->where('data_cadastro >=', "$ano-$mes-$dia");
+            list($dia, $mes, $ano) = explode('/', $form['data_fim']);
+            $this->db->where('data_cadastro <=', "$ano-$mes-$dia");
+            }
+
+            if($form['status'] != 0){
+                 $this->db->where('status =', $form['status']);
+            }
+
+           
+        }
 
         $result = $this->db->get('eventos')->result_array();
 

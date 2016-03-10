@@ -11,30 +11,14 @@
 
         <!-- Apartir daqui, vocês devem inserir os componentes na página -->
 
-        <!-- COISINHA DE FILTRAR -->
+        <!-- Filtro de busca -->
 
         <div class="ls-box-filter">
 
         <form method="post" class="ls-form ls-form-inline">
-
-            <input type="hidden" name="status" value="">
-
-            <label class="ls-label col-lg-3 col-md-6 col-sm-12">
-                <b class="ls-label-text">Período</b>
-                <div class="ls-custom-select">
-                    <select name="periodo" id="periodo" class="ls-select">
-                        <option>Hoje</option>
-                        <option>Ontem</option>
-                        <option>Última semana</option>
-                        <option>Últimos 30 dias</option>
-                        <option>Últimos 6 meses</option>
-                        <option>Últimos 12 meses</option>
-                        <option>Personalizado</option>
-                    </select>
-                </div>
-            </label>
-
-            <label class="ls-label col-lg-2 col-md-3 col-sm-12">
+           
+                                <label class="ls-label col-md-3 col-sm-4">
+      <b class="ls-label-text">Período</b>
                 <div class="ls-prefix-group">
                     <span id="new_feature_custom_filter_2" data-ls-module="popover" data-content="Escolha o período desejado e clique em 'Filtrar'."></span>
                     <input type="date" name="data_inicio" id="data_inicio" class="datepicker ls-daterange" placeholder="dd/mm/aaaa" data-ls-daterange="#datepicker2" required>
@@ -51,15 +35,6 @@
             </label>
 
             <input type="submit" class="ls-btn-primary" value="Filtrar"/>
-
-           <!-- <div data-ls-module="dropdown" class="ls-dropdown ls-float-right ls-float-none-sm ls-float-none-md" id="step4">
-                <a href="#" class="ls-btn" role="combobox" aria-expanded="false">Exportar</a>
-                <ul class="ls-dropdown-nav" aria-hidden="true">
-                    <li><a href="" role="option" tabindex="-1">CSV</a></li>
-                    <li><a data-action="open_modal_export" data-ls-module="modal" data-report-ext="XLS" data-target="#modal_export" href="" role="option" tabindex="-1">XLS</a></li>
-                    <li><a class="ls-divider" data-action="open_modal_export" data-ls-module="modal" data-target="#modal_exported_reports" data-url="/panel/exports" href="" id="link_exported_reports" role="option" tabindex="-1">Relatórios exportados</a></li>
-                </ul>
-            </div> -->
 
         </form>
 
@@ -106,10 +81,8 @@
                 <?php 
 
                 if ($usuario['status']==0) {
-                   echo "Indeferido";
+                   echo "Pendente";
 
-                }else {
-                     echo "Indeferido";
                 } ?>
 
                 </td>

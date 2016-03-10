@@ -57,7 +57,7 @@ class Usuario_model extends CI_Model {
         return $this->db->get('usuario');
     }
 
-        public function listar_solicitacoes($limite, $inicio){
+        public function listar_solicitacoes(){
 
         if($this->input->post()) {
             $form = $this->input->post();

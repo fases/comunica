@@ -47,6 +47,23 @@ class Noticia_model extends CI_Model {
 
     public function listar(){
 
+        if($this->input->post()) {
+            $form = $this->input->post();
+
+            if($form['data_inicio'] && $form['data_inicio'] != null){
+            list($dia, $mes, $ano) = explode('/', $form['data_inicio']);
+            $this->db->where('data_cadastro >=', "$ano-$mes-$dia");
+            list($dia, $mes, $ano) = explode('/', $form['data_fim']);
+            $this->db->where('data_cadastro <=', "$ano-$mes-$dia");
+            }
+
+            if($form['status'] != 0){
+                 $this->db->where('status =', $form['status']);
+            }
+
+           
+        }
+        
         $result = $this->db->get('noticias')->result_array();
 
         foreach($result as $k=>$r) {
