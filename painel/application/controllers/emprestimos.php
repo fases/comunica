@@ -12,19 +12,25 @@ class Emprestimos extends CI_Controller {
     $tipo_usuario = $this->session->userdata('usuario')->tipo_acesso;
 
         //var_dump($tipo_usuario); die();
-    switch($tipo_usuario) {
-        case '1':
-        $this->template = 'header_admin';
-        break;
-        case '2':
-        $this->template = 'header_servidor';
-        break;
-        case '3':
-        $this->template = 'header_aluno';
-        break;
-        default:
-        redirect(base_url('logout'));
-    }
+        switch($tipo_usuario) {
+            case '1':
+                $this->template = 'header_admin';
+                $this->painel = 'painel_admin';
+                $this->footer = 'footer_admin';
+                break;
+            case '2':
+                $this->template = 'header_servidor';
+                $this->painel = 'painel_usuario';
+                $this->footer = 'footer_usuario';
+                break;
+            case '3':
+                $this->template = 'header_aluno';
+                $this->painel = 'painel_aluno';
+                $this->footer = 'footer_aluno';
+                break;
+            default:
+                redirect(base_url('logout'));
+        }
 }
 
 
@@ -92,7 +98,7 @@ public function agendar()
         $this->db->order_by("nome", "asc");
         $dados['locais'] = $this->db->get('local')->result();
         $this->load->view('emprestimos/agendar',$dados,  NULL, TRUE);
-        $this->load->view('templates/footer');
+        $this->load->view('templates/footer' .  $this->footer);
     }
 
     public function visualizar($id){
@@ -120,7 +126,7 @@ public function agendar()
 
 
     $this->load->view('emprestimos/visualizar', $data);
-    $this->load->view('templates/footer');
+    $this->load->view('templates/' . $this->footer);
 
 
 }

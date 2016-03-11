@@ -15,12 +15,18 @@ class Pedidos extends CI_Controller {
         switch($tipo_usuario) {
             case '1':
                 $this->template = 'header_admin';
+                $this->painel = 'painel_admin';
+                $this->footer = 'footer_admin';
                 break;
             case '2':
                 $this->template = 'header_servidor';
+                $this->painel = 'painel_usuario';
+                $this->footer = 'footer_usuario';
                 break;
             case '3':
                 $this->template = 'header_aluno';
+                $this->painel = 'painel_aluno';
+                $this->footer = 'footer_aluno';
                 break;
             default:
                 redirect(base_url('logout'));
@@ -36,6 +42,7 @@ class Pedidos extends CI_Controller {
         $this->load->model('emprestimo_model'); //carrega o model
         $this->load->model('evento_model'); //carrega o model
         $this->load->model('noticia_model'); //carrega o model
+         $this->load->model('contato_model'); //carrega o model
 
         $data = array();// cria array;
         $data['usuario'] = $this->session->userdata('usuario'); //preenche com os dados da sessão;
@@ -44,15 +51,17 @@ class Pedidos extends CI_Controller {
         $data['emprestimos'] = $this->emprestimo_model->consultar_usuario($this->session->userdata('usuario')->id); //cria variável, realiza a consulta e organiza em uma array
         $data['eventos'] = $this->evento_model->consultar_usuario($this->session->userdata('usuario')->id); //cria variável, realiza a consulta e organiza em uma array,
         $data['noticias'] = $this->noticia_model->consultar_usuario($this->session->userdata('usuario')->id); //cria variável, realiza a consulta e organiza em uma array
+        $data['contatos'] = $this->contato_model->consultar_usuario($this->session->userdata('usuario')->id); //cria variável, realiza a consulta e organiza em uma array
 
         //var_dump($id);die();
         //var_dump($data);die();
 
        //var_dump( $this->session->userdata('usuario')->id); die();
 
+
         $this->load->view('templates/' . $this->template, $data);
         $this->load->view('pedidos',$data);
-        $this->load->view('templates/footer');
+        $this->load->view('templates/' . $this->footer);
     }
 
     public function noticias($id){
@@ -66,7 +75,7 @@ class Pedidos extends CI_Controller {
 
         $this->load->view('templates/' . $this->template, $data);
         $this->load->view('pedidos/noticia',$data);
-        $this->load->view('templates/footer');
+        $this->load->view('templates/' . $this->footer);
 
     }
 
@@ -85,7 +94,7 @@ class Pedidos extends CI_Controller {
 
         $this->load->view('templates/' . $this->template, $data);
         $this->load->view('pedidos/emprestimo',$data);
-        $this->load->view('templates/footer');
+        $this->load->view('templates/' . $this->footer);
 
 
     }
@@ -103,7 +112,7 @@ class Pedidos extends CI_Controller {
 
         $this->load->view('templates/' . $this->template, $data);
         $this->load->view('pedidos/evento',$data);
-        $this->load->view('templates/footer');
+        $this->load->view('templates/' . $this->footer);
 
 
     }
@@ -119,7 +128,7 @@ class Pedidos extends CI_Controller {
 
         $this->load->view('templates/' . $this->template, $data);
         $this->load->view('pedidos/producao',$data);
-        $this->load->view('templates/footer');
+        $this->load->view('templates/' . $this->footer);
 
 
     }
@@ -135,7 +144,30 @@ class Pedidos extends CI_Controller {
 
         $this->load->view('templates/' . $this->template, $data);
         $this->load->view('pedidos/impressao',$data);
-        $this->load->view('templates/footer');
+        $this->load->view('templates/' . $this->footer);
+
+
+    }
+
+
+    public function contato($id){
+
+        $this->load->model('usuario_model');
+        $this->load->model('contato_model');
+        $this->load->model('comentario_model');
+
+        $data = array(); // cria array;
+        $data['usuario'] = $this->session->userdata('usuario'); //preenche com os dados da sessão;
+        $data['contato'] = $this->contato_model->consultar($id);//carrega apenas a notícia pelo id;
+        $data['usuario_contato'] = $this->usuario_model->consultar($data['contato']->id_usuario);
+        $data['comentarios'] = $this->comentario_model->listar($id);
+
+        //echo "<pre>";
+        //var_dump($data);die('</pre>');
+
+        $this->load->view('templates/' . $this->template, $data);
+        $this->load->view('pedidos/contato',$data);
+        $this->load->view('templates/'. $this->footer);
 
 
     }

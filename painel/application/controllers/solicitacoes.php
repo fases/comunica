@@ -14,16 +14,22 @@ class Solicitacoes extends CI_Controller {
         //var_dump($tipo_usuario); die();
         switch($tipo_usuario) {
             case '1':
-            $this->template = 'header_admin';
-            break;
+                $this->template = 'header_admin';
+                $this->painel = 'painel_admin';
+                $this->footer = 'footer_admin';
+                break;
             case '2':
-            $this->template = 'header_servidor';
-            break;
+                $this->template = 'header_servidor';
+                $this->painel = 'painel_usuario';
+                $this->footer = 'footer_usuario';
+                break;
             case '3':
-            $this->template = 'header_aluno';
-            break;
+                $this->template = 'header_aluno';
+                $this->painel = 'painel_aluno';
+                $this->footer = 'footer_aluno';
+                break;
             default:
-            redirect(base_url('logout'));
+                redirect(base_url('logout'));
         }
     }
 
@@ -48,7 +54,7 @@ class Solicitacoes extends CI_Controller {
         $data['usuarios'] = $this->usuario_model->listar_solicitacoes($pag)->result_array(); //cria variável, realiza a consulta e organiza em uma array
 
         $this->load->view('solicitacoes/cadastro',$data);
-        $this->load->view('templates/footer');
+        $this->load->view('templates/' . $this->footer);
     }
 
     public function material(){  
@@ -72,7 +78,7 @@ class Solicitacoes extends CI_Controller {
 
         $this->load->view('templates/' . $this->template, $data);
         $this->load->view('solicitacoes/material', $data);
-        $this->load->view('templates/footer');
+        $this->load->view('templates/' . $this->footer);
 
         function visualizar_producao(){
 
@@ -89,7 +95,7 @@ class Solicitacoes extends CI_Controller {
 
              $this->load->view('templates/' . $this->template, $data);
              $this->load->view('material/visualizar',$data);
-             $this->load->view('templates/footer');
+             $this->load->view('templates/' . $this->footer);
          }
 
 
@@ -113,7 +119,7 @@ class Solicitacoes extends CI_Controller {
         $data['eventos'] = $this->evento_model->listar(); //cria variável, realiza a consulta e organiza em uma array
 
         $this->load->view('solicitacoes/cobertura',$data);
-        $this->load->view('templates/footer');
+        $this->load->view('templates/' . $this->footer);
     }
 
     public function editar($id){
@@ -158,7 +164,7 @@ class Solicitacoes extends CI_Controller {
         //var_dump($data);die();
 
         $this->load->view('solicitacoes/noticias',$data);
-        $this->load->view('templates/footer');
+        $this->load->view('templates/' . $this->footer);
     }
     public function emprestimos(){
 
@@ -181,7 +187,7 @@ class Solicitacoes extends CI_Controller {
         //var_dump($data);die();
 
         $this->load->view('solicitacoes/emprestimos',$data);
-        $this->load->view('templates/footer');
+        $this->load->view('templates/' . $this->footer);
     }
 
 

@@ -170,7 +170,7 @@ ul li {
   list-style: none; }
 
 .section-padding {
-  padding: 120px 0; }
+  padding: 200px 0; }
 
 .tooltip {
   position: absolute;
@@ -570,7 +570,7 @@ Features-stack
   .features-extra .macbook-wrap {
     position: absolute;
     width: 820px;
-    height: 540px;
+    height: 775px;
     background: url("../img/macbook-pro.png") no-repeat center center;
     top: 50px;
     z-index: 4;

@@ -14,16 +14,22 @@ class Material extends CI_Controller {
         //var_dump($tipo_usuario); die();
         switch($tipo_usuario) {
             case '1':
-            $this->template = 'header_admin';
-            break;
+                $this->template = 'header_admin';
+                $this->painel = 'painel_admin';
+                $this->footer = 'footer_admin';
+                break;
             case '2':
-            $this->template = 'header_servidor';
-            break;
+                $this->template = 'header_servidor';
+                $this->painel = 'painel_usuario';
+                $this->footer = 'footer_usuario';
+                break;
             case '3':
-            $this->template = 'header_aluno';
-            break;
+                $this->template = 'header_aluno';
+                $this->painel = 'painel_aluno';
+                $this->footer = 'footer_aluno';
+                break;
             default:
-            redirect(base_url('logout'));
+                redirect(base_url('logout'));
         }
     }
 
@@ -81,7 +87,7 @@ class Material extends CI_Controller {
 
         $this->load->view('templates/' . $this->template, $data);
         $this->load->view('material/producao',$data);
-        $this->load->view('templates/footer');
+        $this->load->view('templates/' . $this->footer);
     }
 
     public function impressao(){
@@ -136,7 +142,7 @@ class Material extends CI_Controller {
 
         $this->load->view('templates/' . $this->template, $data);
         $this->load->view('material/impressao');
-        $this->load->view('templates/footer');
+        $this->load->view('templates/' . $this->footer);
     }
     public function cadastrar(){
 
@@ -176,7 +182,7 @@ class Material extends CI_Controller {
 
         $this->load->view('templates/' . $this->template, $data);
         $this->load->view('material/cadastrar');
-        $this->load->view('templates/footer');
+        $this->load->view('templates/' . $this->footer);
     }
     public function consultar(){
 
@@ -202,7 +208,7 @@ class Material extends CI_Controller {
             $data['materiais'] = $this->material_model->listar()->result_array();
             $this->load->view('material/consultar', $data);
 
-            $this->load->view('templates/footer');
+            $this->load->view('templates/' . $this->footer);
         }
 
         public function visualizar_impressao($id){
@@ -226,7 +232,7 @@ class Material extends CI_Controller {
             
             $this->load->view('templates/' . $this->template, $data);
             $this->load->view('material/visualizar_impressao',$data);
-            $this->load->view('templates/footer');
+            $this->load->view('templates/' . $this->footer);
 
         }
 
@@ -296,7 +302,7 @@ class Material extends CI_Controller {
             
             $this->load->view('templates/' . $this->template, $data);
             $this->load->view('material/visualizar_producao',$data);
-            $this->load->view('templates/footer');
+            $this->load->view('templates/' . $this->footer);
 
         }
 

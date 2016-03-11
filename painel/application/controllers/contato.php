@@ -14,16 +14,22 @@ class Contato extends CI_Controller {
         //var_dump($tipo_usuario); die();
         switch($tipo_usuario) {
             case '1':
-            $this->template = 'header_admin';
-            break;
+                $this->template = 'header_admin';
+                $this->painel = 'painel_admin';
+                $this->footer = 'footer_admin';
+                break;
             case '2':
-            $this->template = 'header_servidor';
-            break;
+                $this->template = 'header_servidor';
+                $this->painel = 'painel_usuario';
+                $this->footer = 'footer_usuario';
+                break;
             case '3':
-            $this->template = 'header_aluno';
-            break;
+                $this->template = 'header_aluno';
+                $this->painel = 'painel_aluno';
+                $this->footer = 'footer_aluno';
+                break;
             default:
-            redirect(base_url('logout'));
+                redirect(base_url('logout'));
         }
     }
 
@@ -66,7 +72,7 @@ class Contato extends CI_Controller {
 
         $this->load->view('templates/' . $this->template, $data);
         $this->load->view('contato');
-        $this->load->view('templates/footer');
+        $this->load->view('templates/' . $this->footer);
 
         //var_dump($this->session->userdata('usuario')->email);die();
     }
@@ -91,19 +97,14 @@ class Contato extends CI_Controller {
         //var_dump($data);die();
 
         $this->load->view('contato/listar');
-        $this->load->view('templates/footer');
+        $this->load->view('templates/' . $this->footer);
     }
 
 
 
     public function visualizar($id){
 
-        if(!$this->usuario_model->administrador())
-        {
-            $this->session->set_flashdata('mensagem', 
-                array('tipo' => 'danger', 'texto' => 'Você não possui credenciais para esta ação!'));
-            redirect(base_url('home'));
-        }
+
 
         $this->load->model('usuario_model');
         $this->load->model('contato_model');
@@ -120,7 +121,7 @@ class Contato extends CI_Controller {
 
         $this->load->view('templates/' . $this->template, $data);
         $this->load->view('contato/visualizar',$data);
-        $this->load->view('templates/footer');
+        $this->load->view('templates/'. $this->footer);
 
 
     }
@@ -172,7 +173,6 @@ class Contato extends CI_Controller {
      
      public function cadastrar_comentario(){
 
-        //echo "oi, eu sou a action!";
 
         if($this->input->post()) {
             $form = $this->input->post();
@@ -189,7 +189,18 @@ class Contato extends CI_Controller {
 
                 //var_dump($comentario->id_contato);die();
 
-                redirect(base_url('/contato/visualizar/'.$comentario->id_contato));
+
+                    switch ($this->session->userdata('usuario')->tipo_acesso) {
+     case 1:
+     redirect(base_url('/contato/visualizar/'.$comentario->id_contato));
+     break;
+     case 2:
+     redirect(base_url('/pedidos/contato/'.$comentario->id_contato));
+     break;
+   } 
+
+
+                
 
             }else{
 

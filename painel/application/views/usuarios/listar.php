@@ -8,7 +8,7 @@
 
     });
 
-</script>
+</script> 
 
 
 <div class="container-fluid">
@@ -108,7 +108,7 @@
         </tbody>
     </table>
 
-    <div class="ls-pagination-filter">
+  <!--  <div class="ls-pagination-filter">
     <p><?php echo $links; ?></p>
 
         <ul class="ls-pagination">
@@ -135,7 +135,7 @@
                 ítens por página
             </label>
         </div>
-    </div>
+    </div> -->
 
 
 </div>

@@ -64,10 +64,10 @@
       
         <h2 class="ls-title-5">Links <strong>úteis</strong></h2>
         <ul>
-        <li style="list-style-type:none; float: left; padding: 5px; "><a href="#" class="ls-btn-primary ls-btn-xs ls-ico-chevron-right">SUAP</a></li>
-        	<li style="list-style-type:none; float: left; padding: 5px; "><a href="#" class="ls-btn-primary ls-btn-xs ls-ico-chevron-right" >Portal IFRN</a></li>
-        	<li style="list-style-type:none; float: left; padding: 5px; "><a href="#" class="ls-btn-primary ls-btn-xs ls-ico-chevron-right">Facebook</a></li>
-        	<li style="list-style-type:none; float: left; padding: 5px; "><a href="#" class="ls-btn-primary ls-btn-xs ls-ico-chevron-right">Instagram</a></li>
+        <li style="list-style-type:none; float: left; padding: 5px; "><a href="http://suap.ifrn.edu.br/" class="ls-btn-primary ls-btn-xs ls-ico-chevron-right">SUAP</a></li>
+        	<li style="list-style-type:none; float: left; padding: 5px; "><a href="http://portal.ifrn.edu.br/campus/natalzonanorte" class="ls-btn-primary ls-btn-xs ls-ico-chevron-right" >Portal IFRN</a></li>
+        	<li style="list-style-type:none; float: left; padding: 5px; "><a href="https://www.facebook.com/ifrn.natalzonanorte/" class="ls-btn-primary ls-btn-xs ls-ico-chevron-right">Facebook</a></li>
+        	<li style="list-style-type:none; float: left; padding: 5px; "><a href="https://www.instagram.com/ifrnzn/" class="ls-btn-primary ls-btn-xs ls-ico-chevron-right">Instagram</a></li>
         	<li style="list-style-type:none; float: left; padding: 5px; "><a href="#" class="ls-btn-primary ls-btn-xs ls-ico-chevron-right">Youtube</a></li>
 
 

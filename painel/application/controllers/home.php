@@ -17,14 +17,17 @@ class Home extends CI_Controller {
 			case '1':
 				$this->template = 'header_admin';
 				$this->painel = 'painel_admin';
+				$this->footer = 'footer_admin';
 				break;
 			case '2':
 				$this->template = 'header_servidor';
 				$this->painel = 'painel_usuario';
+				$this->footer = 'footer_usuario';
 				break;
 			case '3':
 				$this->template = 'header_aluno';
 				$this->painel = 'painel_aluno';
+				$this->footer = 'footer_aluno';
 				break;
 			default:
 				redirect(base_url('logout'));
@@ -52,9 +55,20 @@ class Home extends CI_Controller {
 
         $this->load->view('templates/' . $this->template, $data);
         $this->load->view('templates/' . $this->painel, $data);
-        $this->load->view('templates/footer');
+        $this->load->view('templates/' . $this->footer);
 	}
 
+	public function ajuda(){
+
+		$data = array();// cria array;
+        $data['usuario'] = $this->session->userdata('usuario'); //preenche com os dados da sessão;
+
+        $this->load->view('templates/' . $this->template, $data);
+        $this->load->view('templates/ajuda');
+        $this->load->view('templates/' . $this->footer);
+
+
+	}
 
 
 

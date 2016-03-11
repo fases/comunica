@@ -14,16 +14,22 @@ class Eventos extends CI_Controller {
         //var_dump($tipo_usuario); die();
         switch($tipo_usuario) {
             case '1':
-            $this->template = 'header_admin';
-            break;
+                $this->template = 'header_admin';
+                $this->painel = 'painel_admin';
+                $this->footer = 'footer_admin';
+                break;
             case '2':
-            $this->template = 'header_servidor';
-            break;
+                $this->template = 'header_servidor';
+                $this->painel = 'painel_usuario';
+                $this->footer = 'footer_usuario';
+                break;
             case '3':
-            $this->template = 'header_aluno';
-            break;
+                $this->template = 'header_aluno';
+                $this->painel = 'painel_aluno';
+                $this->footer = 'footer_aluno';
+                break;
             default:
-            redirect(base_url('logout'));
+                redirect(base_url('logout'));
         }
     }
 
@@ -72,7 +78,7 @@ class Eventos extends CI_Controller {
         $dados['locais'] = $this->db->get('local')->result();
 
         $this->load->view('eventos/cobertura',$dados);
-        $this->load->view('templates/footer');
+        $this->load->view('templates/' . $this->footer);
     }
 
 

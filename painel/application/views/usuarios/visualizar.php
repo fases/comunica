@@ -74,7 +74,7 @@
 
 
 
-    <div class="ls-box ls-board-box">
+  <!--  <div class="ls-box ls-board-box">
 
         <header class="ls-info-header">
             <h2 class="ls-title-3 col-md-6 ls-ico-calendar-check">
@@ -91,7 +91,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
 
     <!-- Modal de senha -->

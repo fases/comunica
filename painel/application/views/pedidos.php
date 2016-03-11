@@ -5,7 +5,7 @@
 
   <!-- Apartir daqui, vocês devem inserir os componentes na página -->
 
-  <div class="ls-box-filter">
+ <!-- <div class="ls-box-filter">
         <form class="ls-form ls-form-inline ls-float-left" action="">
             <label class="ls-label col-md-6 col-sm-8">
                 <b class="ls-label-text">Status</b>
@@ -21,7 +21,7 @@
                 <input type="submit" aria-expanded="false" title="Buscar" class="ls-btn ls-btn-sm" value="Buscar">
             </div>
         </form>
-    </div>
+    </div> -->
 
 
   <table class="ls-table ls-bg-header">
@@ -34,6 +34,45 @@
         <th> </th>
       </tr>
     </thead>
+
+
+        <!-- Abre o foreach--> <?php 
+    foreach ($contatos as $contato) { 
+      ?>
+      <tbody>
+        <tr>
+          <td><a href="" title=""><?php echo '#00'. $contato->id?></a></td>
+          <td>Contato</td>
+          <td>
+            <?php
+            switch ($contato->status){
+              case 1:
+              echo "Enviado";
+              break;
+              case 2:
+              echo "Em andamento";
+              break;
+              case 3:
+              echo "Concluído";
+              break;
+              case 4:
+              echo "Cancelado";
+              break;
+            }
+            ?>
+          </td>
+
+          <td> <?php echo date ("d/m/Y \à\s H:i", strtotime($contato->data_cadastro));?> </td>
+
+                          <td class="ls-txt-right ls-regroup">
+
+                    <a href="<?php echo base_url() ?>pedidos/contato/<?php echo $contato->id;?>" class="ls-btn ls-btn-sm" aria-expanded="false">Visualizar</a>
+                    </td>
+
+          </tr>
+        </tbody>
+        <?php }?> <!-- Fecha o foreach-->
+
 
     <!-- Abre o foreach--> <?php 
     foreach ($emprestimos as $emprestimo) { 

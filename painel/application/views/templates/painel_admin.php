@@ -4,7 +4,12 @@
 
           <?php $this->mensagem_model->exibir(); ?>
 
-  
+  <div class="ls-box ls-lg-space ls-ico-lamp ls-ico-bg">
+  <h1 class="ls-title-1 ls-color-theme">O COMUNICA é o sistema online da Comunicação Social</h1>
+  <p>Comece a usar agora: faça sua primeira solicitação, defina suas preferências e acompanhe o seu desenvolvimento.</p>
+  <!-- botão <a class="ls-btn-primary" href="#">Cadastrar meu primeiro cliente</a> -->
+</div>
+
     <h2 class="ls-title-4">Relatório de solicitações</h2>
 
     <div class="row">
@@ -34,18 +39,18 @@
                     <div class="ls-box-head">
                         <h6 class="ls-title-4">Pendentes x Em andamento</h6>
                     </div>
-                    <div class="ls-box-body">
-                        <div class="ls-half-board-data">
+                  <!--    <div class="ls-box-body">
+                      <div class="ls-half-board-data">
                             <div id="board-chart-1" class="ls-box-chart">
                             </div>
-                        </div>
-                        <div class="ls-half-board-data">
-                            <strong class="ls-color-theme"><?php echo $pedidos_pendentes?></strong>
+                        </div> 
+                        <div class="ls-half-board-data">-->
+                            <strong class="ls-color-info"><?php echo $pedidos_pendentes?></strong>
                             <small>Pendentes</small>
                             <strong class="ls-color-danger"><?php echo $pedidos_recebidos?></strong>
                             <small>Em andamento</small>
-                        </div>
-                    </div>
+                         <!--</div>
+                   </div> -->
                 </div>
             </div>
 
@@ -54,16 +59,18 @@
                     <div class="ls-box-head">
                         <h6 class="ls-title-4">Concluídas</h6>
                     </div>
-                    <div class="ls-box-body">
-                        <div class="ls-half-board-data">
+                   <!-- <div class="ls-box-body">
+                         <div class="ls-half-board-data">
                             <div id="board-chart-2" class="ls-box-chart">
                             </div>
-                        </div>
-                        <div class="ls-half-board-data">
-                            <strong class="ls-color-info"><?php echo $pedidos_concluidos?></strong>
+                        </div> 
+                        <div class="ls-half-board-data"> -->
+                        <div class="ls-box-body">
+                            <strong class="ls-color-theme"><?php echo $pedidos_concluidos?></strong>
                             <small>solicitações até agora</small>
-                        </div>
-                    </div>
+                            </div>
+                      <!--  </div>
+                    </div>  -->
                 </div>
             </div>
 
@@ -80,7 +87,7 @@
             </div>
         </div>
 
-        <div class="ls-chart">
+    <!--     <div class="ls-chart">
 
             <div class="ls-clearfix">
                 <h3 class="ls-title-4 ls-float-left">Gráfico de <strong>Entregues x Bounces x Abertos</strong></h3>
@@ -199,7 +206,7 @@
 
             </div>
 
-        </div>
+        </div> -->
 
     </div>
 

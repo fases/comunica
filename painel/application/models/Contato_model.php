@@ -76,6 +76,18 @@ class Contato_model extends CI_Model {
 
     }
 
+        public function consultar_usuario($id){
+
+        //$this->db->join('usuario','id_usuario=id','inner');
+
+        //Busca com condição
+        $query = $this->db->get_where('contatos', array('id_usuario' => $id));
+ 
+        //row_object() retorna direto o objeto produto e não um array
+        return $query->result();
+
+    }
+
 
 
 }
